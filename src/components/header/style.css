@@ -1,0 +1,84 @@
+.header {
+  height: 150px;
+  /* background-color: red; */
+}
+
+.nav {
+  height: 100%;
+  margin: 0 auto;
+  width: 85%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.header li {
+  margin: 10px;
+}
+
+.logo {
+  font-size: 96px;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: var(--black);
+}
+
+.mini-nav span {
+  font-size: 36px;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: var(--black);
+}
+
+/* -------------------- media queries ---*/
+
+@media (max-width: 1280px) {
+  .nav {
+    /* width: 100%;  */
+  }
+  .logo {
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .mini-nav span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1024px /* Landscape tab */) {
+  .nav {
+    /* width: 100%;  */
+  }
+  .logo {
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .mini-nav span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px /* Ipad vertical position zone */) {
+}
+
+@media (max-width: 720px /* Smartphone zone */) {
+}
+
+@media (max-width: 414px /* iPhone 11 vertical zone */) {
+  .nav {
+    width: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  .mini-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .mini-nav span {
+    font-size: 18px;
+  }
+}
