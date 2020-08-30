@@ -1,0 +1,13 @@
+import React from "react";
+
+import "../styles/styles.css";
+
+export default function Footer() {
+  return (
+    <div className="footer red">
+      <div className="footer-container orange">
+        <h4>Michel Verjux</h4>
+      </div>
+    </div>
+  );
+}

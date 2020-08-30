@@ -1,0 +1,36 @@
+.header {
+  min-height: 10vh;
+}
+
+.nav {
+  width: 90%;
+  margin: auto;
+  padding: 2rem 0rem 3rem 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  .logo-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex: 2;
+    margin-right: 10rem;
+    min-height: 6rem;
+    h3 {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 2rem;
+    }
+  }
+  .mini-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex: 1;
+    margin-left: 2rem;
+  }
+  span {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2rem;
+  }
+}

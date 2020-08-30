@@ -1,0 +1,49 @@
+.home-page {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 5% repeat(12, 1fr) 5%;
+  grid-template-rows: 15vh 60vh 15vh;
+
+  .home-image-container {
+    //     width: 60rem;
+    //     height: 40rem;
+    // width: 100%;
+    //     height: 60rem;
+    //     height: 100%;
+    background: yellow;
+    grid-column: 2/9;
+    grid-row: 1/4;
+  }
+  .carousel {
+    // width: 20rem;
+    width: 100%;
+    // height: 30rem;
+    height: 100%;
+    grid-column: 10/14;
+    grid-row: 2/3;
+    //     justify-self: center;
+    //     align-self: center;
+
+    //     .image-carousel {
+    //       height: 30rem;
+    //       object-fit: contain;
+    //     }
+  }
+}
+
+// ========================== Media queries ========================= //
+
+@media (max-width: 1200px /*  */) {
+  .home-page {
+    grid-template-columns: 10% 1fr 3fr 1fr 10%;
+    grid-template-rows: 1fr 1fr;
+    .home-image-container {
+      grid-column: 2/5;
+      grid-row: 2/3;
+    }
+    .carousel {
+      grid-column: 3/4;
+      grid-row: 1/2;
+    }
+  }
+}

@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Pages import
-import HomeScreen from "./containers/HomeScreen/HomeScreen.js";
-import ImageScreen from "./containers/ImageScreen/ImageScreen";
-import TextScreen from "./containers/TextScreen/TextScreen";
-import BioScreen from "./containers/BioScreen/BioScreen";
+import HomeScreen from "./containers/HomeScreen.js";
+import ImageScreen from "./containers/ImageScreen";
+import TextScreen from "./containers/TextScreen";
+import BioScreen from "./containers/BioScreen";
 
 // Components import
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer.js";
+import Header from "./components/Header";
+import Footer from "./components/Footer.js";
 
 import "./App.css";
 
