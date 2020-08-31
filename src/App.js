@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Pages import
@@ -15,9 +15,13 @@ import Footer from "./components/Footer.js";
 import "./App.css";
 
 function App() {
+  const [path, setPath] = useState("/");
+
+  //   console.log(path);
+
   return (
     <Router>
-      <Header />
+      {path !== "/" && <Header path={path} setPath={setPath} />}
 
       <Switch>
         <Route path="/bio">
@@ -33,10 +37,10 @@ function App() {
           <HomeScreen />
         </Route>
         <Route path="/">
-          <LandingScreen />
+          <LandingScreen path={path} setPath={setPath} />
         </Route>
       </Switch>
-      <Footer />
+      {path !== "/" && <Footer />}
     </Router>
   );
 }
