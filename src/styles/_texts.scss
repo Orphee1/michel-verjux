@@ -1,0 +1,20 @@
+.texts-page {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 5% repeat(12, 1fr) 5%;
+  grid-template-rows: 15vh 60vh 15vh;
+  .menu-text {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    height: 50%;
+    //     height: 50rem;
+  }
+  .bloc-text {
+    grid-column: 3/9;
+    grid-row: 2/4;
+  }
+  .bloc-other-text {
+    grid-column: 10/14;
+    grid-row: 2/3;
+  }
+}

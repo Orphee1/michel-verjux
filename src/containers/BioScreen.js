@@ -4,8 +4,9 @@ import "../styles/styles.css";
 
 export default function BioScreen() {
   return (
-    <div className="page">
-      <h1>Welcome on Bio Screen</h1>
+    <div className="bio-page">
+      <div className="bloc-text orange"></div>
+      <div className="bloc-image yellow"></div>
     </div>
   );
 }

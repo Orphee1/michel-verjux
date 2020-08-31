@@ -11,9 +11,9 @@ import "../styles/styles.css";
 export default function ImageScreen() {
   return (
     <div className="images-page">
-      <div className="menu-image"></div>
-      <div className="images-page-landing-image-container"></div>
-      <div className="bloc-other-image">
+      <div className="menu-image  orange"></div>
+      <div className="images-page-landing-image-container yellow"></div>
+      <div className="bloc-other-image blue">
         <div className="other-image"></div>
         <div className="other-image"></div>
         <div className="other-image"></div>
