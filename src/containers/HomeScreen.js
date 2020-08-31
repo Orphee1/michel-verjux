@@ -9,18 +9,8 @@ import "../styles/styles.css";
 export default function HomeScreen() {
   return (
     <div className="home-page">
-      <div className="home-image-container">
-        {/* <img className="" src={image9} alt="Michel Verjux exhibition" /> */}
-      </div>
-      <div className="carousel blue">
-        {/* <img
-          className="
-        image-carousel
-        "
-          src={image21}
-          alt="Michel Verjux exhibition"
-        /> */}
-      </div>
+      <div className="home-image-container"></div>
+      <div className="carousel blue"></div>
     </div>
   );
 }
