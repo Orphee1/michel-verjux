@@ -13,27 +13,48 @@ import Footer from "./components/Footer.js";
 
 import "./App.css";
 
-function App() {
-  return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route path="/bio">
-          <BioScreen />
-        </Route>
-        <Route path="/text">
-          <TextScreen />
-        </Route>
-        <Route path="/image">
-          <ImageScreen />
-        </Route>
-        <Route path="/">
-          <HomeScreen />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
-  );
-}
+// function App() {
+//   return (
+//     <Router>
+//       <Header />
+//       <Switch>
+//         <Route path="/bio">
+//           <BioScreen />
+//         </Route>
+//         <Route path="/text">
+//           <TextScreen />
+//         </Route>
+//         <Route path="/image">
+//           <ImageScreen />
+//         </Route>
+//         <Route path="/">
+//           <HomeScreen />
+//         </Route>
+//       </Switch>
+//       <Footer />
+//     </Router>
+//   );
+// }
+
+const App = () => (
+  <Router>
+    <Header />
+    <Switch>
+      <Route path="/bio">
+        <BioScreen />
+      </Route>
+      <Route path="/text">
+        <TextScreen />
+      </Route>
+      <Route path="/image">
+        <ImageScreen />
+      </Route>
+      <Route path="/">
+        <HomeScreen />
+      </Route>
+    </Switch>
+    <Footer />
+  </Router>
+);
 
 export default App;
