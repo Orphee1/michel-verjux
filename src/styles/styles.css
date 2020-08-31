@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+.landing-page {
+  min-height: 90vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% (1fr)[12] 5%;
+      grid-template-columns: 5% repeat(12, 1fr) 5%;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  z-index: -1;
+}
+
 .landing-page .landing-image {
   position: absolute;
   left: 0;
@@ -8,15 +19,26 @@
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  z-index: -1;
 }
 
 .landing-page .landing-logo {
-  position: absolute;
-  left: 8rem;
-  top: 50rem;
   color: white;
-  font-size: 8rem;
-  font-family: "Noto Sans", sans-serif;
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  width: 100%;
+  height: 100%;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1/4;
+}
+
+@media (max-width: 1024px) {
+  .landing-page .landing-logo {
+    position: absolute;
+    left: 5.5vw;
+    top: 68vh;
+  }
 }
 
 .home-page {
