@@ -1,0 +1,18 @@
+.landing-page {
+  .landing-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .landing-logo {
+    position: absolute;
+    left: 8rem;
+    top: 50rem;
+    color: white;
+    font-size: 8rem;
+    font-family: "Noto Sans", sans-serif;
+  }
+}

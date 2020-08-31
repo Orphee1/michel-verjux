@@ -8,7 +8,7 @@ export default function Header() {
     <div className="nav">
       <ul className="logo-nav">
         <li>
-          <Link to="/">
+          <Link to="/home">
             <h1 className="logo hover">Michel Verjux</h1>
           </Link>
         </li>

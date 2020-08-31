@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Pages import
+import LandingScreen from "./containers/LandingScreen";
 import HomeScreen from "./containers/HomeScreen.js";
 import ImageScreen from "./containers/ImageScreen";
 import TextScreen from "./containers/TextScreen";
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <Header />
+
       <Switch>
         <Route path="/bio">
           <BioScreen />
@@ -27,8 +29,11 @@ function App() {
         <Route path="/image">
           <ImageScreen />
         </Route>
-        <Route path="/">
+        <Route path="/home">
           <HomeScreen />
+        </Route>
+        <Route path="/">
+          <LandingScreen />
         </Route>
       </Switch>
       <Footer />
