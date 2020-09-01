@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "../styles/styles.css";
@@ -7,17 +7,26 @@ import "../styles/styles.css";
 import image27 from "../images/image27.png";
 
 export default function LandingScreen({ path, setPath }) {
+  useEffect(() => {
+    setPath("/");
+  });
+
   return (
     <div className="landing-page">
-      <img className="landing-image" src={image27} alt="Michel Verjux" />
-      <Link
-        to="/home"
-        onClick={() => {
-          setPath("/home");
-        }}
-      >
-        <h1 className="landing-logo">Michel Verjux</h1>
-      </Link>
+      <div className="image-container">
+        <img className="landing-image" src={image27} alt="Michel Verjux" />
+      </div>
+
+      <div className="logo-container">
+        <Link
+          to="/home"
+          onClick={() => {
+            setPath("/home");
+          }}
+        >
+          <h1 className="">Michel Verjux</h1>
+        </Link>
+      </div>
     </div>
   );
 }

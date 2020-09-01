@@ -17,7 +17,7 @@ import "./App.css";
 function App() {
   const [path, setPath] = useState("/");
 
-  //   console.log(path);
+  console.log(path);
 
   return (
     <Router>
