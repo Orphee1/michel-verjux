@@ -9,7 +9,7 @@ import "../styles/styles.css";
 export default function HomeScreen() {
   return (
     <div className="home-page">
-      <div className="home-image-container"></div>
+      <div className="home-image-container yellow"></div>
       <div className="carousel blue"></div>
     </div>
   );

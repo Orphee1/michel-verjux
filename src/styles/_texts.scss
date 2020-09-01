@@ -6,8 +6,9 @@
   .menu-text {
     grid-column: 2/3;
     grid-row: 2/3;
-    height: 50%;
-    //     height: 50rem;
+    background: var(--blue);
+    border-radius: 0 4rem 4rem 0;
+    height: 50%; //????
   }
   .bloc-text {
     grid-column: 3/9;
@@ -16,5 +17,27 @@
   .bloc-other-text {
     grid-column: 10/14;
     grid-row: 2/3;
+  }
+}
+
+// ========================== Media queries ========================= //
+@media (max-width: 1200px /* */) {
+  .texts-page {
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr 1fr;
+    .menu-text {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      height: 50%; //??????
+      width: 60%; //??????
+    }
+    .bloc-text {
+      grid-column: 3/6;
+      grid-row: 1/2;
+    }
+    .bloc-other-text {
+      grid-column: 2/7;
+      grid-row: 2/3;
+    }
   }
 }

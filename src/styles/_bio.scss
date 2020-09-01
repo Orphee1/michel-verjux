@@ -2,13 +2,37 @@
   min-height: 90vh;
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
-  grid-template-rows: 15vh 60vh 15vh;
-  .bloc-text {
+  grid-template-rows: repeat(5, 1fr);
+  .bloc-text-bio {
     grid-column: 2/8;
     grid-row: 2/4;
   }
+  .bloc-text-biblio {
+    grid-column: 2/8;
+    grid-row: 4/6;
+  }
   .bloc-image {
     grid-column: 8/14;
-    grid-row: 2/3;
+    grid-row: 3/5;
+  }
+}
+// ========================== Media queries ========================= //
+
+@media (max-width: 1200px /* */) {
+  .bio-page {
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    .bloc-text-bio {
+      grid-column: 3/6;
+      grid-row: 1/2;
+    }
+    .bloc-text-biblio {
+      grid-column: 2/7;
+      grid-row: 2/3;
+    }
+    .bloc-image {
+      grid-column: 2/7;
+      grid-row: 3/4;
+    }
   }
 }

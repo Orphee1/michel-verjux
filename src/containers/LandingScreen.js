@@ -13,9 +13,9 @@ export default function LandingScreen({ path, setPath }) {
 
   return (
     <div className="landing-page">
-      <div className="image-container">
+      <figure className="landing-image-container">
         <img className="landing-image" src={image27} alt="Michel Verjux" />
-      </div>
+      </figure>
 
       <div className="logo-container">
         <Link
