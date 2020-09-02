@@ -16,11 +16,11 @@ export default function ImageScreen() {
   return (
     <div className="images-page">
       <div className="menu-image"></div>
-      <figure className="images-page-landing-image-container yellow">
+      <figure className="images-page-landing-image-container">
         <img className="" src={image21} alt="Michel Verjux" />
       </figure>
       <div className="bloc-other-image">
-        <figure className="other-image-container red">
+        <figure className="other-image-container">
           <img className="other-image" src={image16} alt="Michel Verjux" />
         </figure>
         <figure className="other-image-container red">

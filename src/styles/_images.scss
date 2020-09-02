@@ -8,10 +8,9 @@
     grid-row: 2/4;
     background: var(--blue);
     border-radius: 0 4rem 4rem 0;
-    height: 10rem; //?????
-    width: 6rem; //?????
+    height: 15rem; //????
+    width: 10rem;
     //     justify-self: end;
-    margin-right: 1rem; // ?????
   }
   .images-page-landing-image-container {
     grid-column: 3/9;
@@ -42,6 +41,8 @@
       height: 19rem;
       margin: 1rem;
       margin-right: 0;
+      margin-top: 0;
+
       overflow: hidden;
       .other-image {
         width: 120%; // ?????
@@ -62,7 +63,7 @@
 @media (max-width: 1200px /*  */) {
   .images-page {
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
     .menu-image {
       grid-column: 2/3;
       grid-row: 1/2;
@@ -76,6 +77,12 @@
     .bloc-other-image {
       grid-column: 2/7;
       grid-row: 2/3;
+      //       align-items: center;
+      justify-content: center;
+      .other-image-container {
+        margin-top: 1rem;
+        margin-left: 0;
+      }
     }
   }
 }

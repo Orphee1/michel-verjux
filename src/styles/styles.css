@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 .landing-page {
   min-height: 90vh;
   display: -ms-grid;
@@ -91,7 +92,7 @@
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   grid-row: 1/4;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .home-page .home-image-container img {
@@ -156,9 +157,8 @@
   grid-row: 2/4;
   background: var(--blue);
   border-radius: 0 4rem 4rem 0;
-  height: 10rem;
-  width: 6rem;
-  margin-right: 1rem;
+  height: 15rem;
+  width: 10rem;
 }
 
 .images-page .images-page-landing-image-container {
@@ -210,6 +210,7 @@
   height: 19rem;
   margin: 1rem;
   margin-right: 0;
+  margin-top: 0;
   overflow: hidden;
 }
 
@@ -234,8 +235,8 @@
   .images-page {
     -ms-grid-columns: (1fr)[7];
         grid-template-columns: repeat(7, 1fr);
-    -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
   }
   .images-page .menu-image {
     -ms-grid-column: 2;
@@ -262,6 +263,13 @@
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .images-page .bloc-other-image .other-image-container {
+    margin-top: 1rem;
+    margin-left: 0;
   }
 }
 
@@ -284,7 +292,8 @@
   grid-row: 2/3;
   background: var(--blue);
   border-radius: 0 4rem 4rem 0;
-  height: 50%;
+  height: 15rem;
+  width: 10rem;
 }
 
 .texts-page .bloc-text {
@@ -294,6 +303,33 @@
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
   grid-row: 2/4;
+  padding: 1rem;
+}
+
+.texts-page .bloc-text h3 {
+  font-size: 4rem;
+  font-family: "Roboto", serif;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.texts-page .bloc-text .text-container {
+  height: 60%;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.texts-page .bloc-text .text-container p {
+  font-family: "Roboto", sans-serif;
+  -webkit-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 15rem;
+  column-width: 15rem;
+}
+
+.texts-page .bloc-text .texts-page-legend {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
 }
 
 .texts-page .bloc-other-text {
@@ -303,14 +339,44 @@
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2/3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.texts-page .bloc-other-text .other-text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 100%;
+          flex: 1 0 100%;
+  height: 14rem;
+  margin: 1rem;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.texts-page .bloc-other-text .other-text h4 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.texts-page .bloc-other-text .other-text p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  font-style: italic;
 }
 
 @media (max-width: 1200px) {
   .texts-page {
     -ms-grid-columns: (1fr)[7];
         grid-template-columns: repeat(7, 1fr);
-    -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
   }
   .texts-page .menu-text {
     -ms-grid-column: 2;
@@ -319,8 +385,6 @@
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
     grid-row: 1/2;
-    height: 50%;
-    width: 60%;
   }
   .texts-page .bloc-text {
     -ms-grid-column: 3;
@@ -330,6 +394,12 @@
     -ms-grid-row-span: 1;
     grid-row: 1/2;
   }
+  .texts-page .bloc-text .text-container p {
+    -webkit-column-count: 2;
+    column-count: 2;
+    -webkit-column-width: 20rem;
+    column-width: 20rem;
+  }
   .texts-page .bloc-other-text {
     -ms-grid-column: 2;
     -ms-grid-column-span: 5;
@@ -337,6 +407,18 @@
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .texts-page .bloc-other-text .other-text {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 14rem;
+            flex: 0 0 14rem;
   }
 }
 
