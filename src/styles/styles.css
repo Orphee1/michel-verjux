@@ -117,8 +117,8 @@
   .home-page {
     -ms-grid-columns: (1fr)[7];
         grid-template-columns: repeat(7, 1fr);
-    -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
   }
   .home-page .home-image-container {
     -ms-grid-column: 2;
@@ -269,6 +269,15 @@
   }
   .images-page .bloc-other-image .other-image-container {
     margin-top: 1rem;
+    margin-left: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .images-page .bloc-other-image .other-image-container {
+    margin-top: 1rem;
+    margin-left: 0;
     margin-left: 0;
   }
 }

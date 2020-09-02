@@ -2,6 +2,7 @@
   min-height: 90vh;
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
+
   grid-template-rows: 15vh 60vh 15vh;
   .menu-image {
     grid-column: 2/3;
@@ -81,6 +82,19 @@
       justify-content: center;
       .other-image-container {
         margin-top: 1rem;
+        margin-left: auto;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px /*  */) {
+  .images-page {
+    .bloc-other-image {
+      .other-image-container {
+        margin-top: 1rem;
+        margin-left: 0;
         margin-left: 0;
       }
     }
