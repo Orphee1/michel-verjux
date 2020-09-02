@@ -50,3 +50,17 @@
     }
   }
 }
+
+@media (max-width: 600px /*  */) {
+  .nav {
+    .logo-nav {
+      grid-column: 2/6;
+      grid-row: 1/2;
+      flex-direction: column;
+      align-items: center;
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

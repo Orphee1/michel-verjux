@@ -1,6 +1,7 @@
 .footer {
   min-height: 10vh;
   //   height: 10vh;
+  background: var(--blue);
 }
 
 .footer-container {
@@ -14,6 +15,7 @@
     font-size: 3rem;
     font-family: "Noto Sans", sans-serif;
     color: var(--blue);
-    grid-column: 2/4;
+    grid-column: 5/7;
+    //     grid-column-start: 5;
   }
 }
