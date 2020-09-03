@@ -27,7 +27,7 @@ export default function Header({ path, setPath }) {
           </select>
         </li>
       </ul>
-      <ul className="mini-nav red">
+      <ul className="mini-nav">
         <li>
           <Link
             to="/image"
