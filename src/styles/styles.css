@@ -60,6 +60,9 @@
     -ms-grid-column: 1;
     -ms-grid-column-span: 7;
     grid-column: 1/8;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 4;
+    grid-row: 1/5;
   }
   .landing-page .logo-container {
     -ms-grid-column: 2;
@@ -175,6 +178,7 @@
 }
 
 .images-page .images-page-landing-image-container img {
+  width: 100%;
   -webkit-transition: -webkit-transform 0.6s ease-in-out;
   transition: -webkit-transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out;
