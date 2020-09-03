@@ -16,9 +16,10 @@ export default function ImageScreen() {
   return (
     <div className="images-page">
       <div className="menu-image"></div>
-      <figure className="images-page-landing-image-container">
+      <figure className="images-page-landing-image-container yellow">
         <img className="" src={image21} alt="Michel Verjux" />
       </figure>
+      {/* <span className="legend-main-image">Sans Titre, Paris, 2019.</span> */}
       <div className="bloc-other-image">
         <figure className="other-image-container">
           <img className="other-image" src={image16} alt="Michel Verjux" />

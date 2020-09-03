@@ -7,27 +7,27 @@ export default function Header({ path, setPath }) {
   return (
     <div className="nav">
       <ul className="logo-nav">
-        <li>
+        <li className="">
           <Link
             to="/home"
             onClick={() => {
               setPath("/home");
             }}
           >
-            <h1 className="logo hover">Michel Verjux</h1>
+            <h1 className="logo hover-h1">Michel Verjux</h1>
           </Link>
         </li>
-        <li>
+        <li className="second-li">
           <span>Log in</span>
         </li>
-        <li>
+        <li className="third-li">
           <select>
             <option value="theme1">Mode sombre</option>
             <option value="theme2">Mode clair</option>
           </select>
         </li>
       </ul>
-      <ul className="mini-nav">
+      <ul className="mini-nav red">
         <li>
           <Link
             to="/image"

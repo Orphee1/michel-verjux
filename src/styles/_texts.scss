@@ -1,8 +1,11 @@
 .texts-page {
   min-height: 90vh;
   display: grid;
+  display: -ms-grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
-  grid-template-rows: 15vh 60vh 15vh;
+  -ms-grid-columns: 5% repeat(12, 1fr) 5%;
+  grid-template-rows: 15vh 60vh 15vh; // ?????
+  -ms-grid-rows: 15vh 60vh 15vh;
   .menu-text {
     grid-column: 2/3;
     grid-row: 2/3;
@@ -36,12 +39,6 @@
         -webkit-column-width: 15rem;
         -moz-column-width: 15rem;
         column-width: 15rem;
-        // .row {
-        //   clear: both;
-        // }
-        // .column {
-        // //   padding: 0 $gutter;
-        // }
       }
     }
 
@@ -86,12 +83,14 @@
   .texts-page {
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto auto;
+    -ms-grid-columns: repeat(7, 1fr);
+    -ms-grid-rows: auto auto;
     .menu-text {
-      grid-column: 2/3;
+      grid-column: 1/2;
       grid-row: 1/2;
     }
     .bloc-text {
-      grid-column: 3/6;
+      grid-column: 2/7;
       grid-row: 1/2;
       .text-container {
         p {

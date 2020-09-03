@@ -46,8 +46,8 @@ export default function TextScreen() {
           1977-2011, op. cit., p. 172 et 753.{" "}
         </p>
       </div>
-      <div className="bloc-other-text blue">
-        <div className="other-text red">
+      <div className="bloc-other-text">
+        <div className="other-text">
           <h4>Titre autre texte</h4>
           <p>
             Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
@@ -55,7 +55,7 @@ export default function TextScreen() {
             1977-2011, op. cit., p. 172 et 753.
           </p>
         </div>
-        <div className="other-text orange">
+        <div className="other-text">
           <h4>Titre autre texte</h4>
           <p>
             Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
@@ -63,7 +63,7 @@ export default function TextScreen() {
             1977-2011, op. cit., p. 172 et 753.
           </p>
         </div>
-        <div className="other-text green">
+        <div className="other-text">
           <h4>Titre autre texte</h4>
           <p>
             Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
@@ -71,7 +71,7 @@ export default function TextScreen() {
             1977-2011, op. cit., p. 172 et 753.
           </p>
         </div>
-        <div className="other-text red">
+        <div className="other-text">
           <h4>Titre autre texte</h4>
           <p>
             Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
@@ -79,7 +79,7 @@ export default function TextScreen() {
             1977-2011, op. cit., p. 172 et 753.
           </p>
         </div>
-        <div className="other-text red">
+        <div className="other-text">
           <h4>Titre autre texte</h4>
           <p>
             Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
