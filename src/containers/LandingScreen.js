@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Image from "react-simple-image";
+// import Image from "react-simple-image";
+import { Picture } from "react-responsive-picture";
 
 import "../styles/styles.css";
 
@@ -17,7 +18,7 @@ export default function LandingScreen({ path, setPath }) {
     <div className="landing-page">
       <figure className="landing-image-container">
         {/* <img className="landing-image" src={image27} alt="Michel Verjux" /> */}
-        <Image
+        {/* <Image
           className="landing-image"
           alt="Michel Verjux"
           src={image27s}
@@ -27,9 +28,27 @@ export default function LandingScreen({ path, setPath }) {
           }}
           //   sizes={[
           //     { size: "100vw", mediaCondition: "(max-width: 1200px)" },
-          //     { size: "100vw", mediaCondition: "(min-width: 1200px)" },
+          //     { size: "100vw", mediaCondition: "(min-width: 1201px)" },
           //     { size: "calc(33vw - 100px)" },
           //   ]}
+        /> */}
+        <Picture
+          alt="Michel Verjux"
+          className="landing-image"
+          sources={[
+            {
+              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+              srcSet: ` ${image27s} 2x`,
+              media: "(max-width: 1200px)",
+              //     type: "image/jpeg"
+            },
+            {
+              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+              srcSet: ` ${image27} 2x`,
+              media: "(min-width: 1201px)",
+              //     type: "image/jpeg"
+            },
+          ]}
         />
       </figure>
 

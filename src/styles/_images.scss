@@ -15,19 +15,32 @@
     width: 10rem;
     //     justify-self: end;
   }
-  .images-page-landing-image-container {
+  .images-page-main-container {
     grid-column: 3/9;
     grid-row: 2/4;
-    width: 100%;
+
     overflow: hidden; // ?????
     position: relative;
-
-    img {
+    .main-image-container {
       width: 100%;
-      transition: transform 0.6s ease-in-out;
+      height: 100%;
+      img {
+        width: 100%;
+        transition: transform 0.6s ease-in-out;
+      }
+      img:hover {
+        transform: scale(1.05);
+      }
     }
-    img:hover {
-      transform: scale(1.05);
+    .legend-main {
+      width: 100%;
+      height: 2.2rem;
+      position: absolute;
+      bottom: 0rem;
+      background: white;
+      color: var(--blue);
+      font-family: "Roboto", sans-serif;
+      font-size: 1.4rem;
     }
   }
 
@@ -40,7 +53,7 @@
     flex-wrap: wrap;
     //     overflow: scroll;
     overflow: scroll;
-    .other-image-container {
+    .other-container {
       flex: 0 0 19rem;
       height: 19rem;
       margin: 1rem;
@@ -48,15 +61,33 @@
       margin-top: 0;
 
       overflow: hidden;
-      .other-image {
-        width: 120%; // ?????
-        height: 120%; // ?????
-        object-fit: cover;
-        transition: transform 0.6s ease-in-out;
-      }
-      .other-image:hover {
+      position: relative;
+      .other-image-container {
         width: 100%;
-        transform: scale(1.05);
+        height: 100%;
+
+        .other-image {
+          width: 120%; //?????
+          height: 120%; // ?????
+          object-fit: cover;
+          transition: transform 0.6s ease-in-out;
+        }
+        .other-image:hover {
+          width: 100%;
+          transform: scale(1.05);
+        }
+      }
+
+      .legend-other {
+        width: 19rem;
+        height: 2.2rem;
+        background: white;
+        color: var(--blue);
+        font-family: "Roboto", sans-serif;
+        font-size: 1.2rem;
+        position: absolute;
+        bottom: 0;
+        z-index: 5;
       }
     }
   }
@@ -74,7 +105,7 @@
       grid-column: 1/2;
       grid-row: 1/2;
     }
-    .images-page-landing-image-container {
+    .images-page-main-container {
       grid-column: 2/7;
       grid-row: 1/2;
     }
@@ -83,7 +114,7 @@
       grid-row: 2/3;
       //       align-items: center;
       justify-content: center;
-      .other-image-container {
+      .other-container {
         margin-top: 1rem;
         margin-left: auto;
         margin-left: auto;
@@ -95,7 +126,7 @@
 @media (max-width: 600px /*  */) {
   .images-page {
     .bloc-other-image {
-      .other-image-container {
+      .other-container {
         margin-top: 1rem;
         margin-left: 0;
         margin-left: 0;

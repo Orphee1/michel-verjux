@@ -1,5 +1,6 @@
 import React from "react";
-import Image from "react-simple-image";
+// import Image from "react-simple-image";
+import { Picture } from "react-responsive-picture";
 
 import "../styles/styles.css";
 
@@ -19,7 +20,7 @@ export default function HomeScreen() {
           alt="Michel Verjux"
           //   sizes="(min-width: 40em) 80vw, 100vw"
         /> */}
-        <Image
+        {/* <Image
           alt="Michel Verjux"
           src={image9s}
           srcSet={{
@@ -30,6 +31,24 @@ export default function HomeScreen() {
             { size: "70vw", mediaCondition: "(max-width: 1200px)" },
             { size: "50vw", mediaCondition: "(min-width: 1200px)" },
             { size: "calc(33vw - 100px)" },
+          ]}
+        /> */}
+        <Picture
+          alt="Michel Verjux"
+          className="home-image"
+          sources={[
+            {
+              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+              srcSet: ` ${image9s} 2x`,
+              media: "(max-width: 1200px)",
+              //     type: "image/jpeg"
+            },
+            {
+              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+              srcSet: ` ${image9} 2x`,
+              media: "(min-width: 1201px)",
+              //     type: "image/jpeg"
+            },
           ]}
         />
       </figure>
