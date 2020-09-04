@@ -57,11 +57,11 @@ export default function ImageScreen() {
         </figure>
         <figcaption className="legend-main">
           <span>Sans-titre, Paris, 2019.</span>
-          <span> Exposition collective à Chanteloup-les-Vignes</span>
+          <span> Exposition collective à Chanteloup-les-Vignes.</span>
         </figcaption>
       </div>
-      {/* <span className="legend-main-image">Sans Titre, Paris, 2019.</span> */}
-      <div className="bloc-other-image">
+
+      <div className="bloc-other-image red">
         <div className="other-container">
           <figure className="other-image-container">
             <img className="other-image" src={image16s} alt="Michel Verjux" />

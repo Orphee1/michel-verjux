@@ -82,16 +82,16 @@
 @media (max-width: 1200px /* */) {
   .texts-page {
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: 5vh auto auto;
     -ms-grid-columns: repeat(7, 1fr);
     -ms-grid-rows: auto auto;
     .menu-text {
       grid-column: 1/2;
-      grid-row: 1/2;
+      grid-row: 2/3;
     }
     .bloc-text {
       grid-column: 2/7;
-      grid-row: 1/2;
+      grid-row: 2/3;
       .text-container {
         p {
           -webkit-column-count: 2;
@@ -105,7 +105,7 @@
     }
     .bloc-other-text {
       grid-column: 2/7;
-      grid-row: 2/3;
+      grid-row: 3/4;
       flex-direction: column;
       //       align-items: flex-start;
       justify-content: flex-start;
