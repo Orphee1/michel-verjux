@@ -8,13 +8,13 @@ import "../styles/styles.css";
 // Images import
 import image21 from "../images/image21.png";
 import image21s from "../images/image21s.jpg";
-import image11s from "../images/image11s.jpg";
-import image10s from "../images/image10s.jpg";
-import image13s from "../images/image13s.jpg";
-import image16s from "../images/image16s.jpg";
-import image20s from "../images/image20s.jpg";
-import image14s from "../images/image14s.jpg";
-import image25s from "../images/image25s.jpg";
+// import image11s from "../images/image11s.jpg";
+// import image10s from "../images/image10s.jpg";
+// import image13s from "../images/image13s.jpg";
+// import image16s from "../images/image16s.jpg";
+// import image20s from "../images/image20s.jpg";
+// import image14s from "../images/image14s.jpg";
+// import image25s from "../images/image25s.jpg";
 
 const MyCarousel = () => {
   return (
