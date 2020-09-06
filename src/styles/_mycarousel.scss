@@ -1,18 +1,21 @@
 .carousel-text {
   height: 100%;
-  // height: 60rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: white;
   color: var(--blue);
+  padding-right: 1rem;
   .title {
     //   height: 100%;
     text-align: left;
     background: white;
     padding-bottom: 1rem;
+    h4 {
+      font-family: "Roboto", sans-serif;
+    }
   }
   .middle {
     //   height: 100%;
@@ -20,6 +23,7 @@
     text-align: left;
     background: white;
     padding-bottom: 1rem;
+    font-family: "Roboto", sans-serif;
   }
   .bottom {
     //   height: 100%;
@@ -28,6 +32,7 @@
     color: var(--blue);
     text-align: left;
     background: white;
+    font-family: "Roboto", sans-serif;
   }
 }
 .carousel-image {
@@ -62,7 +67,8 @@
 
     span {
       font-size: 1.6rem;
-      font-family: "Noto Sans", sans-serif;
+      //       font-family: "Noto Sans", sans-serif;
+      font-family: "Roboto", sans-serif;
       color: var(--blue);
     }
   }

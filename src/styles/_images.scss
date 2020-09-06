@@ -1,14 +1,12 @@
 .images-page {
   min-height: 90vh;
   display: grid;
-  display: -ms-grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
-  -ms-grid-columns: 5% repeat(12, 1fr) 5%;
   grid-template-rows: 15vh 60vh 15vh; // ???
-  -ms-grid-rows: 15vh 60vh 15vh;
+
   .menu-image {
     grid-column: 2/3;
-    grid-row: 2/4;
+    grid-row: 1/2;
     background: var(--blue);
     border-radius: 0 4rem 4rem 0;
     height: 15rem; //????
@@ -17,8 +15,7 @@
   }
   .images-page-main-container {
     grid-column: 3/9;
-    grid-row: 2/4;
-
+    grid-row: 1/4;
     overflow: hidden; // ?????
     position: relative;
     .main-image-container {
@@ -99,7 +96,7 @@
   .images-page {
     grid-template-columns: repeat(7, 1fr);
     -ms-grid-columns: repeat(7, 1fr);
-    grid-template-rows: 5vh auto auto;
+    grid-template-rows: 8rem auto auto;
     -ms-grid-rows: auto auto;
     .menu-image {
       grid-column: 1/2;

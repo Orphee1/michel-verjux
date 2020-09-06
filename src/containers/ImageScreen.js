@@ -1,5 +1,4 @@
 import React from "react";
-// import Image from "react-simple-image";
 import { Picture } from "react-responsive-picture";
 
 import "../styles/styles.css";
@@ -19,23 +18,8 @@ export default function ImageScreen() {
   return (
     <div className="images-page">
       <div className="menu-image"></div>
-      <div className="images-page-main-container yellow">
+      <div className="images-page-main-container">
         <figure className="main-image-container">
-          {/* <img className="" src={image21} alt="Michel Verjux" /> */}
-          {/* <Image
-          className=""
-          alt="Michel Verjux"
-          src={image21s}
-          srcSet={{
-            "360w": `${image21s}`,
-            "1200w": `${image21}`,
-          }}
-          //   sizes={[
-          //     { size: "28vw", mediaCondition: "(max-width: 1200px)" },
-          //     { size: "50vw", mediaCondition: "(min-width: 1200px)" },
-          //     { size: "calc(33vw - 100px)" },
-          //   ]}
-        /> */}
           <Picture
             alt="Michel Verjux"
             //   className="images-image"
@@ -61,7 +45,7 @@ export default function ImageScreen() {
         </figcaption>
       </div>
 
-      <div className="bloc-other-image red">
+      <div className="bloc-other-image">
         <div className="other-container">
           <figure className="other-image-container">
             <img className="other-image" src={image16s} alt="Michel Verjux" />

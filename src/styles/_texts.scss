@@ -6,6 +6,7 @@
   -ms-grid-columns: 5% repeat(12, 1fr) 5%;
   grid-template-rows: 15vh 60vh 15vh; // ?????
   -ms-grid-rows: 15vh 60vh 15vh;
+
   .menu-text {
     grid-column: 2/3;
     grid-row: 2/3;
@@ -82,7 +83,7 @@
 @media (max-width: 1200px /* */) {
   .texts-page {
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 5vh auto auto;
+    grid-template-rows: 8rem auto auto;
     -ms-grid-columns: repeat(7, 1fr);
     -ms-grid-rows: auto auto;
     .menu-text {

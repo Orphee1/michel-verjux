@@ -55,7 +55,7 @@ export default function Header({ path, setPath }) {
               setPath("/bio");
             }}
           >
-            <span className="hover">Bio</span>
+            <span className="hover">Bio/Biblio</span>
           </Link>
         </li>
       </ul>

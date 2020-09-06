@@ -1,8 +1,6 @@
 import React from "react";
-// import Image from "react-simple-image";
 import { Picture } from "react-responsive-picture";
-// import { Carousel } from "react-responsive-carousel";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import "../styles/styles.css";
 
 // Components import

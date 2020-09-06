@@ -39,8 +39,9 @@
 
 // ========================== Media queries ========================= //
 
-@media (max-width: 1024px /*  */) {
+@media (max-width: 1200px /*  */) {
   .landing-page {
+    height: 100vh;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 1fr 1fr 1fr;
     .landing-image-container {

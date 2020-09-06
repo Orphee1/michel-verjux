@@ -2,9 +2,7 @@
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
   min-height: 10vh;
-  //   margin: auto;
-  padding: 2rem 0rem 3rem 0rem;
-
+  padding: 1rem 0rem 1.5rem 0rem;
   align-items: baseline;
 
   .logo-nav {
@@ -35,7 +33,7 @@
   }
   span {
     font-family: "Noto Sans", sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
