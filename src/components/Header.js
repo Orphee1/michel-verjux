@@ -14,7 +14,7 @@ export default function Header({ path, setPath }) {
               setPath("/home");
             }}
           >
-            <h1 className="logo hover-h1">Michel Verjux</h1>
+            <h2 className="logo hover-h2">Michel Verjux</h2>
           </Link>
         </li>
         <li className="second-li">

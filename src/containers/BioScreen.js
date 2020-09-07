@@ -7,13 +7,15 @@ import "../styles/styles.css";
 import portrait from "../images/MichelVerjux2.jpg";
 import portraits from "../images/MichelVerjux2s.jpg";
 import bachelard from "../images/Bachelard.jpg";
+import marx from "../images/Marx.jpg";
+import casto from "../images/Castoriadis.jpg";
 import famille1 from "../images/image6.png";
 
 export default function BioScreen() {
   return (
     <div className="bio-page">
-      <div className="margin-left remove1200"></div>
-      <div className="margin-right remove1200"></div>
+      <div className="margin-left remove600"></div>
+      <div className="margin-right remove600"></div>
       <div className="bloc-image-reference">
         <Picture
           alt=""
@@ -39,13 +41,13 @@ export default function BioScreen() {
           sources={[
             {
               // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${bachelard} 2x`,
+              srcSet: ` ${marx} 2x`,
               media: "(max-width: 1200px)",
               //     type: "image/jpeg"
             },
             {
               // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${bachelard} 2x`,
+              srcSet: ` ${marx} 2x`,
               media: "(min-width: 1201px)",
               //     type: "image/jpeg"
             },
@@ -57,13 +59,13 @@ export default function BioScreen() {
           sources={[
             {
               // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${bachelard} 2x`,
+              srcSet: ` ${casto} 2x`,
               media: "(max-width: 1200px)",
               //     type: "image/jpeg"
             },
             {
               // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${bachelard} 2x`,
+              srcSet: ` ${casto} 2x`,
               media: "(min-width: 1201px)",
               //     type: "image/jpeg"
             },

@@ -1,6 +1,7 @@
 .nav {
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
+  grid-column-gap: 1rem;
   min-height: 10vh;
   padding: 1rem 0rem 1.5rem 0rem;
   align-items: baseline;
@@ -18,7 +19,7 @@
     justify-content: space-between;
     align-items: baseline;
   }
-  .hover-h1:hover {
+  .hover-h2:hover {
     border-bottom: 0.3rem solid var(--blue);
     transition: width 0.7s ease;
   }
@@ -47,7 +48,7 @@
     .logo-nav {
       grid-column: 2/6;
       grid-row: 1/2;
-      .hover-h1:hover {
+      .hover-h2:hover {
         border-bottom: 0rem solid var(--blue);
       }
     }
@@ -72,7 +73,7 @@
         align-items: center;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
-        h1,
+        h2,
         span,
         select {
           margin-left: 1rem;

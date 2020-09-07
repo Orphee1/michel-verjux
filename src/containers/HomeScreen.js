@@ -33,7 +33,7 @@ export default function HomeScreen() {
           ]}
         />
       </figure>
-      <h3 className="current">En cours</h3>
+      <h6 className="current">En cours</h6>
       <div className="bloc-carousel">
         <MyCarousel className="carousel" />
       </div>

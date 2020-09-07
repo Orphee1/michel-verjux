@@ -18,21 +18,19 @@ import image21s from "../images/image21s.jpg";
 
 const MyCarousel = () => {
   return (
-    <Carousel
-    //     autoPlay
-    //     infiniteLoop
-    >
+    <Carousel autoPlay infiniteLoop className="carouselX">
       <div className="carousel-text">
         <h4 className="title">
-          Trois notes numérotées à mon nombre de jours de vie
+          <span style={{ fontWeight: "bold", fontSize: "5.5rem" }}>"</span>Trois
+          notes numérotées à mon nombre de jours de vie
         </h4>
         <p className="middle">
-          « Non pas la lumière, mais l’éclairage. » « Éclairer, c’est toujours
+          Non pas la lumière, mais l’éclairage. Éclairer, c’est toujours
           éclairer localement. (Le local n’est pas l’anecdotique, on raconte
-          tout autant d’histoires dans le global..) »   <br />
-          « Le minimum nécessaire et suffisant : de la lumière en acte dans une
+          tout autant d’histoires dans le global..)   <br />
+          Le minimum nécessaire et suffisant : de la lumière en acte dans une
           situation donnée (dans un espace et un temps donnés) donnant à voir
-          aux yeux du spectateur cette situation d’exposition elle-même. »
+          aux yeux du spectateur cette situation d’exposition elle-même."
         </p>
         <p className="bottom">
           Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10

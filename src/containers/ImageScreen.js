@@ -1,5 +1,6 @@
 import React from "react";
 import { Picture } from "react-responsive-picture";
+import { Link } from "react-router-dom";
 
 import "../styles/styles.css";
 
@@ -14,35 +15,40 @@ import image25s from "../images/image25s.jpg";
 import image21 from "../images/image21.png";
 import image21s from "../images/image21s.jpg";
 
+const id = "456789689";
+
 export default function ImageScreen() {
   return (
     <div className="images-page">
       <div className="menu-image"></div>
+
       <div className="images-page-main-container">
-        <figure className="main-image-container">
-          <Picture
-            alt="Michel Verjux"
-            //   className="images-image"
-            sources={[
-              {
-                // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-                srcSet: ` ${image21s} 2x`,
-                media: "(max-width: 1200px)",
-                //     type: "image/jpeg"
-              },
-              {
-                // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-                srcSet: ` ${image21} 2x`,
-                media: "(min-width: 1201px)",
-                //     type: "image/jpeg"
-              },
-            ]}
-          />
-        </figure>
-        <figcaption className="legend-main">
-          <span>Sans-titre, Paris, 2019.</span>
-          <span> Exposition collective à Chanteloup-les-Vignes.</span>
-        </figcaption>
+        <Link to={"/selected-image/" + id}>
+          <figure className="main-image-container">
+            <Picture
+              alt="Michel Verjux"
+              //   className="images-image"
+              sources={[
+                {
+                  // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+                  srcSet: ` ${image21s} 2x`,
+                  media: "(max-width: 1200px)",
+                  //     type: "image/jpeg"
+                },
+                {
+                  // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+                  srcSet: ` ${image21} 2x`,
+                  media: "(min-width: 1201px)",
+                  //     type: "image/jpeg"
+                },
+              ]}
+            />
+          </figure>
+          <figcaption className="legend-main">
+            <span>Sans-titre, Paris, 2019.</span>
+            <span> Exposition collective à Chanteloup-les-Vignes.</span>
+          </figcaption>
+        </Link>
       </div>
 
       <div className="bloc-other-image">

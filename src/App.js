@@ -7,6 +7,8 @@ import HomeScreen from "./containers/HomeScreen.js";
 import ImageScreen from "./containers/ImageScreen";
 import TextScreen from "./containers/TextScreen";
 import BioScreen from "./containers/BioScreen";
+import SelectedIScreen from "./containers/SelectedImageScreen";
+import SelectedTScreen from "./containers/SelectedTextScreen";
 
 // Components import
 import Header from "./components/Header";
@@ -29,6 +31,12 @@ function App() {
         </Route>
         <Route path="/text">
           <TextScreen />
+        </Route>
+        <Route path="/selected-text">
+          <SelectedTScreen />
+        </Route>
+        <Route path="/selected-image">
+          <SelectedIScreen />
         </Route>
         <Route path="/image">
           <ImageScreen />
