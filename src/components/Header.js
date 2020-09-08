@@ -49,14 +49,14 @@ export default function Header({ path, setPath }) {
           </Link>
         </li>
         <li>
-          <Link
+          {/* <Link
             to="/bio"
             onClick={() => {
               setPath("/bio");
             }}
-          >
-            <span className="hover">Bio/Biblio</span>
-          </Link>
+          > */}
+          <span className="hover">Bio/Biblio</span>
+          {/* </Link> */}
         </li>
       </ul>
     </div>

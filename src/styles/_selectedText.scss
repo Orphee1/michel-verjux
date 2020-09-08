@@ -1,4 +1,4 @@
-.selected-page {
+.selected-text-page {
   height: 60rem;
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
@@ -8,7 +8,7 @@
 
   .menu-text {
     grid-column: 2/3;
-    grid-row: 1/2;
+    grid-row: 2/3;
     background: var(--blue);
     border-radius: 0 4rem 4rem 0;
     height: 7rem; //????
@@ -19,13 +19,55 @@
     grid-row: 2/3;
     width: 100%;
     height: 100%;
+    font-family: "Roboto", serif;
+    position: relative;
+    .guill {
+      position: absolute;
+      top: -3rem;
+      left: -2rem;
+      font-weight: bold;
+      font-size: 7rem;
+    }
+    h4 {
+      font-weight: bold;
+      margin-bottom: 1rem; //????
+    }
+    .text-container {
+      height: 100%;
+      overflow: scroll;
+      margin-bottom: 1.5rem; //????
+      p {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+        -webkit-column-width: 15rem;
+        -moz-column-width: 15rem;
+        column-width: 15rem;
+      }
+    }
+    .texts-page-legend {
+      font-style: italic;
+      font-weight: 200;
+    }
+  }
+  .button-container {
+    grid-column: 12/13;
+    grid-row: 3/4;
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+    height: 4rem;
+    border-radius: 4rem;
+    background: var(--blue);
+    color: white;
   }
 }
 
 // ========================== Media queries ========================= //
 
 @media (max-width: 1200px /* */) {
-  .selected-page {
+  .selected-text-page {
     height: auto;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto auto;

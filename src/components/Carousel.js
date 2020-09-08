@@ -18,7 +18,10 @@ import image21s from "../images/image21s.jpg";
 
 const MyCarousel = () => {
   return (
-    <Carousel autoPlay infiniteLoop className="carouselX">
+    <Carousel
+      //     autoPlay infiniteLoop
+      className="carouselX"
+    >
       <div className="carousel-text">
         <h4 className="title">
           <span style={{ fontWeight: "bold", fontSize: "5.5rem" }}>"</span>Trois
