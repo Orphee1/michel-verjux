@@ -7,7 +7,7 @@ export default function SelectedText() {
   return (
     <div className="selected-text-page">
       <div className="menu-text"></div>
-      <div className="selected-text red">
+      <div className="selected-text">
         <h4 className="texts-page-title">
           <span className="guill">"</span>
           Trois notes numérotées à mon nombre de jours de vie
