@@ -13,30 +13,32 @@ export default function SelectedImage({ imageSelected }) {
     <div className="selected-image-page">
       <div className="menu-image"></div>
       <div className="selected-image-container">
-        <Picture
-          alt="Michel Verjux"
-          //   alt={images[0].alt}
-          className="selected-image"
-          sources={[
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+        <div className="sub-container">
+          <Picture
+            alt="Michel Verjux"
+            //   alt={images[0].alt}
+            className="selected-image"
+            sources={[
+              {
+                // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
 
-              srcSet: ` ${image21s} 2x`,
-              //       srcSet: ` ${images[0].smallpic} 2x`,
-              //   srcSet: {images[0].smallpic},
-              media: "(max-width: 1200px)",
-              //     type: "image/jpeg"
-            },
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
+                srcSet: ` ${image21s} 2x`,
+                //       srcSet: ` ${images[0].smallpic} 2x`,
+                //   srcSet: {images[0].smallpic},
+                media: "(max-width: 1200px)",
+                //     type: "image/jpeg"
+              },
+              {
+                // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
 
-              srcSet: ` ${image21} 2x`,
-              //       srcSet: ` ${images[0].largepic} 2x`,
-              media: "(min-width: 1201px)",
-              //     type: "image/jpeg"
-            },
-          ]}
-        />
+                srcSet: ` ${image21} 2x`,
+                //       srcSet: ` ${images[0].largepic} 2x`,
+                media: "(min-width: 1201px)",
+                //     type: "image/jpeg"
+              },
+            ]}
+          />
+        </div>
         {/* <div className="relative"></div> */}
       </div>
       <div className="bloc-legend">
