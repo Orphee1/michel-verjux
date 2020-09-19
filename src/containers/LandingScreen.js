@@ -6,9 +6,7 @@ import { Picture } from "react-responsive-picture";
 import "../styles/styles.css";
 
 // Image import
-import image27 from "../images/image27.png";
-import image27s from "../images/image27s.jpg";
-import nuit from "../images/NuitBlanche.jpg";
+
 import nuit2 from "../images/NuitBlancheCrop2.jpeg";
 
 export default function LandingScreen({ path, setPath }) {

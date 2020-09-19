@@ -5,11 +5,6 @@ import Axios from "axios";
 
 import "../styles/styles.css";
 
-import image21 from "../images/image21.png";
-import image21s from "../images/image21s.jpg";
-import image10 from "../images/image10.png";
-import image10s from "../images/image10s.jpg";
-
 export default function SelectedImage() {
   const [image, setImage] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +25,7 @@ export default function SelectedImage() {
 
   useEffect(() => {
     fetchImage();
-  }, []);
+  });
 
   return (
     <div className="selected-image-page">
