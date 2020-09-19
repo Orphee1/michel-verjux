@@ -8,10 +8,16 @@ import "../styles/styles.css";
 export default function ImageScreen() {
   const [images, setImages] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [period, setPeriod] = useState(0);
+  const [backSort, setBackSort] = useState(false);
   console.log(images);
+  console.log(period);
+  console.log(backSort);
 
   const fetchImages = async () => {
-    const response = await Axios.get("http://localhost:4000/images");
+    const response = await Axios.get(
+      "http://localhost:4000/images?backSort=" + backSort + "&period=" + period
+    );
     try {
       setImages(response.data);
       setIsLoading(false);
@@ -23,11 +29,35 @@ export default function ImageScreen() {
 
   useEffect(() => {
     fetchImages();
-  }, []);
+  }, [backSort, period]);
 
   return (
     <div className="images-page">
-      <div className="menu-image"></div>
+      <div className="menu-image">
+        <button
+          className="sort-button"
+          onClick={() => {
+            setBackSort(!backSort);
+          }}
+        >
+          {backSort === false ? (
+            <p>Depuis le début</p>
+          ) : (
+            <p>Depuis maintenant</p>
+          )}
+        </button>
+        <select
+          className="menu-selecter"
+          onChange={(event) => {
+            setPeriod(event.target.value);
+          }}
+        >
+          <option value="0">Sélectionnez</option>
+          <option value="1">Jeunesse</option>
+          <option value="2">Maturité</option>
+          <option value="3">Sagesse</option>
+        </select>
+      </div>
 
       <div className="images-page-main-container">
         {isLoading ? (

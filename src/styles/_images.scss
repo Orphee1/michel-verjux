@@ -8,12 +8,32 @@
 
   .menu-image {
     grid-column: 2/3;
-    grid-row: 1/2;
+    grid-row: 2/3;
     background: var(--blue);
     border-radius: 0 4rem 4rem 0;
     height: 7rem; //????
     width: 100%;
     //     justify-self: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .sort-button {
+      width: 80%;
+      border-radius: 4rem;
+      color: var(--blue);
+      background-color: white;
+      font-family: "Roboto", sans-serif;
+      font-weight: medium;
+    }
+    .menu-selecter {
+      width: 80%;
+      border-radius: 4rem;
+      color: var(--blue);
+      background-color: white;
+      font-family: "Roboto", sans-serif;
+      font-weight: medium;
+    }
   }
   .images-page-main-container {
     grid-column: 3/7;

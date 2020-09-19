@@ -7,10 +7,16 @@ import "../styles/styles.css";
 export default function TextScreen() {
   const [texts, setTexts] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [period, setPeriod] = useState(0);
+  const [backSort, setBackSort] = useState(false);
+  console.log(period);
+  console.log(backSort);
   console.log(texts);
 
   const fetchTexts = async () => {
-    const response = await Axios.get("http://localhost:4000/texts");
+    const response = await Axios.get(
+      "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
+    );
     try {
       setTexts(response.data);
       setIsLoading(false);
@@ -22,11 +28,36 @@ export default function TextScreen() {
 
   useEffect(() => {
     fetchTexts();
-  }, []);
+  }, [backSort, period]);
 
   return (
     <div className="texts-page">
-      <div className="menu-text"></div>
+      <div className="menu-text">
+        <button
+          className="sort-button"
+          onClick={() => {
+            setBackSort(!backSort);
+          }}
+        >
+          {backSort === false ? (
+            <p>Depuis le début</p>
+          ) : (
+            <p>Depuis maintenant</p>
+          )}
+        </button>
+        <select
+          className="menu-selecter"
+          onChange={(event) => {
+            setPeriod(event.target.value);
+          }}
+        >
+          <option value="0">Sélectionnez</option>
+          <option value="1">Jeunesse</option>
+          <option value="2">Maturité</option>
+          <option value="3">Sagesse</option>
+        </select>
+      </div>
+
       <div className="bloc-text-container">
         {isLoading ? (
           <div> ... chargement en cours ...</div>
