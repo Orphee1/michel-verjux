@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 import "../styles/styles.css";
 
 const id = "4533456";
 
 export default function TextScreen() {
+  const [texts, setTexts] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(texts);
+
+  const fetchTexts = async () => {
+    const response = await Axios.get("http://localhost:4000/texts");
+    try {
+      setTexts(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchTexts();
+  }, []);
+
   return (
     <div className="texts-page">
       <div className="menu-text"></div>
@@ -49,73 +69,24 @@ export default function TextScreen() {
         </Link>
       </div>
       <div className="bloc-other-text">
-        <div className="other-text">
-          <h5 className="">
-            {" "}
-            <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>"</span>
-            Titre autre texte
-          </h5>
-          <p>
-            Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
-            042 et n° 10 054, rééd. Michel Verjux, Morceaux réfléchis. Écrits
-            1977-2011, op. cit., p. 172 et 753.
-          </p>
-        </div>
-        <div className="other-text">
-          <h5>
-            <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>"</span>
-            Titre autre texte
-          </h5>
-          <p>
-            Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
-            042 et n° 10 054, rééd. Michel Verjux, Morceaux réfléchis. Écrits
-            1977-2011, op. cit., p. 172 et 753.
-          </p>
-        </div>
-        <div className="other-text">
-          <h5>
-            <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>"</span>
-            Titre autre texte
-          </h5>
-          <p>
-            Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
-            042 et n° 10 054, rééd. Michel Verjux, Morceaux réfléchis. Écrits
-            1977-2011, op. cit., p. 172 et 753.
-          </p>
-        </div>
-        <div className="other-text">
-          <h5>
-            <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>"</span>
-            Titre autre texte
-          </h5>
-          <p>
-            Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
-            042 et n° 10 054, rééd. Michel Verjux, Morceaux réfléchis. Écrits
-            1977-2011, op. cit., p. 172 et 753.
-          </p>
-        </div>
-        <div className="other-text">
-          <h5>
-            <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>"</span>
-            Titre autre texte
-          </h5>
-          <p>
-            Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
-            042 et n° 10 054, rééd. Michel Verjux, Morceaux réfléchis. Écrits
-            1977-2011, op. cit., p. 172 et 753.
-          </p>
-        </div>
-        <div className="other-text">
-          <h5>
-            <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>"</span>
-            Titre autre texte
-          </h5>
-          <p>
-            Notes numérotées à mon nombre de jours de vie, notes n° 9 987, n° 10
-            042 et n° 10 054, rééd. Michel Verjux, Morceaux réfléchis. Écrits
-            1977-2011, op. cit., p. 172 et 753.
-          </p>
-        </div>
+        {isLoading ? (
+          <div> ... chargement en cours ...</div>
+        ) : (
+          texts.map((text, index) => {
+            return (
+              <div key={index} className="other-text">
+                <h5 className="">
+                  {" "}
+                  <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>
+                    "
+                  </span>
+                  {text.title}
+                </h5>
+                <p>{text.article}</p>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

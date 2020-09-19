@@ -16,8 +16,8 @@
     //     justify-self: end;
   }
   .images-page-main-container {
-    grid-column: 3/9;
-    grid-row: 1/4;
+    grid-column: 3/7;
+    grid-row: 2/3;
     overflow: hidden; // ?????
     position: relative;
     .main-image-container {
@@ -44,7 +44,7 @@
   }
 
   .bloc-other-image {
-    grid-column: 10/14;
+    grid-column: 8/14;
     grid-row: 2/3;
     display: flex;
     justify-content: space-between;

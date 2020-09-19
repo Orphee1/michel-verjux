@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Picture } from "react-responsive-picture";
+import Axios from "axios";
 
 import "../styles/styles.css";
 
@@ -12,6 +13,25 @@ import casto from "../images/Castoriadis.jpg";
 import famille1 from "../images/image6.png";
 
 export default function BioScreen() {
+  const [biblios, setBiblios] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchBiblios = async () => {
+    const response = await Axios.get("http://localhost:4000/biblio");
+    try {
+      console.log(response.data);
+      setBiblios(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchBiblios();
+  }, []);
+
   return (
     <div className="bio-page">
       <div className="margin-left remove600"></div>
@@ -121,25 +141,18 @@ export default function BioScreen() {
         />
       </div>
       <div className="bloc-biblio">
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
-        <p>Titre de l’ouvrage et de l’oeuvre, éditeur, collection, année.</p>
+        {isLoading ? (
+          <div>... chargement en cours ...</div>
+        ) : (
+          biblios.map((biblio, index) => {
+            return (
+              <p key={index}>
+                <span>{biblio.title}</span>, <span>{biblio.editor}</span>,{" "}
+                <span>{biblio.collect}</span>, <span>{biblio.year}</span>.
+              </p>
+            );
+          })
+        )}
       </div>
       <div className="bloc-image-famille">
         <Picture

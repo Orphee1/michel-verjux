@@ -18,10 +18,7 @@ import "./App.css";
 
 function App() {
   const [path, setPath] = useState("/");
-  const [imageSelected, setImageSelected] = useState();
-  const [textSelected, setTextSelected] = useState();
-
-  console.log(path);
+  //   console.log(path);
 
   return (
     <Router>
@@ -32,19 +29,16 @@ function App() {
           <BioScreen />
         </Route>
         <Route path="/text">
-          <TextScreen
-            textSelected={textSelected}
-            setTextSelected={setTextSelected}
-          />
+          <TextScreen />
         </Route>
-        <Route path="/selected-text">
-          <SelectedTScreen textSelected={textSelected} />
+        <Route path="/selected-text/:id">
+          <SelectedTScreen />
         </Route>
-        <Route path="/selected-image">
-          <SelectedIScreen imageSelected={imageSelected} />
+        <Route path="/selected-image/:id">
+          <SelectedIScreen />
         </Route>
         <Route path="/image">
-          <ImageScreen setImageSelected={setImageSelected} />
+          <ImageScreen />
         </Route>
         <Route path="/home">
           <HomeScreen />
