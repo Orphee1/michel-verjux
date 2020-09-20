@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Cookie from "js-cookie";
 
 // Pages import
 import LandingScreen from "./containers/LandingScreen";
@@ -9,6 +10,7 @@ import TextScreen from "./containers/TextScreen";
 import BioScreen from "./containers/BioScreen";
 import SelectedIScreen from "./containers/SelectedImageScreen";
 import SelectedTScreen from "./containers/SelectedTextScreen";
+import LoginScreen from "./containers/LoginScreen";
 
 // Components import
 import Header from "./components/Header";
@@ -20,9 +22,30 @@ function App() {
   const [path, setPath] = useState("/");
   //   console.log(path);
 
+  const token = Cookie.get("token");
+  const [user, setUser] = useState({ token: token });
+  const [modalLogin, setModalLogin] = useState(false);
+  const [post, setPost] = useState();
+  //   console.log(user);
+  console.log(post);
+
   return (
     <Router>
-      {path !== "/" && <Header path={path} setPath={setPath} />}
+      {modalLogin && (
+        <LoginScreen
+          setModalLogin={setModalLogin}
+          setUser={setUser}
+          user={user}
+        />
+      )}
+      {path !== "/" && (
+        <Header
+          setPath={setPath}
+          setModalLogin={setModalLogin}
+          setUser={setUser}
+          setPost={setPost}
+        />
+      )}
 
       <Switch>
         <Route path="/bio">

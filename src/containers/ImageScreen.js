@@ -10,9 +10,9 @@ export default function ImageScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
+  //   console.log(period);
+  //   console.log(backSort);
   console.log(images);
-  console.log(period);
-  console.log(backSort);
 
   const fetchImages = async () => {
     const response = await Axios.get(

@@ -12,6 +12,13 @@
     justify-content: space-between;
     align-items: baseline;
     min-height: 10rem;
+    .post-selecter {
+      outline: none;
+      color: var(--blue);
+      font-family: "Noto Sans", sans-serif;
+      font-size: 1.6rem;
+      border: 1px solid var(--blue);
+    }
   }
   .mini-nav {
     grid-column: 10/14;

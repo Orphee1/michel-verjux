@@ -9,8 +9,8 @@ export default function TextScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  console.log(period);
-  console.log(backSort);
+  //   console.log(period);
+  //   console.log(backSort);
   console.log(texts);
 
   const fetchTexts = async () => {
