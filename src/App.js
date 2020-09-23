@@ -21,7 +21,7 @@ import "./App.css";
 
 function App() {
   const [path, setPath] = useState("/");
-  //   console.log(path);
+  console.log(path);
 
   const token = Cookie.get("token");
   const [user, setUser] = useState({ token: token });
@@ -50,6 +50,10 @@ function App() {
 
       <Switch>
         {post === "text" && <PostTextScreen setPost={setPost} />}
+
+        {/* <Route path="/publish">
+          <PostTextScreen setPost={setPost} />
+        </Route> */}
         <Route path="/bio">
           <BioScreen />
         </Route>

@@ -1,5 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  // ,useHistory
+} from "react-router-dom";
 import Cookie from "js-cookie";
 
 import "../styles/styles.css";
@@ -35,6 +38,14 @@ export default function Header({ setPath, setModalLogin, setUser, setPost }) {
               </span>
             </li>
             <li>
+              {/* <Link
+                to="/publish"
+                onClick={() => {
+                  setPath("/publish");
+                }}
+              >
+                <span>Poster un article</span>
+              </Link> */}
               <select
                 className="post-selecter"
                 onChange={(event) => {
