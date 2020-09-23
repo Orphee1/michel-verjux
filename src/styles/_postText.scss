@@ -1,4 +1,4 @@
-.login-modal {
+.post-modal {
   width: 100%;
   height: 100%;
   z-index: 10;
@@ -11,15 +11,15 @@
   .loader-container {
     height: 10rem;
   }
-  .login-modal-content {
+  .post-modal-content {
     width: 50rem;
-    height: 40rem;
+    height: 60rem;
     background: var(--blue);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    .login-cross {
+    .post-cross {
       position: absolute;
       left: 70rem;
       top: -3rem;
@@ -32,24 +32,21 @@
     }
     .form {
       display: flex;
-      height: 60%;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 70%;
       padding-bottom: 2rem;
-
       h6 {
         font-family: "Noto Sans", sans-serif;
         color: white;
         font-size: 1.8rem;
         font-weight: lighter;
       }
-      .form-up {
-        flex: 3;
-        // display: flex;
-        justify-content: space-around;
-      }
-      .form-down {
-        flex: 2;
+      //       .postText-form-up {
+
+      //       }
+      .postText-form-down {
         width: 60%;
-        justify-content: flex-end;
         .submit {
           width: 100%;
         }
