@@ -10,9 +10,9 @@
     height: 5rem;
     margin-bottom: 1rem;
   }
-  .post-modal-content {
+  .post-image-modal-content {
     width: 50rem;
-    height: 50rem;
+    height: 60rem;
     background: var(--blue);
     position: relative;
     display: flex;
@@ -30,21 +30,20 @@
       cursor: pointer;
     }
     .form {
+      height: 90%;
+      padding-bottom: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 80%;
-      padding-bottom: 2rem;
       h6 {
         font-family: "Noto Sans", sans-serif;
         color: white;
         font-size: 1.8rem;
         font-weight: lighter;
       }
-      //       .postText-form-up {
-
-      //       }
-      .postText-form-down {
+      .postImage-form-up {
+      }
+      .postImage-form-down {
         width: 60%;
         .submit {
           width: 100%;

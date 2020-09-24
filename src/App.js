@@ -12,6 +12,7 @@ import SelectedIScreen from "./containers/SelectedImageScreen";
 import SelectedTScreen from "./containers/SelectedTextScreen";
 import LoginScreen from "./containers/LoginScreen";
 import PostTextScreen from "./containers/PostTextScreen";
+import PostImageScreen from "./containers/PostImageScreen";
 
 // Components import
 import Header from "./components/Header";
@@ -26,7 +27,7 @@ function App() {
   const token = Cookie.get("token");
   const [user, setUser] = useState({ token: token });
   const [modalLogin, setModalLogin] = useState(false);
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState("image");
   //   console.log(user);
   console.log(post);
 
@@ -50,6 +51,7 @@ function App() {
 
       <Switch>
         {post === "text" && <PostTextScreen setPost={setPost} />}
+        {post === "image" && <PostImageScreen setPost={setPost} />}
 
         {/* <Route path="/publish">
           <PostTextScreen setPost={setPost} />
