@@ -27,7 +27,7 @@ function App() {
   const token = Cookie.get("token");
   const [user, setUser] = useState({ token: token });
   const [modalLogin, setModalLogin] = useState(false);
-  const [post, setPost] = useState("image");
+  const [post, setPost] = useState("");
   //   console.log(user);
   console.log(post);
 

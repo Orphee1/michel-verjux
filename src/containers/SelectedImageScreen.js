@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Picture } from "react-responsive-picture";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
+import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 
 export default function SelectedImage() {
   const [image, setImage] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
   const { id } = useParams();
-  console.log(id);
+  const token = Cookie.get("token");
 
   const fetchImage = async () => {
     const response = await Axios.get("http://localhost:4000/image?id=" + id);
+
     try {
       console.log(response.data);
       setImage(response.data);
@@ -25,7 +28,34 @@ export default function SelectedImage() {
 
   useEffect(() => {
     fetchImage();
-  });
+  }, []);
+
+  const deleteImage = async (event) => {
+    event.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("id", id);
+
+      const response = await Axios.post(
+        "http://localhost:4000/image/delete",
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.data) {
+        console.log(response.data);
+        history.push("/image");
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
+  };
 
   return (
     <div className="selected-image-page">
@@ -62,7 +92,6 @@ export default function SelectedImage() {
         <div>... chargement en cours</div>
       ) : (
         <div className="bloc-legend">
-          {/* <h5>Sans titre, Paris, 2019.</h5> */}
           <h5>
             <span>{image.title}</span>
             {", "}
@@ -70,10 +99,16 @@ export default function SelectedImage() {
             {", "}
             <span>{image.year}.</span>
           </h5>
-          {/* <p>Exposition collective à Chanteloup-les-Vignes.</p> */}
+
           <p>{image.context}</p>
           <p className="other-context">{image.context}</p>
         </div>
+      )}
+
+      {token && (
+        <button className="delete-button" onClick={deleteImage}>
+          Supprimer
+        </button>
       )}
 
       <div className="button-container">
