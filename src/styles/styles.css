@@ -1102,6 +1102,20 @@
   color: white;
 }
 
+.selected-text-page .delete-button {
+  -ms-grid-column: 12;
+  -ms-grid-column-span: 1;
+  grid-column: 12/13;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  width: 100%;
+  height: 4rem;
+  border-radius: 4rem;
+  background: var(--blue);
+  color: white;
+}
+
 @media (max-width: 1200px) {
   .selected-text-page {
     height: auto;
