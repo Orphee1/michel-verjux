@@ -13,7 +13,10 @@ export default function SelectedText() {
   const token = Cookie.get("token");
 
   const fetchText = async () => {
-    const response = await Axios.get("http://localhost:4000/text?id=" + id);
+    // const response = await Axios.get("http://localhost:4000/text?id=" + id);
+    const response = await Axios.get(
+      "https://michelverjux-backend.herokuapp.com/text?id=" + id
+    );
     try {
       setText(response.data);
       setIsLoading(false);

@@ -17,7 +17,10 @@ export default function BioScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchBiblios = async () => {
-    const response = await Axios.get("http://localhost:4000/biblio");
+    // const response = await Axios.get("http://localhost:4000/biblio");
+    const response = await Axios.get(
+      "https://https://michelverjux-backend.herokuapp.com//biblio"
+    );
     try {
       console.log(response.data);
       setBiblios(response.data);

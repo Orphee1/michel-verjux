@@ -37,7 +37,8 @@ export default function SelectedImage() {
       formData.append("id", id);
 
       const response = await Axios.post(
-        "http://localhost:4000/image/delete",
+        // "http://localhost:4000/image/delete",
+        "https://michelverjux-backend.herokuapp.com/image/delete",
         formData,
         {
           headers: {

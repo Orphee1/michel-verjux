@@ -34,7 +34,8 @@ export default function PostImageScreen({ setPost }) {
           credit !== undefined && formData.append("credit", credit);
 
           const response = await Axios.post(
-            "http://localhost:4000/image/publish",
+            // "http://localhost:4000/image/publish",
+            "https://michelverjux-backend.herokuapp.com/image/publish",
             formData,
             {
               headers: {

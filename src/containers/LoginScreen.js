@@ -15,10 +15,14 @@ export default function Login({ setModalLogin, setUser }) {
     event.preventDefault();
     setIsLoading(true);
     try {
-      const response = await Axios.post("http://localhost:4000/user/login", {
-        email: email,
-        password: password,
-      });
+      // const response = await Axios.post("http://localhost:4000/user/login", {
+      const response = await Axios.post(
+        "https://michelverjux-backend.herokuapp.com/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
       console.log(response.data);
       if (response.data.token) {
         Cookie.set("token", response.data.token);

@@ -22,7 +22,8 @@ export default function PostTextScreen({ setPost }) {
       formData.append("context", context);
       formData.append("article", article);
       const response = await Axios.post(
-        "http://localhost:4000/text/publish",
+        // "http://localhost:4000/text/publish",
+        "https://michelverjux-backend.herokuapp.com/text/publish",
         formData,
         {
           headers: {

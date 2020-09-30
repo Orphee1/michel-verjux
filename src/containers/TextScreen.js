@@ -15,7 +15,11 @@ export default function TextScreen() {
 
   const fetchTexts = async () => {
     const response = await Axios.get(
-      "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
+      // "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
+      "https://michelverjux-backend.herokuapp.com/texts?backSort=" +
+        backSort +
+        "&period=" +
+        period
     );
     try {
       setTexts(response.data);
