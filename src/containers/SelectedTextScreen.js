@@ -13,13 +13,18 @@ export default function SelectedText() {
   const token = Cookie.get("token");
 
   const fetchText = async () => {
-    // const response = await Axios.get("http://localhost:4000/text?id=" + id);
-    const response = await Axios.get(
-      "https://michelverjux-backend.herokuapp.com/text?id=" + id
-    );
     try {
-      setText(response.data);
-      setIsLoading(false);
+      // const response = await Axios.get("http://localhost:4000/text?id=" + id);
+      const response = await Axios.get(
+        "https://michelverjux-backend.herokuapp.com/text?id=" + id
+      );
+      if (response.data) {
+        console.log(response.data);
+        setText(response.data);
+        setIsLoading(false);
+      } else {
+        console.log(response);
+      }
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -28,6 +33,7 @@ export default function SelectedText() {
 
   useEffect(() => {
     fetchText();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const deleteText = async (event) => {

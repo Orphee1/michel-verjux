@@ -10,21 +10,23 @@ export default function ImageScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  //   console.log(period);
-  //   console.log(backSort);
   console.log(images);
 
   const fetchImages = async () => {
-    const response = await Axios.get(
-      // "http://localhost:4000/images?backSort=" + backSort + "&period=" + period
-      "https://michelverjux-backend.herokuapp.com/images?backSort=" +
-        backSort +
-        "&period=" +
-        period
-    );
     try {
-      setImages(response.data);
-      setIsLoading(false);
+      const response = await Axios.get(
+        // "http://localhost:4000/images?backSort=" + backSort + "&period=" + period
+        "https://michelverjux-backend.herokuapp.com/images?backSort=" +
+          backSort +
+          "&period=" +
+          period
+      );
+      if (response.data) {
+        console.log(response.data);
+        setImages(response.data);
+        setIsLoading(false);
+      } else {
+      }
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -33,6 +35,7 @@ export default function ImageScreen() {
 
   useEffect(() => {
     fetchImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [backSort, period]);
 
   return (

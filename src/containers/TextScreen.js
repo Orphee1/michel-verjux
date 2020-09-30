@@ -14,16 +14,21 @@ export default function TextScreen() {
   console.log(texts);
 
   const fetchTexts = async () => {
-    const response = await Axios.get(
-      // "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
-      "https://michelverjux-backend.herokuapp.com/texts?backSort=" +
-        backSort +
-        "&period=" +
-        period
-    );
     try {
-      setTexts(response.data);
-      setIsLoading(false);
+      const response = await Axios.get(
+        // "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
+        "https://michelverjux-backend.herokuapp.com/texts?backSort=" +
+          backSort +
+          "&period=" +
+          period
+      );
+      if (response.data) {
+        console.log(response.data);
+        setTexts(response.data);
+        setIsLoading(false);
+      } else {
+        console.log(response);
+      }
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -32,6 +37,7 @@ export default function TextScreen() {
 
   useEffect(() => {
     fetchTexts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [backSort, period]);
 
   return (

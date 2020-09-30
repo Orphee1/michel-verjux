@@ -14,12 +14,18 @@ export default function SelectedImage() {
   const token = Cookie.get("token");
 
   const fetchImage = async () => {
-    const response = await Axios.get("http://localhost:4000/image?id=" + id);
-
     try {
-      console.log(response.data);
-      setImage(response.data);
-      setIsLoading(false);
+      // const response = await Axios.get("http://localhost:4000/image?id=" + id);
+      const response = await Axios.get(
+        "https://michelverjux-backend.herokuapp.com/image?id=" + id
+      );
+      if (response.data) {
+        console.log(response.data);
+        setImage(response.data);
+        setIsLoading(false);
+      } else {
+        console.log(response);
+      }
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -28,6 +34,7 @@ export default function SelectedImage() {
 
   useEffect(() => {
     fetchImage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const deleteImage = async (event) => {
