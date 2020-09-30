@@ -10,7 +10,10 @@ export default function ImageScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
+  //   const [sort, setSort] = useState(2);
   console.log(images);
+
+  console.log(backSort);
 
   const fetchImages = async () => {
     try {
@@ -47,19 +50,25 @@ export default function ImageScreen() {
             setBackSort(!backSort);
           }}
         >
-          {backSort === false ? (
-            <p>Depuis le début</p>
-          ) : (
-            <p>Depuis maintenant</p>
-          )}
+          {backSort === false ? <p>Débuts</p> : <p>Maintenant</p>}
         </button>
+        {/* <select
+          className="menu-selecter"
+          onChange={(event) => {
+            setSort(event.target.value);
+          }}
+        >
+          <option value="0">Afficher</option>
+          <option value="1">Depuis le début</option>
+          <option value="2">Depuis maintenant</option>
+        </select> */}
         <select
           className="menu-selecter"
           onChange={(event) => {
             setPeriod(event.target.value);
           }}
         >
-          <option value="0">Sélectionnez</option>
+          <option value="0">Afficher</option>
           <option value="1">Jeunesse</option>
           <option value="2">Maturité</option>
           <option value="3">Sagesse</option>
