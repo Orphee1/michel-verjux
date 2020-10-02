@@ -13,6 +13,7 @@ import SelectedTScreen from "./containers/SelectedTextScreen";
 import LoginScreen from "./containers/LoginScreen";
 import PostTextScreen from "./containers/PostTextScreen";
 import PostImageScreen from "./containers/PostImageScreen";
+import PostBiblioScreen from "./containers/PostBiblioScreen";
 
 // Components import
 import Header from "./components/Header";
@@ -28,8 +29,6 @@ function App() {
   const [user, setUser] = useState({ token: token });
   const [modalLogin, setModalLogin] = useState(false);
   const [post, setPost] = useState("");
-  //   console.log(user);
-  console.log(post);
 
   return (
     <Router>
@@ -52,10 +51,8 @@ function App() {
       <Switch>
         {post === "text" && <PostTextScreen setPost={setPost} />}
         {post === "image" && <PostImageScreen setPost={setPost} />}
+        {post === "biblio" && <PostBiblioScreen setPost={setPost} />}
 
-        {/* <Route path="/publish">
-          <PostTextScreen setPost={setPost} />
-        </Route> */}
         <Route path="/bio">
           <BioScreen />
         </Route>

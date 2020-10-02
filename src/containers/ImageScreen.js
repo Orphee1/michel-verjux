@@ -18,7 +18,10 @@ export default function ImageScreen() {
   const fetchImages = async () => {
     try {
       const response = await Axios.get(
-        // "http://localhost:4000/images?backSort=" + backSort + "&period=" + period
+        // "http://localhost:4000/images?backSort=" +
+        //   backSort +
+        //   "&period=" +
+        //   period +
         "https://michelverjux-backend.herokuapp.com/images?backSort=" +
           backSort +
           "&period=" +

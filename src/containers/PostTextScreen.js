@@ -32,8 +32,9 @@ export default function PostTextScreen({ setPost }) {
           },
         }
       );
-      console.log(response.data);
+
       if (response.data) {
+        console.log(response.data);
         setPost("");
       }
     } catch (error) {

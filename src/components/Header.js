@@ -38,14 +38,6 @@ export default function Header({ setPath, setModalLogin, setUser, setPost }) {
               </span>
             </li>
             <li>
-              {/* <Link
-                to="/publish"
-                onClick={() => {
-                  setPath("/publish");
-                }}
-              >
-                <span>Poster un article</span>
-              </Link> */}
               <select
                 className="post-selecter"
                 onChange={(event) => {
@@ -53,8 +45,9 @@ export default function Header({ setPath, setModalLogin, setUser, setPost }) {
                 }}
               >
                 <option>Poster un article</option>
-                <option value="text">Texte</option>
                 <option value="image">Image</option>
+                <option value="text">Texte</option>
+                <option value="biblio">Biblio</option>
               </select>
             </li>
           </>
