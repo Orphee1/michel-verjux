@@ -16,7 +16,8 @@ export default function SelectedText() {
     try {
       // const response = await Axios.get("http://localhost:4000/text?id=" + id);
       const response = await Axios.get(
-        "https://michelverjux-backend.herokuapp.com/text?id=" + id
+        // "https://michelverjux-backend.herokuapp.com/text?id=" + id
+        process.env.REACT_APP_WEBADDRESS + "/text?id=" + id
       );
       if (response.data) {
         console.log(response.data);

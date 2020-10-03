@@ -17,7 +17,8 @@ export default function SelectedImage() {
     try {
       // const response = await Axios.get("http://localhost:4000/image?id=" + id);
       const response = await Axios.get(
-        "https://michelverjux-backend.herokuapp.com/image?id=" + id
+        // "https://michelverjux-backend.herokuapp.com/image?id=" + id
+        process.env.REACT_APP_WEBADDRESS + "/image?id=" + id
       );
       if (response.data) {
         console.log(response.data);

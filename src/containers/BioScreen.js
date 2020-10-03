@@ -24,7 +24,8 @@ export default function BioScreen() {
       //       const response = await Axios.get("http://localhost:4000/biblio");
 
       const response = await Axios.get(
-        "https://michelverjux-backend.herokuapp.com/biblio"
+        // "https://michelverjux-backend.herokuapp.com/biblio"
+        process.env.REACT_APP_WEBADDRESS + "/biblio"
       );
       console.log(response.data);
       setBiblios(response.data);

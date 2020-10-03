@@ -10,7 +10,6 @@ export default function ImageScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  //   const [sort, setSort] = useState(2);
   console.log(images);
 
   console.log(backSort);
@@ -21,10 +20,15 @@ export default function ImageScreen() {
         // "http://localhost:4000/images?backSort=" +
         //   backSort +
         //   "&period=" +
-        //   period +
-        "https://michelverjux-backend.herokuapp.com/images?backSort=" +
+        //   period
+        // "https://michelverjux-backend.herokuapp.com/images?backSort=" +
+        //   backSort +
+        //   "&period=" +
+        //   period
+        process.env.REACT_APP_WEBADDRESS +
+          "/images?backSort=" +
           backSort +
-          "&period=" +
+          "&period" +
           period
       );
       if (response.data) {

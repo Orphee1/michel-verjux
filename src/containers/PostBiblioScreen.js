@@ -24,8 +24,9 @@ export default function PostBiblioScreen({ setPost }) {
         formData.append("collect", collect);
         formData.append("year", year);
         const response = await Axios.post(
-          "http://localhost:4000/biblio/publish",
+          //   "http://localhost:4000/biblio/publish",
           //   "https://michelverjux-backend.herokuapp.com/biblio/publish",
+          process.env.REACT_APP_WEBADDRESS + "/biblio/publish",
           formData,
           {
             headers: {

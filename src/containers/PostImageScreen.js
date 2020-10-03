@@ -36,7 +36,8 @@ export default function PostImageScreen({ setPost }) {
 
           const response = await Axios.post(
             //     "http://localhost:4000/image/publish",
-            "https://michelverjux-backend.herokuapp.com/image/publish",
+            //     "https://michelverjux-backend.herokuapp.com/image/publish",
+            process.env.REACT_APP_WEBADDRESS + "/image/publish",
             formData,
             {
               headers: {

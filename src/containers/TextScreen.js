@@ -17,7 +17,12 @@ export default function TextScreen() {
     try {
       const response = await Axios.get(
         // "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
-        "https://michelverjux-backend.herokuapp.com/texts?backSort=" +
+        // "https://michelverjux-backend.herokuapp.com/texts?backSort=" +
+        //   backSort +
+        //   "&period=" +
+        //   period
+        process.env.REACT_APP_WEBADDRESS +
+          "/texts?-backSort=" +
           backSort +
           "&period=" +
           period
