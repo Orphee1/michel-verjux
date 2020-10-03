@@ -13,6 +13,7 @@ export default function PostImageScreen({ setPost }) {
   const [collect, setCollect] = useState(undefined);
   const [credit, setCredit] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
 
   const token = Cookie.get("token");
 
@@ -34,8 +35,8 @@ export default function PostImageScreen({ setPost }) {
           credit !== undefined && formData.append("credit", credit);
 
           const response = await Axios.post(
-            //     "http://localhost:4000/image/publish",
-            "https://michelverjux-backend.herokuapp.com/image/publish",
+            "http://localhost:4000/image/publish",
+            //     "https://michelverjux-backend.herokuapp.com/image/publish",
             formData,
             {
               headers: {
@@ -46,7 +47,9 @@ export default function PostImageScreen({ setPost }) {
           );
           console.log(response.data);
           if (response.data) {
-            setPost("");
+            //     setPost("");
+            setIsLoading(false);
+            setIsPublished(true);
           }
         } catch (error) {
           console.log(error);
@@ -70,6 +73,7 @@ export default function PostImageScreen({ setPost }) {
             <div></div>
           </div>
         )}
+        {isPublished && <h6>Votre image a bien été publiée</h6>}
       </div>
 
       <div className="post-image-modal-content box-shadow-both-sides">

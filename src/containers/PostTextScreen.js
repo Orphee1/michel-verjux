@@ -4,42 +4,49 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 export default function PostTextScreen({ setPost }) {
-  const [title, setTitle] = useState("");
-  const [year, setYear] = useState();
+  const [title, setTitle] = useState(undefined);
+  const [year, setYear] = useState(undefined);
   const [context, setContext] = useState("");
-  const [article, setArticle] = useState("");
+  const [article, setArticle] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
 
   const token = Cookie.get("token");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsLoading(true);
-    try {
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("year", year);
-      formData.append("context", context);
-      formData.append("article", article);
-      const response = await Axios.post(
-        // "http://localhost:4000/text/publish",
-        "https://michelverjux-backend.herokuapp.com/text/publish",
-        formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    if (title !== undefined && year !== undefined && article !== undefined) {
+      setIsLoading(true);
+      try {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("year", year);
+        formData.append("context", context);
+        formData.append("article", article);
+        const response = await Axios.post(
+          "http://localhost:4000/text/publish",
+          // "https://michelverjux-backend.herokuapp.com/text/publish",
+          formData,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
-      if (response.data) {
-        console.log(response.data);
-        setPost("");
+        if (response.data) {
+          console.log(response.data);
+          setIsLoading(false);
+          setIsPublished(true);
+          // setPost("");
+        }
+      } catch (error) {
+        console.log(error);
+        alert(error.message);
       }
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
+    } else {
+      alert("Vous devez renseigner le titre, l'année et le champ article.");
     }
   };
 
@@ -53,6 +60,7 @@ export default function PostTextScreen({ setPost }) {
             <div></div>
           </div>
         )}
+        {isPublished && <h6>Votre article a bien été publié</h6>}
       </div>
       <div className="post-modal-content box-shadow-both-sides">
         <span
