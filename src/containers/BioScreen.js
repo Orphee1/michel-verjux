@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Picture } from "react-responsive-picture";
 import Axios from "axios";
+import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 
@@ -16,9 +17,12 @@ export default function BioScreen() {
   const [biblios, setBiblios] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  const token = Cookie.get("token");
+
   const fetchBiblios = async () => {
     try {
       // const response = await Axios.get("http://localhost:4000/biblio");
+
       const response = await Axios.get(
         "https://michelverjux-backend.herokuapp.com/biblio"
       );
@@ -149,9 +153,41 @@ export default function BioScreen() {
         ) : (
           biblios.map((biblio, index) => {
             return (
-              <p key={index}>
-                <span>{biblio.title}</span>, <span>{biblio.editor}</span>,{" "}
-                <span>{biblio.collect}</span>, <span>{biblio.year}</span>.
+              <p className="biblio" key={index}>
+                - <span>{biblio.title}</span>, <span>{biblio.editor}</span>,{" "}
+                <span>{biblio.collect}</span>, <span>{biblio.year}</span>.{" "}
+                {token && (
+                  <button
+                    //     className="delete-cross"
+                    onClick={() => {
+                      const deleteBiblio = async () => {
+                        try {
+                          const formData = new FormData();
+                          formData.append("id", biblio._id);
+                          const response = await Axios.post(
+                            "http://localhost:4000/biblio/delete",
+                            formData,
+                            {
+                              headers: {
+                                Authorization: "Bearer " + token,
+                                "Content-Type": "multipart/form-data",
+                              },
+                            }
+                          );
+                          if (response.data) {
+                            console.log(response.data);
+                          }
+                        } catch (error) {
+                          console.log(error);
+                          alert(error.message);
+                        }
+                      };
+                      deleteBiblio();
+                    }}
+                  >
+                    supprimer
+                  </button>
+                )}
               </p>
             );
           })

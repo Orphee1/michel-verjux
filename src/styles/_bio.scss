@@ -52,6 +52,11 @@
     flex-direction: column;
     padding: 0.5rem 1rem 1rem 1rem;
     font-family: "Roboto", sans-serif;
+    .biblio {
+      .delete-cross {
+        cursor: pointer;
+      }
+    }
   }
   .bloc-image-portrait {
     grid-column: 4/5;

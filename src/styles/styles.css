@@ -705,6 +705,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.bio-page .bloc-biblio .biblio .delete-cross {
+  cursor: pointer;
+}
+
 .bio-page .bloc-image-portrait {
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
@@ -1427,6 +1431,12 @@
 .post-modal .loader-container {
   height: 5rem;
   margin-bottom: 1rem;
+}
+
+.post-modal .loader-container h6 {
+  color: var(--blue);
+  font-family: "Noto Sans", sans-serif;
+  font-weight: medium;
 }
 
 .post-modal .post-modal-content {

@@ -9,6 +9,7 @@ export default function PostBiblioScreen({ setPost }) {
   const [collect, setCollect] = useState();
   const [year, setYear] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
 
   const token = Cookie.get("token");
 
@@ -35,7 +36,9 @@ export default function PostBiblioScreen({ setPost }) {
         );
         if (response.data) {
           console.log(response.data);
-          setPost("");
+          setIsLoading(false);
+          setIsPublished(true);
+          //   setPost("");
         }
       } catch (error) {
         console.log(error);
@@ -56,6 +59,7 @@ export default function PostBiblioScreen({ setPost }) {
             <div></div>
           </div>
         )}
+        {isPublished && <h6>Votre article a bien été publié</h6>}
       </div>
       <div className="post-modal-content box-shadow-both-sides">
         <span
@@ -101,7 +105,7 @@ export default function PostBiblioScreen({ setPost }) {
             <div>
               <h6>Année:</h6>
               <input
-                type="text"
+                type="number"
                 value={year}
                 onChange={(event) => {
                   setYear(event.target.value);
