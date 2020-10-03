@@ -21,7 +21,7 @@ export default function BioScreen() {
 
   const fetchBiblios = async () => {
     try {
-      // const response = await Axios.get("http://localhost:4000/biblio");
+      //       const response = await Axios.get("http://localhost:4000/biblio");
 
       const response = await Axios.get(
         "https://michelverjux-backend.herokuapp.com/biblio"
@@ -165,7 +165,8 @@ export default function BioScreen() {
                           const formData = new FormData();
                           formData.append("id", biblio._id);
                           const response = await Axios.post(
-                            "http://localhost:4000/biblio/delete",
+                            //     "http://localhost:4000/biblio/delete",
+                            "https://michelverjux-backend.herokuapp.com/biblio/delete",
                             formData,
                             {
                               headers: {
