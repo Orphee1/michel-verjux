@@ -44,30 +44,56 @@ export default function TextScreen() {
 
   return (
     <div className="texts-page">
-      <div className="menu-text">
-        <button
-          className="sort-button"
+      <div className="menu-custom-text">
+        <div
+          className="icon"
           onClick={() => {
-            setBackSort(!backSort);
+            setBackSort(true);
           }}
         >
-          {backSort === false ? (
-            <p>Depuis le début</p>
-          ) : (
-            <p>Depuis maintenant</p>
-          )}
-        </button>
-        <select
-          className="menu-selecter"
-          onChange={(event) => {
-            setPeriod(event.target.value);
+          Début
+        </div>
+        <div
+          className="icon"
+          onClick={() => {
+            setBackSort(false);
           }}
         >
-          <option value="0">Sélectionnez</option>
-          <option value="1">Jeunesse</option>
-          <option value="2">Maturité</option>
-          <option value="3">Sagesse</option>
-        </select>
+          Fin
+        </div>
+        <div
+          className="icon"
+          onClick={() => {
+            setPeriod("1");
+          }}
+        >
+          Jeunesse
+        </div>
+        <div
+          className="icon"
+          onClick={() => {
+            setPeriod("2");
+          }}
+        >
+          Maturité
+        </div>
+        <div
+          className="icon"
+          onClick={() => {
+            setPeriod("3");
+          }}
+        >
+          Sagesse
+        </div>
+        <div
+          className="icon last"
+          onClick={() => {
+            setPeriod("0");
+          }}
+        >
+          Toutes les oeuvres
+        </div>
+        <div className="label">Afficher</div>
       </div>
 
       <div className="bloc-text-container">

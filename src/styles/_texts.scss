@@ -7,6 +7,60 @@
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
 
+  .menu-custom-text {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    position: relative;
+    border-radius: 0 4rem 4rem 0;
+    height: 14rem;
+    cursor: default;
+    &:hover .label {
+      opacity: 0;
+      transition: opacity 0.5s 0.125s ease-out;
+    }
+    &:hover .icon {
+      margin: 1rem auto;
+    }
+    .label {
+      background-color: var(--blue);
+      border-radius: 0 4rem 4rem 0;
+      color: white;
+      position: absolute;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Roboto", sans-serif;
+      font-size: 1.6rem;
+      font-weight: medium;
+      top: 0;
+      left: 0;
+      right: 0;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.5s 0.75s ease-out;
+    }
+    .icon {
+      border-radius: 0;
+      cursor: pointer;
+      background-color: white;
+      color: var(--blue);
+      font-family: "Roboto", sans-serif;
+      font-size: 1.6rem;
+      height: 2rem;
+      width: 100%;
+      border-radius: 0 4rem 4rem 0;
+      transition: background-color 0.5s ease-out,
+        border-radius 0.5s 0.25s ease-out, margin 0.5s 0.25s ease-out;
+      &:hover {
+        background-color: var(--blue);
+        color: white;
+      }
+    }
+    .last {
+      height: 4rem;
+    }
+  }
   .menu-text {
     grid-column: 2/3;
     grid-row: 2/3;
