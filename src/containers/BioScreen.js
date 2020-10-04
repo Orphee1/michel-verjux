@@ -5,6 +5,9 @@ import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 
+// Components import
+import BiblioLoader from "../components/BiblioLoader";
+
 // Images import
 import portrait from "../images/MichelVerjux2.jpg";
 import portraits from "../images/MichelVerjux2s.jpg";
@@ -147,7 +150,7 @@ export default function BioScreen() {
       </div>
       <div className="bloc-biblio">
         {isLoading ? (
-          <div>... chargement en cours ...</div>
+          <BiblioLoader />
         ) : (
           biblios.map((biblio, index) => {
             return (
