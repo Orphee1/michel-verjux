@@ -8,16 +8,12 @@ export default function Login({ setModalLogin, setUser }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  //   console.log(email);
-  //   console.log(password);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     try {
-      // const response = await Axios.post("http://localhost:4000/user/login", {
       const response = await Axios.post(
-        // "https://michelverjux-backend.herokuapp.com/user/login",
         process.env.REACT_APP_WEBADDRESS + "/user/login",
         {
           email: email,

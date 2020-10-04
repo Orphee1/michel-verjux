@@ -14,9 +14,7 @@ export default function SelectedText() {
 
   const fetchText = async () => {
     try {
-      // const response = await Axios.get("http://localhost:4000/text?id=" + id);
       const response = await Axios.get(
-        // "https://michelverjux-backend.herokuapp.com/text?id=" + id
         process.env.REACT_APP_WEBADDRESS + "/text?id=" + id
       );
       if (response.data) {
@@ -44,7 +42,8 @@ export default function SelectedText() {
       formData.append("id", id);
 
       const response = await Axios.post(
-        "http://localhost:4000/text/delete",
+        // "http://localhost:4000/text/delete",
+        process.env.REACT_APP_WEBADDRESS + "/text/delete",
         formData,
         {
           headers: {

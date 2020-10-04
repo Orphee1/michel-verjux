@@ -4,23 +4,20 @@ import Axios from "axios";
 
 import "../styles/styles.css";
 
+// Components import
+import MainTextLoader from "../components/MainTextLoader";
+import MultipleTextsLoader from "../components/MultipleTextsLoader";
+
 export default function TextScreen() {
   const [texts, setTexts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  //   console.log(period);
-  //   console.log(backSort);
   console.log(texts);
 
   const fetchTexts = async () => {
     try {
       const response = await Axios.get(
-        // "http://localhost:4000/texts?backSort=" + backSort + "&period=" + period
-        // "https://michelverjux-backend.herokuapp.com/texts?backSort=" +
-        //   backSort +
-        //   "&period=" +
-        //   period
         process.env.REACT_APP_WEBADDRESS +
           "/texts?-backSort=" +
           backSort +
@@ -75,7 +72,7 @@ export default function TextScreen() {
 
       <div className="bloc-text-container">
         {isLoading ? (
-          <div> ... chargement en cours ...</div>
+          <MainTextLoader />
         ) : (
           <Link to={"/selected-text/" + texts[0]._id}>
             <div className="bloc-text">
@@ -95,7 +92,7 @@ export default function TextScreen() {
       </div>
       <div className="bloc-other-text">
         {isLoading ? (
-          <div> ... chargement en cours ...</div>
+          <MultipleTextsLoader />
         ) : (
           texts.map((text, index) => {
             return (

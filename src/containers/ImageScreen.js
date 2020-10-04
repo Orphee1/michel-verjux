@@ -5,6 +5,10 @@ import Axios from "axios";
 
 import "../styles/styles.css";
 
+// Components import
+import MainImageLoader from "../components/MainImageLoader";
+import MultipleImagesLoader from "../components/MultipleImagesLoader";
+
 export default function ImageScreen() {
   const [images, setImages] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -17,14 +21,6 @@ export default function ImageScreen() {
   const fetchImages = async () => {
     try {
       const response = await Axios.get(
-        // "http://localhost:4000/images?backSort=" +
-        //   backSort +
-        //   "&period=" +
-        //   period
-        // "https://michelverjux-backend.herokuapp.com/images?backSort=" +
-        //   backSort +
-        //   "&period=" +
-        //   period
         process.env.REACT_APP_WEBADDRESS +
           "/images?backSort=" +
           backSort +
@@ -59,16 +55,6 @@ export default function ImageScreen() {
         >
           {backSort === false ? <p>Débuts</p> : <p>Maintenant</p>}
         </button>
-        {/* <select
-          className="menu-selecter"
-          onChange={(event) => {
-            setSort(event.target.value);
-          }}
-        >
-          <option value="0">Afficher</option>
-          <option value="1">Depuis le début</option>
-          <option value="2">Depuis maintenant</option>
-        </select> */}
         <select
           className="menu-selecter"
           onChange={(event) => {
@@ -84,7 +70,7 @@ export default function ImageScreen() {
 
       <div className="images-page-main-container">
         {isLoading ? (
-          <div> ... chargement en cours ...</div>
+          <MainImageLoader />
         ) : (
           <Link to={"/selected-image/" + images[0]._id}>
             <figure className="main-image-container">
@@ -120,7 +106,8 @@ export default function ImageScreen() {
 
       <div className="bloc-other-image">
         {isLoading ? (
-          <div>... chargement en cours ...</div>
+          //   <div>... chargement en cours ...</div>
+          <MultipleImagesLoader />
         ) : (
           images.map((image, index) => {
             return (

@@ -11,6 +11,7 @@
     "js-cookie": "^2.2.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-content-loader": "^5.1.2",
     "react-dom": "^16.13.1",
     "react-responsive-carousel": "^3.2.9",
     "react-responsive-picture": "^3.2.2",

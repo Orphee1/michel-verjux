@@ -6,6 +6,10 @@ import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 
+// Components import
+import SelectedImageLoader from "../components/SelectedImageLoader";
+import LegendLoader from "../components/LegendLoader";
+
 export default function SelectedImage() {
   const [image, setImage] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -15,9 +19,7 @@ export default function SelectedImage() {
 
   const fetchImage = async () => {
     try {
-      // const response = await Axios.get("http://localhost:4000/image?id=" + id);
       const response = await Axios.get(
-        // "https://michelverjux-backend.herokuapp.com/image?id=" + id
         process.env.REACT_APP_WEBADDRESS + "/image?id=" + id
       );
       if (response.data) {
@@ -45,8 +47,7 @@ export default function SelectedImage() {
       formData.append("id", id);
 
       const response = await Axios.post(
-        // "http://localhost:4000/image/delete",
-        "https://michelverjux-backend.herokuapp.com/image/delete",
+        process.env.REACT_APP_WEBADDRESS + "/image/delete",
         formData,
         {
           headers: {
@@ -71,7 +72,7 @@ export default function SelectedImage() {
       <div className="menu-image"></div>
       <div className="selected-image-container">
         {isLoading ? (
-          <div> ... chargement en cours ...</div>
+          <SelectedImageLoader />
         ) : (
           <div className="sub-container">
             <Picture
@@ -97,22 +98,25 @@ export default function SelectedImage() {
           </div>
         )}
       </div>
-      {isLoading ? (
-        <div>... chargement en cours</div>
-      ) : (
-        <div className="bloc-legend">
-          <h5>
-            <span>{image.title}</span>
-            {", "}
-            <span>{image.place}</span>
-            {", "}
-            <span>{image.year}.</span>
-          </h5>
+      <div className="bloc-legend">
+        {isLoading ? (
+          //   <div>... chargement en cours</div>
+          <LegendLoader />
+        ) : (
+          <>
+            <h5>
+              <span>{image.title}</span>
+              {", "}
+              <span>{image.place}</span>
+              {", "}
+              <span>{image.year}.</span>
+            </h5>
 
-          <p>{image.context}</p>
-          <p className="other-context">{image.context}</p>
-        </div>
-      )}
+            <p>{image.context}</p>
+            <p className="other-context">{image.context}</p>
+          </>
+        )}
+      </div>
 
       {token && (
         <button className="delete-button" onClick={deleteImage}>
