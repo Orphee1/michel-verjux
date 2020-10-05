@@ -2,7 +2,7 @@
   height: 60rem;
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
-  grid-template-rows: 1fr 60vh 1fr; // ?????
+  grid-template-rows: 10vh 60vh 10vh; // ?????
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
   .menu-custom {

@@ -4,14 +4,14 @@ import ContentLoader from "react-content-loader";
 export default function LegendLoader() {
   return (
     <ContentLoader
-      speed={2}
+      speed={3}
       interval={0.15}
       gradientRatio={2}
       width="100%"
       //       height="100%"
       viewBox="0 0 160 100"
       backgroundColor="white"
-      foregroundColor="#023254"
+      foregroundColor="rgba(2, 50, 84, 0.5)"
     >
       <rect x="15" y="0" rx="4" ry="4" width="200" height="25" />
       <rect x="15" y="30" rx="2" ry="2" width="40" height="15" />

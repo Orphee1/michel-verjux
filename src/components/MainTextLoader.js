@@ -4,13 +4,13 @@ import ContentLoader from "react-content-loader";
 export default function MainTextLoader() {
   return (
     <ContentLoader
-      speed={2}
+      speed={3}
       interval={0.15}
       gradientRatio={2}
       width="100%"
       viewBox="0 -2 100 70"
       backgroundColor="white"
-      foregroundColor="#023254"
+      foregroundColor="rgba(2, 50, 84, 0.5)"
     >
       <rect x="3" y="0" rx="0" ry="0" width="95" height="5" />
       <rect x="3" y="6" rx="0" ry="0" width="75" height="5" />
@@ -48,9 +48,9 @@ export default function MainTextLoader() {
       <rect x="69" y="39" rx="1" ry="1" width="30" height="1" />
       <rect x="69" y="42" rx="1" ry="1" width="30" height="1" />
 
-      <rect x="3" y="48" rx="1" ry="1" width="95" height="2" />
-      <rect x="3" y="53" rx="1" ry="1" width="95" height="2" />
-      <rect x="3" y="58" rx="1" ry="1" width="95" height="2" />
+      <rect x="3" y="48" rx="1" ry="1" width="98" height="2" />
+      <rect x="3" y="53" rx="1" ry="1" width="98" height="2" />
+      <rect x="3" y="58" rx="1" ry="1" width="98" height="2" />
     </ContentLoader>
   );
 }

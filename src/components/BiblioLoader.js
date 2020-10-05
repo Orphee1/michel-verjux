@@ -4,14 +4,14 @@ import ContentLoader from "react-content-loader";
 export default function BiblioLoader() {
   return (
     <ContentLoader
-      speed={2}
+      speed={3}
       interval={0.15}
       gradientRatio={2}
       width="100%"
       //       height="100%"
       viewBox="0 0 100 100"
       backgroundColor="white"
-      foregroundColor="#023254"
+      foregroundColor="rgba(2, 50, 84, 0.5)"
     >
       <rect x="0" y="0" rx="5" ry="5" width="2" height="2" />
       <rect x="6" y="0" rx="2" ry="2" width="90" height="2" />
