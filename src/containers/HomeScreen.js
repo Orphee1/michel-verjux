@@ -13,6 +13,7 @@ import image9s from "../images/image9s.jpg";
 export default function HomeScreen() {
   return (
     <div className="home-page">
+      {/* <div className="circle"></div> */}
       <figure className="home-image-container">
         <Picture
           alt="Michel Verjux"

@@ -121,8 +121,8 @@ export default function BioScreen() {
       <div className="bloc-bio">
         <h4>Bio</h4>
         <p>
-          Michel Verjux est un artiste visuo-spatial contemporain, poète et
-          théoricien de l'art français, né en 1956, à Chalon-sur-Saône.{" "}
+          Michel Verjux est né en 1956 à Chalon-sur-Saône. Il vit et travaille à
+          Paris.
         </p>
         <h4>Contact</h4>
         <p>michel.verjux@gmail.com / 06 84 64 77 59.</p>
@@ -167,7 +167,8 @@ export default function BioScreen() {
                           formData.append("id", biblio._id);
                           const response = await Axios.post(
                             //     "http://localhost:4000/biblio/delete",
-                            "https://michelverjux-backend.herokuapp.com/biblio/delete",
+                            //     "https://michelverjux-backend.herokuapp.com/biblio/delete",
+                            process.env.REACT_APP_WEBADDRESS + "/biblio/delete",
                             formData,
                             {
                               headers: {

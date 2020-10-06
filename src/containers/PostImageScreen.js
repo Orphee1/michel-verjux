@@ -36,13 +36,14 @@ export default function PostImageScreen({ setPost }) {
 
           const response = await Axios.post(
             process.env.REACT_APP_WEBADDRESS + "/image/publish",
-            formData,
-            {
-              headers: {
-                Authorization: "Bearer " + token,
-                "Content-Type": "multipart/form-data",
-              },
-            }
+            formData
+            //     ,
+            //     {
+            //       headers: {
+            //         Authorization: "Bearer " + token,
+            //         "Content-Type": "multipart/form-data",
+            //       },
+            //     }
           );
           console.log(response.data);
           if (response.data) {
@@ -116,7 +117,7 @@ export default function PostImageScreen({ setPost }) {
               ></input>
             </div>
             <div>
-              <h6>Exposition:</h6>
+              <h6>Réalisation:</h6>
 
               <input
                 type="text"

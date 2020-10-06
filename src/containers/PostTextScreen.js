@@ -6,7 +6,7 @@ import "../styles/styles.css";
 export default function PostTextScreen({ setPost }) {
   const [title, setTitle] = useState(undefined);
   const [year, setYear] = useState(undefined);
-  const [context, setContext] = useState("");
+  const [author, setAuthor] = useState("");
   const [article, setArticle] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
@@ -21,7 +21,7 @@ export default function PostTextScreen({ setPost }) {
         const formData = new FormData();
         formData.append("title", title);
         formData.append("year", year);
-        formData.append("context", context);
+        formData.append("author", author);
         formData.append("article", article);
         const response = await Axios.post(
           process.env.REACT_APP_WEBADDRESS + "/text/publish",
@@ -93,12 +93,12 @@ export default function PostTextScreen({ setPost }) {
               ></input>
             </div>
             <div>
-              <h6>Contexte:</h6>
+              <h6>Auteur:</h6>
               <input
                 type="text"
-                value={context}
+                value={author}
                 onChange={(event) => {
-                  setContext(event.target.value);
+                  setAuthor(event.target.value);
                 }}
               ></input>
             </div>

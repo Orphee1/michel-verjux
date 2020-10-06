@@ -77,7 +77,7 @@ export default function SelectedText() {
             <div className="text-container">
               <p>{text.article}</p>
             </div>
-            <p className="texts-page-legend">{text.context}</p>
+            <p className="texts-page-legend">{text.author}</p>
           </>
         )}
       </div>
