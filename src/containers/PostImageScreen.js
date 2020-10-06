@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 export default function PostImageScreen({ setPost }) {
@@ -15,7 +15,7 @@ export default function PostImageScreen({ setPost }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
 
-  const token = Cookie.get("token");
+  //   const token = Cookie.get("token");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
