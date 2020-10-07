@@ -4,7 +4,7 @@ import Axios from "axios";
 import "../styles/styles.css";
 
 export default function PostImageScreen({ setPost }) {
-  //   const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);
   const [title, setTitle] = useState("Sans titre");
   const [year, setYear] = useState(undefined);
   const [context, setContext] = useState(undefined);
@@ -20,47 +20,48 @@ export default function PostImageScreen({ setPost }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    //     if (file !== null) {
-    if (year !== undefined) {
-      setIsLoading(true);
-      try {
-        const formData = new FormData();
-        //   formData.append("picture", file);
-        formData.append("title", title);
-        formData.append("year", year);
-        context !== undefined && formData.append("context", context);
-        place !== undefined && formData.append("place", place);
-        town !== undefined && formData.append("town", town);
-        collect !== undefined && formData.append("collect", collect);
-        credit !== undefined && formData.append("credit", credit);
+    if (file !== null) {
+      if (year !== undefined) {
+        setIsLoading(true);
+        try {
+          const formData = new FormData();
+          //   formData.append("picture", file);
+          formData.append("title", title);
+          formData.append("year", year);
+          context !== undefined && formData.append("context", context);
+          place !== undefined && formData.append("place", place);
+          town !== undefined && formData.append("town", town);
+          collect !== undefined && formData.append("collect", collect);
+          credit !== undefined && formData.append("credit", credit);
+          formData.append("picture", file);
 
-        const response = await Axios.post(
-          process.env.REACT_APP_WEBADDRESS + "/image/publish",
-          formData
-          //     ,
-          //     {
-          //       headers: {
-          //         Authorization: "Bearer " + token,
-          //         "Content-Type": "multipart/form-data",
-          //       },
-          //     }
-        );
-        console.log(response.data);
-        if (response.data) {
-          //     setPost("");
-          setIsLoading(false);
-          setIsPublished(true);
+          const response = await Axios.post(
+            process.env.REACT_APP_WEBADDRESS + "/image/publish",
+            formData
+            //     ,
+            //     {
+            //       headers: {
+            //         Authorization: "Bearer " + token,
+            //         "Content-Type": "multipart/form-data",
+            //       },
+            //     }
+          );
+          console.log(response.data);
+          if (response.data) {
+            //     setPost("");
+            setIsLoading(false);
+            setIsPublished(true);
+          }
+        } catch (error) {
+          console.log(error);
+          alert(error.message);
         }
-      } catch (error) {
-        console.log(error);
-        alert(error.message);
+      } else {
+        alert("Vous devez renseigner l'année");
       }
     } else {
-      alert("Vous devez renseigner l'année");
+      alert("Vous devez charger un fichier");
     }
-    //     } else {
-    //       alert("Vous devez charger un fichier");
-    //     }
   };
 
   return (
@@ -87,7 +88,7 @@ export default function PostImageScreen({ setPost }) {
         </span>
         <form onSubmit={handleSubmit} className="form ">
           <div className="postImage-form-up">
-            {/* <div>
+            <div>
               <h6>Photo:</h6>
               <input
                 type="file"
@@ -95,7 +96,7 @@ export default function PostImageScreen({ setPost }) {
                   setFile(event.target.files[0]);
                 }}
               />
-            </div> */}
+            </div>
             <div>
               <h6>Titre:</h6>
               <input
