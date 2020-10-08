@@ -42,7 +42,6 @@ export default function SelectedText() {
       formData.append("id", id);
 
       const response = await Axios.post(
-        // "http://localhost:4000/text/delete",
         process.env.REACT_APP_WEBADDRESS + "/text/delete",
         formData,
         {
@@ -70,6 +69,7 @@ export default function SelectedText() {
           <div> ... chargement en cours ...</div>
         ) : (
           <>
+            {text.author !== "" && <h6>{text.author}</h6>}
             <h4 className="texts-page-title">
               <span className="guill">"</span>
               {text.title}
@@ -77,7 +77,19 @@ export default function SelectedText() {
             <div className="text-container">
               <p>{text.article}</p>
             </div>
-            <p className="texts-page-legend">{text.author}</p>
+            <p className="texts-page-legend">
+              {text.place !== "" && (
+                <span className="texts-page-legend">{text.place}, </span>
+              )}
+              {text.editor !== "" && (
+                <span className="texts-page-legend">{text.editor}, </span>
+              )}
+              <span className="texts-page-legend">{text.year}</span>
+              {text.traduct !== "" && (
+                <span className="texts-page-legend">, {text.traduct}</span>
+              )}
+              .
+            </p>
           </>
         )}
       </div>

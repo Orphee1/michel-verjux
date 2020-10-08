@@ -110,6 +110,11 @@
       font-weight: bold;
       margin-bottom: 1rem; //????
     }
+    h6 {
+      font-size: 2rem;
+      color: var(--blue);
+      font-weight: lighter;
+    }
 
     .text-container {
       height: 60%;
@@ -153,6 +158,7 @@
       overflow: hidden;
       h5 {
         margin-bottom: 1rem; //?????
+        color: var(--blue);
       }
       p {
         font-style: italic;

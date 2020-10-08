@@ -7,6 +7,7 @@ export default function PostImageScreen({ setPost }) {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("Sans titre");
   const [year, setYear] = useState(undefined);
+  const [medium, setMedium] = useState(undefined);
   const [context, setContext] = useState(undefined);
   const [place, setPlace] = useState(undefined);
   const [town, setTown] = useState(undefined);
@@ -28,6 +29,7 @@ export default function PostImageScreen({ setPost }) {
           formData.append("picture", file);
           formData.append("title", title);
           formData.append("year", year);
+          medium !== undefined && formData.append("medium", medium);
           context !== undefined && formData.append("context", context);
           place !== undefined && formData.append("place", place);
           town !== undefined && formData.append("town", town);
@@ -112,6 +114,16 @@ export default function PostImageScreen({ setPost }) {
                 value={year}
                 onChange={(event) => {
                   setYear(event.target.value);
+                }}
+              ></input>
+            </div>
+            <div>
+              <h6>Médium:</h6>
+              <input
+                type="text"
+                value={medium}
+                onChange={(event) => {
+                  setMedium(event.target.value);
                 }}
               ></input>
             </div>

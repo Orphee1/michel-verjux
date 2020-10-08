@@ -28,7 +28,7 @@ export default function ImageScreen() {
           "&period=" +
           period
       );
-      if (response.data) {
+      if (response.data.length !== 0) {
         console.log(response.data);
         setImages(response.data);
         setIsLoading(false);
@@ -54,7 +54,7 @@ export default function ImageScreen() {
             setBackSort(true);
           }}
         >
-          Début
+          Fin
         </div>
         <div
           className="icon"
@@ -62,7 +62,7 @@ export default function ImageScreen() {
             setBackSort(false);
           }}
         >
-          Fin
+          Début
         </div>
         <div
           className="icon"
@@ -96,7 +96,7 @@ export default function ImageScreen() {
         >
           Toutes les oeuvres
         </div>
-        <div className="label">Afficher</div>
+        <div className="label">Menu</div>
       </div>
 
       <div className="images-page-main-container">
@@ -121,15 +121,9 @@ export default function ImageScreen() {
               />
             </figure>
             <figcaption className="legend-main">
-              {/* <span>Sans-titre, Paris, 2019.</span> */}
-              <span>{images[0].title}</span>
-              {", "}
-              <span>{images[0].place}</span>
-              {", "}
+              <span>{images[0].title}, </span>
+              {images[0].town !== "" && <span>{images[0].town}, </span>}
               <span>{images[0].year}.</span>
-
-              {/* <span> Exposition collective à Chanteloup-les-Vignes.</span> */}
-              <span>{images[0].context}.</span>
             </figcaption>
           </Link>
         )}
@@ -137,7 +131,6 @@ export default function ImageScreen() {
 
       <div className="bloc-other-image">
         {isLoading ? (
-          //   <div>... chargement en cours ...</div>
           <MultipleImagesLoader />
         ) : (
           images.map((image, index) => {
@@ -154,9 +147,9 @@ export default function ImageScreen() {
                 </figure>
 
                 <figcaption className="legend-other">
-                  <span>{image.title}</span>
-                  <span>{image.place}</span>
-                  <span>{image.year}</span>
+                  <span>{image.title}, </span>
+                  {image.town !== "" && <span>{image.town}, </span>}
+                  <span>{image.year}.</span>
                 </figcaption>
               </div>
             );

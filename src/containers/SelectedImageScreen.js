@@ -100,20 +100,26 @@ export default function SelectedImage() {
       </div>
       <div className="bloc-legend">
         {isLoading ? (
-          //   <div>... chargement en cours</div>
           <LegendLoader />
         ) : (
           <>
-            <h5>
-              <span>{image.title}</span>
-              {", "}
-              <span>{image.place}</span>
-              {", "}
-              <span>{image.year}.</span>
-            </h5>
+            <h5 className="legend-title">{image.title}.</h5>
+            <p className="legend-infos">
+              {image.medium !== "" && <span>{image.medium}, </span>}
+              {image.context !== "" && <span>{image.context}, </span>}
+              {image.place !== "" && <span>{image.place}, </span>}
+              {image.town !== "" && <span>{image.town}, </span>}
 
-            <p>{image.context}</p>
-            <p className="other-context">{image.context}</p>
+              <span>{image.year}. </span>
+              {image.collect !== "" && <span>{image.collect}.</span>}
+            </p>
+            <p>
+              {image.credit !== "" && (
+                <span className="legend-credit">
+                  Crédit photo: {image.credit}.
+                </span>
+              )}
+            </p>
           </>
         )}
       </div>

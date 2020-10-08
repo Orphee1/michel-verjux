@@ -6,7 +6,10 @@ import "../styles/styles.css";
 export default function PostTextScreen({ setPost }) {
   const [title, setTitle] = useState(undefined);
   const [year, setYear] = useState(undefined);
+  const [editor, setEditor] = useState("");
   const [author, setAuthor] = useState("");
+  const [traduct, setTraduct] = useState("");
+  const [place, setPlace] = useState("");
   const [article, setArticle] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
@@ -22,6 +25,9 @@ export default function PostTextScreen({ setPost }) {
         formData.append("title", title);
         formData.append("year", year);
         formData.append("author", author);
+        formData.append("traduct", traduct);
+        formData.append("editor", editor);
+        formData.append("place", place);
         formData.append("article", article);
         const response = await Axios.post(
           process.env.REACT_APP_WEBADDRESS + "/text/publish",
@@ -50,7 +56,7 @@ export default function PostTextScreen({ setPost }) {
   };
 
   return (
-    <div className="post-modal">
+    <div className="post-modal-text">
       <div className="loader-container">
         {isLoading && (
           <div className="lds-facebook">
@@ -99,6 +105,36 @@ export default function PostTextScreen({ setPost }) {
                 value={author}
                 onChange={(event) => {
                   setAuthor(event.target.value);
+                }}
+              ></input>
+            </div>
+            <div>
+              <h6>Traducteur:</h6>
+              <input
+                type="text"
+                value={traduct}
+                onChange={(event) => {
+                  setTraduct(event.target.value);
+                }}
+              ></input>
+            </div>
+            <div>
+              <h6>Éditeur:</h6>
+              <input
+                type="text"
+                value={editor}
+                onChange={(event) => {
+                  setEditor(event.target.value);
+                }}
+              ></input>
+            </div>
+            <div>
+              <h6>Ville:</h6>
+              <input
+                type="text"
+                value={place}
+                onChange={(event) => {
+                  setPlace(event.target.value);
                 }}
               ></input>
             </div>

@@ -24,7 +24,7 @@ export default function TextScreen() {
           "&period=" +
           period
       );
-      if (response.data) {
+      if (response.data.length !== 0) {
         console.log(response.data);
         setTexts(response.data);
         setIsLoading(false);
@@ -93,7 +93,7 @@ export default function TextScreen() {
         >
           Toutes les oeuvres
         </div>
-        <div className="label">Afficher</div>
+        <div className="label">Menu</div>
       </div>
 
       <div className="bloc-text-container">
@@ -102,6 +102,10 @@ export default function TextScreen() {
         ) : (
           <Link to={"/selected-text/" + texts[0]._id}>
             <div className="bloc-text">
+              {texts[0].author !== "" && (
+                <h6 className="text-page-author">{texts[0].author}</h6>
+              )}
+
               <h4 className="texts-page-title">
                 <span className="guill">"</span>
                 {texts[0].title}
@@ -110,8 +114,21 @@ export default function TextScreen() {
               <div className="text-container">
                 <p>{texts[0].article}</p>
               </div>
-
-              <p className="texts-page-legend">{texts[0].context}</p>
+              <p className="texts-page-legend">
+                {texts[0].place !== "" && (
+                  <span className="texts-page-legend">{texts[0].place}, </span>
+                )}
+                {texts[0].editor !== "" && (
+                  <span className="texts-page-legend">{texts[0].editor}, </span>
+                )}
+                <span className="texts-page-legend">{texts[0].year}</span>
+                {texts[0].traduct !== "" && (
+                  <span className="texts-page-legend">
+                    , {texts[0].traduct}
+                  </span>
+                )}
+                .
+              </p>
             </div>
           </Link>
         )}

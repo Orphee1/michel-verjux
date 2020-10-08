@@ -41,8 +41,14 @@
     font-family: "Roboto", sans-serif;
     padding-left: 1rem; //?????
     padding-right: 1rem; //?????
-    overflow: scroll;
-    .other-context {
+    overflow: scroll; //????
+    .legend-title {
+      font-style: italic;
+    }
+    .legend-infos {
+      font-weight: lighter;
+    }
+    .legend-credit {
       font-style: italic;
       font-weight: 200;
     }
