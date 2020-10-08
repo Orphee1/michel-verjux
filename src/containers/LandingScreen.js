@@ -7,7 +7,7 @@ export default function LandingScreen() {
   return (
     <div className="landing-page">
       <Link to="/home">
-        <div className="landing-page-container red">
+        <div className="landing-page-container">
           <div className="logo-container">
             <h1 className="">Michel Verjux</h1>
           </div>
