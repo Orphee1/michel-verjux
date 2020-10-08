@@ -22,9 +22,6 @@ import Footer from "./components/Footer.js";
 import "./App.css";
 
 function App() {
-  const [path, setPath] = useState("/");
-  console.log(path);
-
   const token = Cookie.get("token");
   const [user, setUser] = useState({ token: token });
   const [modalLogin, setModalLogin] = useState(false);
@@ -39,14 +36,6 @@ function App() {
           user={user}
         />
       )}
-      {path !== "/" && (
-        <Header
-          setPath={setPath}
-          setModalLogin={setModalLogin}
-          setUser={setUser}
-          setPost={setPost}
-        />
-      )}
 
       <Switch>
         {post === "text" && <PostTextScreen setPost={setPost} />}
@@ -54,28 +43,63 @@ function App() {
         {post === "biblio" && <PostBiblioScreen setPost={setPost} />}
 
         <Route path="/bio">
+          <Header
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            setPost={setPost}
+          />
           <BioScreen />
+          <Footer />
         </Route>
         <Route path="/text">
+          <Header
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            setPost={setPost}
+          />
           <TextScreen />
+          <Footer />
         </Route>
         <Route path="/selected-text/:id">
+          <Header
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            setPost={setPost}
+          />
           <SelectedTScreen />
+          <Footer />
         </Route>
         <Route path="/selected-image/:id">
+          <Header
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            setPost={setPost}
+          />
           <SelectedIScreen />
+          <Footer />
         </Route>
         <Route path="/image">
+          <Header
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            setPost={setPost}
+          />
           <ImageScreen />
+          <Footer />
         </Route>
         <Route path="/home">
+          <Header
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            setPost={setPost}
+          />
           <HomeScreen />
+          <Footer />
         </Route>
         <Route path="/">
-          <LandingScreen path={path} setPath={setPath} />
+          <LandingScreen />
         </Route>
       </Switch>
-      {path !== "/" && <Footer />}
     </Router>
   );
 }

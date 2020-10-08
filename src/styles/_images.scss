@@ -131,6 +131,16 @@
         position: absolute;
         bottom: 0;
         z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        .other-title {
+          width: 85%;
+        }
+        p {
+          color: var(--blue);
+          font-family: "Roboto", sans-serif;
+          font-size: 1.2rem;
+        }
       }
     }
   }

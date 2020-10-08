@@ -51,7 +51,7 @@ export default function ImageScreen() {
         <div
           className="icon"
           onClick={() => {
-            setBackSort(true);
+            setBackSort(false);
           }}
         >
           Fin
@@ -59,7 +59,7 @@ export default function ImageScreen() {
         <div
           className="icon"
           onClick={() => {
-            setBackSort(false);
+            setBackSort(true);
           }}
         >
           Début
@@ -147,55 +147,14 @@ export default function ImageScreen() {
                 </figure>
 
                 <figcaption className="legend-other">
-                  <span>{image.title}, </span>
-                  {image.town !== "" && <span>{image.town}, </span>}
-                  <span>{image.year}.</span>
+                  <div className="other-title">{image.title}</div>
+
+                  <p>{image.year}</p>
                 </figcaption>
               </div>
             );
           })
         )}
-        {/* <div className="other-container">
-          <figure className="other-image-container">
-            <img className="other-image" src={image10s} alt="Michel Verjux" />
-          </figure>
-          <div className="legend-other">Sans Titre, Paris, 2019.</div>
-        </div> */}
-
-        {/* <div className="other-container">
-          <figure className="other-image-container">
-            <img className="other-image" src={image20s} alt="Michel Verjux" />
-            <div className="legend-other">Sans Titre, Paris, 2019.</div>
-          </figure>
-        </div> */}
-
-        {/* <div className="other-container">
-          <figure className="other-image-container">
-            <img className="other-image" src={image13s} alt="Michel Verjux" />
-          </figure>
-          <div className="legend-other">Sans Titre, Paris, 2019.</div>
-        </div> */}
-
-        {/* <div className="other-container">
-          <figure className="other-image-container">
-            <img className="other-image" src={image11s} alt="Michel Verjux" />
-          </figure>
-          <div className="legend-other">Sans Titre, Paris, 2019.</div>
-        </div> */}
-
-        {/* <div className="other-container">
-          <figure className="other-image-container">
-            <img className="other-image" src={image14s} alt="Michel Verjux" />
-          </figure>
-          <div className="legend-other">Sans Titre, Paris, 2019.</div>
-        </div> */}
-
-        {/* <div className="other-container">
-          <figure className="other-image-container">
-            <img className="other-image" src={image25s} alt="" />
-          </figure>
-          <div className="legend-other">Sans Titre, Paris, 2019.</div>
-        </div> */}
       </div>
     </div>
   );
