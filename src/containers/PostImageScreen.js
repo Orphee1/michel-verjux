@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-// import Cookie from "js-cookie";
+import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 export default function PostImageScreen({ setPost }) {
@@ -15,7 +15,7 @@ export default function PostImageScreen({ setPost }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
 
-  //   const token = Cookie.get("token");
+  const token = Cookie.get("token");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +25,7 @@ export default function PostImageScreen({ setPost }) {
         setIsLoading(true);
         try {
           const formData = new FormData();
-          //   formData.append("picture", file);
+          formData.append("picture", file);
           formData.append("title", title);
           formData.append("year", year);
           context !== undefined && formData.append("context", context);
@@ -33,18 +33,16 @@ export default function PostImageScreen({ setPost }) {
           town !== undefined && formData.append("town", town);
           collect !== undefined && formData.append("collect", collect);
           credit !== undefined && formData.append("credit", credit);
-          formData.append("picture", file);
 
           const response = await Axios.post(
             process.env.REACT_APP_WEBADDRESS + "/image/publish",
-            formData
-            //     ,
-            //     {
-            //       headers: {
-            //         Authorization: "Bearer " + token,
-            //         "Content-Type": "multipart/form-data",
-            //       },
-            //     }
+            formData,
+            {
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "multipart/form-data",
+              },
+            }
           );
           console.log(response.data);
           if (response.data) {
