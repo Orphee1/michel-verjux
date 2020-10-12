@@ -68,7 +68,9 @@ export default function Header({ setModalLogin, setUser, setPost }) {
         </li>
         <li>
           <Link to="/text">
-            <span className="hover">Textes</span>
+            <span className="hover"
+          
+            >Textes</span>
           </Link>
         </li>
         <li>

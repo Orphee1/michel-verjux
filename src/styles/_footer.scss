@@ -1,10 +1,11 @@
 .footer {
   min-height: 10vh;
+
   //   height: 10vh;
-  background: var(--blue);
 }
 
 .footer-container {
+  //   background: var(--blue);
   min-height: 10vh;
   display: grid;
   grid-template-columns: 5% repeat(12, 1fr) 5%;
