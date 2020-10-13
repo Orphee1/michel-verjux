@@ -6,7 +6,7 @@ import "../styles/styles.css";
 
 // Components import
 import MainTextLoader from "../components/MainTextLoader";
-import MultipleTextsLoader from "../components/MultipleTextsLoader";
+
 
 export default function TextScreen() {
   const [texts, setTexts] = useState();
@@ -91,7 +91,7 @@ export default function TextScreen() {
             setPeriod("0");
           }}
         >
-          Toutes les oeuvres
+          Tous les textes
         </div>
         <div className="label">Menu</div>
       </div>
@@ -100,61 +100,47 @@ export default function TextScreen() {
         {isLoading ? (
           <MainTextLoader />
         ) : (
-          <Link to={"/selected-text/" + texts[0]._id}>
+                texts.map((text, index) => {
+return (
+          <Link 
+          key={index}
+          to={"/selected-text/" + text._id}>
             <div className="bloc-text">
-              {texts[0].author !== "" && (
-                <h6 className="text-page-author">{texts[0].author}</h6>
-              )}
+              {/* {text.author !== "" && (
+                <h6 className="text-page-author">{text.author}</h6>
+              )} */}
 
               <h4 className="texts-page-title">
                 <span className="guill">"</span>
-                {texts[0].title}
+                {text.title}
               </h4>
 
               <div className="text-container">
-                <p>{texts[0].article}</p>
+                <p>{text.article}</p>
               </div>
               <p className="texts-page-legend">
-                {texts[0].place !== "" && (
-                  <span className="texts-page-legend">{texts[0].place}, </span>
+                {text.place !== "" && (
+                  <span className="texts-page-legend">{text.place}, </span>
                 )}
-                {texts[0].editor !== "" && (
-                  <span className="texts-page-legend">{texts[0].editor}, </span>
+                {text.editor !== "" && (
+                  <span className="texts-page-legend">{text.editor}, </span>
                 )}
-                <span className="texts-page-legend">{texts[0].year}</span>
-                {texts[0].traduct !== "" && (
+                <span className="texts-page-legend">{text.year}</span>
+                {text.traduct !== "" && (
                   <span className="texts-page-legend">
-                    , {texts[0].traduct}
+                    , {text.traduct}
                   </span>
                 )}
                 .
               </p>
             </div>
+            
           </Link>
+          );
+        })
         )}
       </div>
-      <div className="bloc-other-text">
-        {isLoading ? (
-          <MultipleTextsLoader />
-        ) : (
-          texts.map((text, index) => {
-            return (
-              <div key={index} className="other-text">
-                <Link to={"/selected-text/" + text._id}>
-                  <h5 className="">
-                    {" "}
-                    <span style={{ fontWeight: "bold", fontSize: "2.5rem" }}>
-                      "
-                    </span>
-                    {text.title}
-                  </h5>
-                  <p>{text.article}</p>
-                </Link>
-              </div>
-            );
-          })
-        )}
-      </div>
+
     </div>
   );
 }

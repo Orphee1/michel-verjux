@@ -55,6 +55,12 @@
     }
     .legend-infos {
       font-weight: lighter;
+      .medium {
+        text-transform: capitalize;
+      }
+      .collect {
+        text-transform: capitalize;
+      }
     }
     .legend-credit {
       font-style: italic;

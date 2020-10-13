@@ -63,13 +63,17 @@ export default function SelectedText() {
 
   return (
     <div className="selected-text-page">
-      <div className="menu-text"></div>
+      <div className="info-text">
+              {!isLoading && (
+                      <h6>{text.year}</h6>
+              )}
+      </div>
       <div className="selected-text">
         {isLoading ? (
           <div> ... chargement en cours ...</div>
         ) : (
           <>
-            {text.author !== "" && <h6>{text.author}</h6>}
+            {text.author !== "" && <h6>Auteur: {text.author}</h6>}
             <h4 className="texts-page-title">
               <span className="guill">"</span>
               {text.title}

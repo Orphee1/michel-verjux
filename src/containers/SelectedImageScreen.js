@@ -111,13 +111,17 @@ export default function SelectedImage() {
           <>
             <h5 className="legend-title">{image.title}.</h5>
             <p className="legend-infos">
-              {image.medium !== "" && <span>{image.medium}, </span>}
+              {image.medium !== "" && <span
+              className="medium"
+              >{image.medium}, </span>}
               {image.context !== "" && <span>{image.context}, </span>}
               {image.place !== "" && <span>{image.place}, </span>}
               {image.town !== "" && <span>{image.town}, </span>}
 
               <span>{image.year}. </span>
-              {image.collect !== "" && <span>{image.collect}.</span>}
+              {image.collect !== "" && <span
+              className="collect"
+              >{image.collect}.</span>}
             </p>
             <p>
               {image.credit !== "" && (
