@@ -1,6 +1,7 @@
 .carouselX {
   height: stretch;
   width: 102%;
+  background: white;
   .carousel-text {
     display: flex;
     flex-direction: column;
@@ -14,17 +15,25 @@
     overflow: hidden;
     .title {
       text-align: left;
+      line-height: 98%;
       background: white;
       padding-bottom: 1rem;
       font-weight: 500;
+      margin-left: 2rem;
+      position: relative;
+      .quotes {
+        position: absolute;
+        top: 1rem;
+        left: -2rem;
+      }
     }
     .middle {
       height: fit-content;
       text-align: left;
+      padding-top: 0.5rem;
+      padding-bottom: 2rem;
+      font-weight: 200;
       background: white;
-      padding-bottom: 1rem;
-      font-weight: 300;
-      position: relative;
     }
     .bottom {
       font-style: italic;
@@ -37,5 +46,6 @@
   .carousel-image {
     height: stretch;
     display: flex;
+    background: white;
   }
 }

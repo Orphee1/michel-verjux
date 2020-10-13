@@ -69,7 +69,13 @@ export default function SelectedImage() {
 
   return (
     <div className="selected-image-page">
-      <div className="menu-image"></div>
+      <div className="info-image">
+              {!isLoading && (
+   <h6
+   >{image.year}</h6>
+              )}
+           
+      </div>
       <div className="selected-image-container">
         {isLoading ? (
           <SelectedImageLoader />

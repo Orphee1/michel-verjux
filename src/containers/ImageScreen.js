@@ -5,6 +5,7 @@ import Axios from "axios";
 
 import "../styles/styles.css";
 
+
 // Components import
 import MainImageLoader from "../components/MainImageLoader";
 import MultipleImagesLoader from "../components/MultipleImagesLoader";
@@ -133,7 +134,8 @@ export default function ImageScreen() {
         {isLoading ? (
           <MultipleImagesLoader />
         ) : (
-          images.map((image, index) => {
+                
+          images.slice(1).map((image, index) => {
             return (
               <div key={index} className="other-container">
                 <figure className="other-image-container">

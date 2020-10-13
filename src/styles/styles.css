@@ -994,7 +994,7 @@ body {
   grid-column-gap: 1rem;
 }
 
-.selected-image-page .menu-image {
+.selected-image-page .info-image {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -1005,6 +1005,21 @@ body {
   border-radius: 0 4rem 4rem 0;
   height: 7rem;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.selected-image-page .info-image h6 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  padding-right: 1.5rem;
 }
 
 .selected-image-page .selected-image-container {
@@ -1864,6 +1879,7 @@ body {
   height: -moz-available;
   height: stretch;
   width: 102%;
+  background: white;
 }
 
 .carouselX .carousel-text {
@@ -1890,9 +1906,18 @@ body {
 
 .carouselX .carousel-text .title {
   text-align: left;
+  line-height: 98%;
   background: white;
   padding-bottom: 1rem;
   font-weight: 500;
+  margin-left: 2rem;
+  position: relative;
+}
+
+.carouselX .carousel-text .title .quotes {
+  position: absolute;
+  top: 1rem;
+  left: -2rem;
 }
 
 .carouselX .carousel-text .middle {
@@ -1900,10 +1925,10 @@ body {
   height: -moz-fit-content;
   height: fit-content;
   text-align: left;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  font-weight: 200;
   background: white;
-  padding-bottom: 1rem;
-  font-weight: 300;
-  position: relative;
 }
 
 .carouselX .carousel-text .bottom {
@@ -1921,6 +1946,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background: white;
 }
 
 ul,

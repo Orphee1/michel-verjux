@@ -8,7 +8,7 @@ import "../styles/styles.css";
 
 
 
-const MyCarousel = ({texttitle, article, image}) => {
+const MyCarousel = ({texts, images}) => {
   return (
     <Carousel
           autoPlay infiniteLoop
@@ -20,35 +20,35 @@ const MyCarousel = ({texttitle, article, image}) => {
       transitionTime={2000}
       className="carouselX"
     >
-            <Link
-            to="/text"
-            >
-           
-      <div className="carousel-text">
-        <h5 className="title">
-          <span style={{ fontWeight: "bold", fontSize: "5.5rem" }}>"</span>
-          {texttitle}
-        </h5>
-        <p className="middle">
-                {article}  
-        </p>
+                        <Link        
+                        to="/text"
+                        >         
+                  <div className="carousel-text">
+                    <h5 className="title">
+                      <span 
+                      className="quotes"
+                      style={{ fontWeight: "bold", fontSize: "5.5rem" }}>"</span>
+                      {texts.title}
+                    </h5>
+                    <p className="middle">
+                            {texts.article}  
+                    </p> 
+                    </div>
+      </Link> 
+       
 
-      
-      </div>
-      </Link>
       <Link
       to="/image"
       >
       <div className="carousel-image">
-           
-   <img 
-
-   src={image}
-   alt='MichelVerjux'
-   />
-   
+                        <img 
+                        src={images.picture}
+                        alt='MichelVerjux'
+                        />
       </div>
+     
       </Link>
+
     </Carousel>
   );
 };

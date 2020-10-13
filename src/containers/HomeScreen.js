@@ -73,9 +73,8 @@ useEffect(() => {
 <CarouselLoader />
                ): (
                 <MyCarousel className="carousel" 
-                texttitle={texts[0].title}
-                article={texts[0].article}  
-                image={images[0].picture}
+                texts={texts[0]}
+                images={images[0]}
                 />
               )}
    
