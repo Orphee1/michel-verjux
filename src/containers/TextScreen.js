@@ -96,7 +96,7 @@ export default function TextScreen() {
         <div className="label">Menu</div>
       </div>
 
-      <div className="bloc-text-container">
+      <div className="bloc-text-container"> 
         {isLoading ? (
           <MainTextLoader />
         ) : (
@@ -106,9 +106,7 @@ return (
           key={index}
           to={"/selected-text/" + text._id}>
             <div className="bloc-text">
-              {/* {text.author !== "" && (
-                <h6 className="text-page-author">{text.author}</h6>
-              )} */}
+            
 
               <h4 className="texts-page-title">
                 <span className="guill">"</span>

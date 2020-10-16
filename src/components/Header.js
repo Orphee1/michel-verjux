@@ -32,7 +32,8 @@ export default function Header({ setModalLogin, setUser, setPost }) {
                 Se déconnecter
               </span>
             </li>
-            <li>
+            <li
+            >
               <select
                 className="post-selecter"
                 onChange={(event) => {

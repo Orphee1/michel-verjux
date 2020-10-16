@@ -49,18 +49,18 @@
 
 @media (max-width: 1200px /*  */) {
   .nav {
-    grid-template-columns: 5% repeat(4, 1fr) 5%;
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto auto;
     min-height: 5vh;
     .logo-nav {
-      grid-column: 2/6;
+      grid-column: 2/7;
       grid-row: 1/2;
       .hover-h2:hover {
-        border-bottom: 0rem solid var(--blue);
+        border-bottom: 0.3rem solid var(--blue);
       }
     }
     .mini-nav {
-      grid-column: 3/5;
+      grid-column: 2/7;
       grid-row: 2/3;
     }
   }
@@ -73,9 +73,11 @@
       grid-row: 1/2;
       flex-direction: column;
       align-items: center;
+      .hover-h2:hover {
+        border-bottom: 0rem solid var(--blue);
+      }
       li {
         width: 100vw;
-        border-bottom: 1px solid var(--blue);
         display: flex;
         align-items: center;
         padding-top: 0.5rem;
@@ -89,6 +91,7 @@
       .second-li {
         height: 5rem;
         background: var(--blue);
+        display: none;
         span {
           color: white;
         }

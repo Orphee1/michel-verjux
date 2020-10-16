@@ -12,6 +12,7 @@ const MyCarousel = ({texts, images}) => {
   return (
     <Carousel
           autoPlay infiniteLoop
+        //   dynamicHeight
           stopOnHover={true}
       showThumbs={false}
       showStatus={false}
@@ -19,6 +20,7 @@ const MyCarousel = ({texts, images}) => {
       interval={5500}
       transitionTime={2000}
       className="carouselX"
+      
     >
                         <Link        
                         to="/text"

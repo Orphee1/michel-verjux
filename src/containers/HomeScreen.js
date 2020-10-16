@@ -68,7 +68,7 @@ useEffect(() => {
         />
       </figure>
       <h6 className="current">En cours</h6>
-      <div className="bloc-carousel ">
+      <div className="bloc-carousel">
               {isLoading ? (
 <CarouselLoader />
                ): (

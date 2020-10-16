@@ -57,3 +57,16 @@
     }
   }
 }
+
+@media (max-width: 1000px /*  */) {
+  .login-modal {
+    .login-modal-content {
+      position: relative;
+      .login-cross {
+        position: absolute;
+        left: 50rem;
+        top: -3rem;
+      }
+    }
+  }
+}
