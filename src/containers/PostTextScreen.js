@@ -135,7 +135,7 @@ export default function PostTextScreen({ setPost }) {
               ></input>
             </div>
             <div>
-              <h6>Éditeur:</h6>}
+              <h6>Éditeur:</h6>
               <input
                 type="text"
                 id="editor"
