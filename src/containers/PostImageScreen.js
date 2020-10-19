@@ -4,37 +4,48 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 export default function PostImageScreen({ setPost }) {
-  const [file, setFile] = useState(null);
-  const [title, setTitle] = useState("Sans titre");
-  const [year, setYear] = useState(undefined);
-  const [medium, setMedium] = useState(undefined);
-  const [context, setContext] = useState(undefined);
-  const [place, setPlace] = useState(undefined);
-  const [town, setTown] = useState(undefined);
-  const [collect, setCollect] = useState(undefined);
-  const [credit, setCredit] = useState(undefined);
+  const [image, setImage] = useState({
+    picture: null,
+    title: "",
+    year: "",
+    medium: "",
+    context: "",
+    place: "",
+    town: "",
+    collect: "",
+    credit: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
 
   const token = Cookie.get("token");
 
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setImage({ ...image, [name]: value });
+  };
+  const postFile = (event) => {
+    setImage({ ...image, picture: event.target.files[0] });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (file !== null) {
-      if (year !== undefined) {
+    if (image.picture !== null) {
+      if (image.year) {
         setIsLoading(true);
         try {
           const formData = new FormData();
-          formData.append("picture", file);
-          formData.append("title", title);
-          formData.append("year", year);
-          medium !== undefined && formData.append("medium", medium);
-          context !== undefined && formData.append("context", context);
-          place !== undefined && formData.append("place", place);
-          town !== undefined && formData.append("town", town);
-          collect !== undefined && formData.append("collect", collect);
-          credit !== undefined && formData.append("credit", credit);
+          formData.append("picture", image.picture);
+          formData.append("title", image.title);
+          formData.append("year", image.year);
+          image.medium && formData.append("medium", image.medium);
+          image.context && formData.append("context", image.context);
+          image.place && formData.append("place", image.place);
+          image.town && formData.append("town", image.town);
+          image.collect && formData.append("collect", image.collect);
+          image.credit && formData.append("credit", image.credit);
 
           const response = await Axios.post(
             process.env.REACT_APP_WEBADDRESS + "/image/publish",
@@ -46,9 +57,19 @@ export default function PostImageScreen({ setPost }) {
               },
             }
           );
-          console.log(response.data);
+          setImage({
+            picture: null,
+            title: "",
+            year: "",
+            medium: "",
+            context: "",
+            place: "",
+            town: "",
+            collect: "",
+            credit: "",
+          });
+
           if (response.data) {
-            //     setPost("");
             setIsLoading(false);
             setIsPublished(true);
           }
@@ -90,52 +111,42 @@ export default function PostImageScreen({ setPost }) {
           <div className="postImage-form-up">
             <div>
               <h6>Photo:</h6>
-              <input
-                type="file"
-                onChange={(event) => {
-                  setFile(event.target.files[0]);
-                }}
-              />
+              <input type="file" onChange={postFile} />
             </div>
             <div>
               <h6>Titre:</h6>
               <input
                 type="text"
-                value={title}
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
+                name="title"
+                value={image.title}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Année:</h6>
               <input
-                type="number"
-                value={year}
-                onChange={(event) => {
-                  setYear(event.target.value);
-                }}
+                type="text"
+                name="year"
+                value={image.year}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Médium:</h6>
               <input
                 type="text"
-                value={medium}
-                onChange={(event) => {
-                  setMedium(event.target.value);
-                }}
+                name="medium"
+                value={image.medium}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Réalisation:</h6>
-
               <input
                 type="text"
-                value={context}
-                onChange={(event) => {
-                  setContext(event.target.value);
-                }}
+                name="context"
+                value={image.context}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
@@ -143,42 +154,36 @@ export default function PostImageScreen({ setPost }) {
 
               <input
                 type="text"
-                value={place}
-                onChange={(event) => {
-                  setPlace(event.target.value);
-                }}
+                name="place"
+                value={image.place}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Ville:</h6>
-
               <input
                 type="text"
-                value={town}
-                onChange={(event) => {
-                  setTown(event.target.value);
-                }}
+                name="town"
+                value={image.town}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Collection:</h6>
-
               <input
                 type="text"
-                value={collect}
-                onChange={(event) => {
-                  setCollect(event.target.value);
-                }}
+                name="collect"
+                value={image.collect}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Crédit photo:</h6>
               <input
                 type="text"
-                value={credit}
-                onChange={(event) => {
-                  setCredit(event.target.value);
-                }}
+                name="credit"
+                value={image.credit}
+                onChange={handleChange}
               ></input>
             </div>
           </div>

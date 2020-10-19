@@ -41,7 +41,7 @@ export default function BioScreen() {
   }, []);
 
   return (
-    <div className="bio-page">
+    <section className="bio-page">
       <div className="margin-left remove600"></div>
       <div className="margin-right remove600"></div>
       <div className="bloc-image-reference">
@@ -270,6 +270,6 @@ export default function BioScreen() {
           ]}
         />
       </div>
-    </div>
+    </section>
   );
 }

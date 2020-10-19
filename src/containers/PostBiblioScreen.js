@@ -4,25 +4,33 @@ import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 export default function PostBiblioScreen({ setPost }) {
-  const [title, setTitle] = useState(undefined);
-  const [editor, setEditor] = useState(undefined);
-  const [collect, setCollect] = useState();
-  const [year, setYear] = useState(undefined);
+  const [biblio, setBiblio] = useState({
+    title: "",
+    editor: "",
+    collect: "",
+    year: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
 
   const token = Cookie.get("token");
 
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setBiblio({ ...biblio, [name]: value });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (title !== undefined && editor !== undefined && year !== undefined) {
+    if (biblio.title && biblio.editor && biblio.year) {
       setIsLoading(true);
       try {
         const formData = new FormData();
-        formData.append("title", title);
-        formData.append("editor", editor);
-        formData.append("collect", collect);
-        formData.append("year", year);
+        formData.append("title", biblio.title);
+        formData.append("editor", biblio.editor);
+        formData.append("collect", biblio.collect);
+        formData.append("year", biblio.year);
         const response = await Axios.post(
           process.env.REACT_APP_WEBADDRESS + "/biblio/publish",
           formData,
@@ -33,11 +41,16 @@ export default function PostBiblioScreen({ setPost }) {
             },
           }
         );
+        setBiblio({
+          title: "",
+          editor: "",
+          collect: "",
+          year: "",
+        });
         if (response.data) {
           console.log(response.data);
           setIsLoading(false);
           setIsPublished(true);
-          //   setPost("");
         }
       } catch (error) {
         console.log(error);
@@ -75,40 +88,36 @@ export default function PostBiblioScreen({ setPost }) {
               <h6>Titre:</h6>
               <input
                 type="text"
-                value={title}
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
+                name="title"
+                value={biblio.title}
+                onChange={handleChange}
               />
             </div>
             <div>
               <h6>Éditeur:</h6>
               <input
                 type="text"
-                value={editor}
-                onChange={(event) => {
-                  setEditor(event.target.value);
-                }}
+                name="editor"
+                value={biblio.editor}
+                onChange={handleChange}
               />
             </div>
             <div>
               <h6>Collection:</h6>
               <input
                 type="text"
-                value={collect}
-                onChange={(event) => {
-                  setCollect(event.target.value);
-                }}
+                name="collect"
+                value={biblio.collect}
+                onChange={handleChange}
               />
             </div>
             <div>
               <h6>Année:</h6>
               <input
-                type="number"
-                value={year}
-                onChange={(event) => {
-                  setYear(event.target.value);
-                }}
+                type="text"
+                name="year"
+                value={biblio.year}
+                onChange={handleChange}
               />
             </div>
           </div>

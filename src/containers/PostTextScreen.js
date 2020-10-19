@@ -4,31 +4,39 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 export default function PostTextScreen({ setPost }) {
-  const [title, setTitle] = useState(undefined);
-  const [year, setYear] = useState(undefined);
-  const [editor, setEditor] = useState("");
-  const [author, setAuthor] = useState("");
-  const [traduct, setTraduct] = useState("");
-  const [place, setPlace] = useState("");
-  const [article, setArticle] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
+  const [text, setText] = useState({
+    title: "",
+    year: "",
+    editor: "",
+    author: "",
+    traduct: "",
+    place: "",
+    article: "",
+  });
 
   const token = Cookie.get("token");
 
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setText({ ...text, [name]: value });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (title !== undefined && year !== undefined && article !== undefined) {
-      setIsLoading(true);
+    setIsLoading(true);
+    if (text.title && text.article && text.year) {
       try {
         const formData = new FormData();
-        formData.append("title", title);
-        formData.append("year", year);
-        formData.append("author", author);
-        formData.append("traduct", traduct);
-        formData.append("editor", editor);
-        formData.append("place", place);
-        formData.append("article", article);
+        formData.append("title", text.title);
+        formData.append("year", text.year);
+        formData.append("author", text.author);
+        formData.append("traduct", text.traduct);
+        formData.append("editor", text.editor);
+        formData.append("place", text.place);
+        formData.append("article", text.article);
         const response = await Axios.post(
           process.env.REACT_APP_WEBADDRESS + "/text/publish",
           formData,
@@ -39,12 +47,20 @@ export default function PostTextScreen({ setPost }) {
             },
           }
         );
+        setText({
+          title: "",
+          year: "",
+          editor: "",
+          author: "",
+          traduct: "",
+          place: "",
+          article: "",
+        });
 
         if (response.data) {
           console.log(response.data);
           setIsLoading(false);
           setIsPublished(true);
-          // setPost("");
         }
       } catch (error) {
         console.log(error);
@@ -56,7 +72,7 @@ export default function PostTextScreen({ setPost }) {
   };
 
   return (
-    <div className="post-modal-text">
+    <section className="post-modal-text">
       <div className="loader-container">
         {isLoading && (
           <div className="lds-facebook">
@@ -82,60 +98,60 @@ export default function PostTextScreen({ setPost }) {
               <h6>Titre:</h6>
               <input
                 type="text"
-                value={title}
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
+                id="title"
+                name="title"
+                value={text.title}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Année de publication:</h6>
               <input
-                type="number"
-                value={year}
-                onChange={(event) => {
-                  setYear(event.target.value);
-                }}
+                type="text"
+                id="year"
+                name="year"
+                value={text.year}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Auteur:</h6>
               <input
                 type="text"
-                value={author}
-                onChange={(event) => {
-                  setAuthor(event.target.value);
-                }}
+                id="author"
+                name="author"
+                value={text.author}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Traducteur:</h6>
               <input
                 type="text"
-                value={traduct}
-                onChange={(event) => {
-                  setTraduct(event.target.value);
-                }}
+                id="traduct"
+                name="traduct"
+                value={text.traduct}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
-              <h6>Éditeur:</h6>
+              <h6>Éditeur:</h6>}
               <input
                 type="text"
-                value={editor}
-                onChange={(event) => {
-                  setEditor(event.target.value);
-                }}
+                id="editor"
+                name="editor"
+                value={text.editor}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
               <h6>Ville:</h6>
               <input
                 type="text"
-                value={place}
-                onChange={(event) => {
-                  setPlace(event.target.value);
-                }}
+                id="place"
+                name="place"
+                value={text.place}
+                onChange={handleChange}
               ></input>
             </div>
             <div>
@@ -144,12 +160,11 @@ export default function PostTextScreen({ setPost }) {
                 rows="8"
                 cols="35"
                 //     type="text"
-                value={article}
-                onChange={(event) => {
-                  setArticle(event.target.value);
-                }}
+                id="article"
+                name="article"
+                value={text.article}
+                onChange={handleChange}
               ></textarea>
-              {/* <input></input> */}
             </div>
           </div>
           <div className="postText-form-down">
@@ -157,6 +172,6 @@ export default function PostTextScreen({ setPost }) {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
