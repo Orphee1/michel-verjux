@@ -7,7 +7,6 @@ import "../styles/styles.css";
 // Components import
 import MainTextLoader from "../components/MainTextLoader";
 
-
 export default function TextScreen() {
   const [texts, setTexts] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -96,49 +95,43 @@ export default function TextScreen() {
         <div className="label">Menu</div>
       </div>
 
-      <div className="bloc-text-container"> 
+      <div className="bloc-text-container">
         {isLoading ? (
           <MainTextLoader />
         ) : (
-                texts.map((text, index) => {
-return (
-          <Link 
-          key={index}
-          to={"/selected-text/" + text._id}>
-            <div className="bloc-text">
-            
+          texts.map((text, index) => {
+            return (
+              <Link key={index} to={"/selected-text/" + text._id}>
+                <div className="bloc-text">
+                  <h4 className="texts-page-title">
+                    <span className="guill">"</span>
+                    {text.title}
+                  </h4>
 
-              <h4 className="texts-page-title">
-                <span className="guill">"</span>
-                {text.title}
-              </h4>
-
-              <div className="text-container">
-                <p>{text.article}</p>
-              </div>
-              <p className="texts-page-legend">
-                {text.place !== "" && (
-                  <span className="texts-page-legend">{text.place}, </span>
-                )}
-                {text.editor !== "" && (
-                  <span className="texts-page-legend">{text.editor}, </span>
-                )}
-                <span className="texts-page-legend">{text.year}</span>
-                {text.traduct !== "" && (
-                  <span className="texts-page-legend">
-                    , {text.traduct}
-                  </span>
-                )}
-                .
-              </p>
-            </div>
-            
-          </Link>
-          );
-        })
+                  <div className="text-container">
+                    <p>{text.article}</p>
+                  </div>
+                  <p className="texts-page-legend">
+                    {text.place !== "" && (
+                      <span className="texts-page-legend">{text.place}, </span>
+                    )}
+                    {text.editor !== "" && (
+                      <span className="texts-page-legend">{text.editor}, </span>
+                    )}
+                    <span className="texts-page-legend">{text.year}</span>
+                    {text.traduct !== "" && (
+                      <span className="texts-page-legend">
+                        , {text.traduct}
+                      </span>
+                    )}
+                    .
+                  </p>
+                </div>
+              </Link>
+            );
+          })
         )}
       </div>
-
     </div>
   );
 }

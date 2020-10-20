@@ -32,8 +32,7 @@ export default function Header({ setModalLogin, setUser, setPost }) {
                 Se déconnecter
               </span>
             </li>
-            <li
-            >
+            <li>
               <select
                 className="post-selecter"
                 onChange={(event) => {
@@ -69,15 +68,13 @@ export default function Header({ setModalLogin, setUser, setPost }) {
         </li>
         <li>
           <Link to="/text">
-            <span className="hover"
-          
-            >Textes</span>
+            <span className="hover">Textes</span>
           </Link>
         </li>
         <li>
-          <Link to="/bio">
-            <span className="hover">Bio/Biblio</span>
-          </Link>
+          {/* <Link to="/bio"> */}
+          <span className="hover">Bio/Biblio</span>
+          {/* </Link> */}
         </li>
       </ul>
     </div>
