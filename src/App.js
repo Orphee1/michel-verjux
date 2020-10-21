@@ -19,6 +19,9 @@ import PostBiblioScreen from "./containers/PostBiblioScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer.js";
 
+// Context import
+import { ThemeContextProvider } from "./context/ThemeContext";
+
 import "./App.css";
 
 function App() {
@@ -36,70 +39,71 @@ function App() {
           user={user}
         />
       )}
+      <ThemeContextProvider>
+        <Switch>
+          {post === "text" && <PostTextScreen setPost={setPost} />}
+          {post === "image" && <PostImageScreen setPost={setPost} />}
+          {post === "biblio" && <PostBiblioScreen setPost={setPost} />}
 
-      <Switch>
-        {post === "text" && <PostTextScreen setPost={setPost} />}
-        {post === "image" && <PostImageScreen setPost={setPost} />}
-        {post === "biblio" && <PostBiblioScreen setPost={setPost} />}
-
-        <Route path="/bio">
-          <Header
-            setModalLogin={setModalLogin}
-            setUser={setUser}
-            setPost={setPost}
-          />
-          <BioScreen />
-          <Footer />
-        </Route>
-        <Route path="/text">
-          <Header
-            setModalLogin={setModalLogin}
-            setUser={setUser}
-            setPost={setPost}
-          />
-          <TextScreen />
-          <Footer />
-        </Route>
-        <Route path="/selected-text/:id">
-          <Header
-            setModalLogin={setModalLogin}
-            setUser={setUser}
-            setPost={setPost}
-          />
-          <SelectedTScreen />
-          <Footer />
-        </Route>
-        <Route path="/selected-image/:id">
-          <Header
-            setModalLogin={setModalLogin}
-            setUser={setUser}
-            setPost={setPost}
-          />
-          <SelectedIScreen />
-          <Footer />
-        </Route>
-        <Route path="/image">
-          <Header
-            setModalLogin={setModalLogin}
-            setUser={setUser}
-            setPost={setPost}
-          />
-          <ImageScreen />
-          <Footer />
-        </Route>
-        <Route path="/home">
-          <Header
-            setModalLogin={setModalLogin}
-            setUser={setUser}
-            setPost={setPost}
-          />
-          <HomeScreen />
-          <Footer />
-        </Route>
-        <Route path="/">
-          <LandingScreen />
-        </Route>
-      </Switch>
+          <Route path="/bio">
+            <Header
+              setModalLogin={setModalLogin}
+              setUser={setUser}
+              setPost={setPost}
+            />
+            <BioScreen />
+            <Footer />
+          </Route>
+          <Route path="/text">
+            <Header
+              setModalLogin={setModalLogin}
+              setUser={setUser}
+              setPost={setPost}
+            />
+            <TextScreen />
+            <Footer />
+          </Route>
+          <Route path="/selected-text/:id">
+            <Header
+              setModalLogin={setModalLogin}
+              setUser={setUser}
+              setPost={setPost}
+            />
+            <SelectedTScreen />
+            <Footer />
+          </Route>
+          <Route path="/selected-image/:id">
+            <Header
+              setModalLogin={setModalLogin}
+              setUser={setUser}
+              setPost={setPost}
+            />
+            <SelectedIScreen />
+            <Footer />
+          </Route>
+          <Route path="/image">
+            <Header
+              setModalLogin={setModalLogin}
+              setUser={setUser}
+              setPost={setPost}
+            />
+            <ImageScreen />
+            <Footer />
+          </Route>
+          <Route path="/home">
+            <Header
+              setModalLogin={setModalLogin}
+              setUser={setUser}
+              setPost={setPost}
+            />
+            <HomeScreen />
+            <Footer />
+          </Route>
+          <Route path="/">
+            <LandingScreen />
+          </Route>
+        </Switch>
+      </ThemeContextProvider>
     </Router>
   );
 }

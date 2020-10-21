@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Picture } from "react-responsive-picture";
-import Axios from "axios"; 
+import Axios from "axios";
+import { ThemeContext } from "../context/ThemeContext";
 
 import "../styles/styles.css";
 
@@ -12,41 +13,54 @@ import CarouselLoader from "../components/CarouselLoader";
 import image9 from "../images/image9.png";
 import image9s from "../images/image9s.jpg";
 
-
 export default function HomeScreen() {
-const [images, setImages] = useState(); 
-const [texts, setTexts] = useState(); 
-const [isLoading, setIsLoading] = useState(true); 
+  // Theme definition
+  const [theme] = useContext(ThemeContext);
+  const { themeSelected, themeOne, themeTwo } = theme;
+  let option;
+  switch (themeSelected) {
+    case true:
+      option = themeOne;
+      break;
+    case false:
+      option = themeTwo;
+      break;
+    default:
+      console.log("default");
+  }
+  const [images, setImages] = useState();
+  const [texts, setTexts] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-const fetchData =  async () => {
-        try {
-const response = await Axios.get(process.env.REACT_APP_WEBADDRESS + "/images"); 
-if (response.data) {
-        console.log(response.data); 
-        setImages(response.data); 
-}
-const responseText =  await Axios.get(process.env.REACT_APP_WEBADDRESS + "/texts"); 
-if (responseText.data) {
-        console.log(responseText.data); 
-        setTexts(responseText.data); 
-        setIsLoading(false); 
+  const fetchData = async () => {
+    try {
+      const response = await Axios.get(
+        process.env.REACT_APP_WEBADDRESS + "/images"
+      );
+      if (response.data) {
+        console.log(response.data);
+        setImages(response.data);
+      }
+      const responseText = await Axios.get(
+        process.env.REACT_APP_WEBADDRESS + "/texts"
+      );
+      if (responseText.data) {
+        console.log(responseText.data);
+        setTexts(responseText.data);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
+  };
 
-}
-        } catch (error) {
-                console.log(error);
-                alert(error.message); 
-        }
-
-};
-
-
-useEffect(() => {
-        fetchData(); 
-}, []); 
-
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
-    <div className="home-page">  
+    <div className="home-page" style={{ background: option.bg }}>
       <figure className="home-image-container">
         <Picture
           alt="Michel Verjux"
@@ -67,17 +81,19 @@ useEffect(() => {
           ]}
         />
       </figure>
-      <h6 className="current">En cours</h6>
+      <h6 className="current" style={{ color: option.syntax }}>
+        En cours
+      </h6>
       <div className="bloc-carousel">
-              {isLoading ? (
-<CarouselLoader />
-               ): (
-                <MyCarousel className="carousel" 
-                texts={texts[0]}
-                images={images[0]}
-                />
-              )}
-   
+        {isLoading ? (
+          <CarouselLoader />
+        ) : (
+          <MyCarousel
+            className="carousel"
+            texts={texts[0]}
+            images={images[0]}
+          />
+        )}
       </div>
     </div>
   );

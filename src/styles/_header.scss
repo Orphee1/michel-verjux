@@ -30,6 +30,10 @@
     border-bottom: 0.3rem solid var(--blue);
     transition: width 0.7s ease;
   }
+  .hover-h22:hover {
+    border-bottom: 0.3rem solid white;
+    transition: width 0.7s ease;
+  }
 
   .hover:hover {
     border-bottom: 0.3rem solid var(--blue);

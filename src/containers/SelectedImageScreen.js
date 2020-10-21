@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import { Picture } from "react-responsive-picture";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
@@ -11,6 +12,21 @@ import SelectedImageLoader from "../components/SelectedImageLoader";
 import LegendLoader from "../components/LegendLoader";
 
 export default function SelectedImage() {
+  // Theme definition
+  const [theme] = useContext(ThemeContext);
+  const { themeSelected, themeOne, themeTwo } = theme;
+  let option;
+  switch (themeSelected) {
+    case true:
+      option = themeOne;
+      break;
+    case false:
+      option = themeTwo;
+      break;
+    default:
+      console.log("default");
+  }
+
   const [image, setImage] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
@@ -68,13 +84,9 @@ export default function SelectedImage() {
   };
 
   return (
-    <div className="selected-image-page">
-      <div className="info-image">
-              {!isLoading && (
-   <h6
-   >{image.year}</h6>
-              )}
-           
+    <div className="selected-image-page" style={{ background: option.bg }}>
+      <div className="info-image" style={{ background: option.syntax }}>
+        {!isLoading && <h6 style={{ color: option.bg }}>{image.year}</h6>}
       </div>
       <div className="selected-image-container">
         {isLoading ? (
@@ -109,23 +121,38 @@ export default function SelectedImage() {
           <LegendLoader />
         ) : (
           <>
-            <h5 className="legend-title">{image.title}.</h5>
+            <h5 className="legend-title" style={{ color: option.syntax }}>
+              {image.title}.
+            </h5>
             <p className="legend-infos">
-              {image.medium !== "" && <span
-              className="medium"
-              >{image.medium}, </span>}
-              {image.context !== "" && <span>{image.context}, </span>}
-              {image.place !== "" && <span>{image.place}, </span>}
-              {image.town !== "" && <span>{image.town}, </span>}
+              {image.medium && (
+                <span className="medium" style={{ color: option.syntax }}>
+                  {image.medium},{" "}
+                </span>
+              )}
+              {image.context && (
+                <span style={{ color: option.syntax }}>{image.context}, </span>
+              )}
+              {image.place && (
+                <span style={{ color: option.syntax }}>{image.place}, </span>
+              )}
+              {image.town && (
+                <span style={{ color: option.syntax }}>{image.town}, </span>
+              )}
 
-              <span>{image.year}. </span>
-              {image.collect !== "" && <span
-              className="collect"
-              >{image.collect}.</span>}
+              <span style={{ color: option.syntax }}>{image.year}. </span>
+              {image.collect && (
+                <span className="collect" style={{ color: option.syntax }}>
+                  {image.collect}.
+                </span>
+              )}
             </p>
             <p>
-              {image.credit !== "" && (
-                <span className="legend-credit">
+              {image.credit && (
+                <span
+                  className="legend-credit"
+                  style={{ color: option.syntax }}
+                >
                   Crédit photo: {image.credit}.
                 </span>
               )}
@@ -135,14 +162,23 @@ export default function SelectedImage() {
       </div>
 
       {token && (
-        <button className="delete-button" onClick={deleteImage}>
+        <button
+          className="delete-button"
+          style={{ background: option.syntax, color: option.bg }}
+          onClick={deleteImage}
+        >
           Supprimer
         </button>
       )}
 
       <div className="button-container">
         <Link to="/image">
-          <button className="button">Retour</button>
+          <button
+            className="button"
+            style={{ background: option.syntax, color: option.bg }}
+          >
+            Retour
+          </button>
         </Link>
       </div>
     </div>

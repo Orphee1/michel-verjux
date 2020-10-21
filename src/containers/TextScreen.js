@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 
@@ -8,6 +9,24 @@ import "../styles/styles.css";
 import MainTextLoader from "../components/MainTextLoader";
 
 export default function TextScreen() {
+  // Theme definition
+  const [theme] = useContext(ThemeContext);
+  const { themeSelected, themeOne, themeTwo } = theme;
+  let option;
+  let icon;
+  switch (themeSelected) {
+    case true:
+      icon = "icon";
+      option = themeOne;
+      break;
+    case false:
+      icon = "icon2";
+      option = themeTwo;
+      break;
+    default:
+      console.log("default");
+  }
+
   const [texts, setTexts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
@@ -42,10 +61,10 @@ export default function TextScreen() {
   }, [backSort, period]);
 
   return (
-    <div className="texts-page">
+    <div className="texts-page" style={{ background: option.bg }}>
       <div className="menu-custom-text">
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setBackSort(true);
           }}
@@ -53,7 +72,7 @@ export default function TextScreen() {
           Début
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setBackSort(false);
           }}
@@ -61,7 +80,7 @@ export default function TextScreen() {
           Fin
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setPeriod("1");
           }}
@@ -69,7 +88,7 @@ export default function TextScreen() {
           Jeunesse
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setPeriod("2");
           }}
@@ -77,7 +96,7 @@ export default function TextScreen() {
           Maturité
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setPeriod("3");
           }}
@@ -85,14 +104,20 @@ export default function TextScreen() {
           Sagesse
         </div>
         <div
-          className="icon last"
+          style={{ height: "4rem" }}
+          className={icon}
           onClick={() => {
             setPeriod("0");
           }}
         >
           Tous les textes
         </div>
-        <div className="label">Menu</div>
+        <div
+          className="label"
+          style={{ background: option.syntax, color: option.bg }}
+        >
+          Menu
+        </div>
       </div>
 
       <div className="bloc-text-container">
@@ -103,24 +128,47 @@ export default function TextScreen() {
             return (
               <Link key={index} to={"/selected-text/" + text._id}>
                 <div className="bloc-text">
-                  <h4 className="texts-page-title">
-                    <span className="guill">"</span>
+                  <h4
+                    className="texts-page-title"
+                    style={{ color: option.syntax }}
+                  >
+                    <span className="guill" style={{ color: option.syntax }}>
+                      "
+                    </span>
                     {text.title}
                   </h4>
 
                   <div className="text-container">
-                    <p>{text.article}</p>
+                    <p style={{ color: option.syntax }}>{text.article}</p>
                   </div>
                   <p className="texts-page-legend">
-                    {text.place !== "" && (
-                      <span className="texts-page-legend">{text.place}, </span>
+                    {text.place && (
+                      <span
+                        className="texts-page-legend"
+                        style={{ color: option.syntax }}
+                      >
+                        {text.place},{" "}
+                      </span>
                     )}
-                    {text.editor !== "" && (
-                      <span className="texts-page-legend">{text.editor}, </span>
+                    {text.editor && (
+                      <span
+                        className="texts-page-legend"
+                        style={{ color: option.syntax }}
+                      >
+                        {text.editor},{" "}
+                      </span>
                     )}
-                    <span className="texts-page-legend">{text.year}</span>
-                    {text.traduct !== "" && (
-                      <span className="texts-page-legend">
+                    <span
+                      className="texts-page-legend"
+                      style={{ color: option.syntax }}
+                    >
+                      {text.year}
+                    </span>
+                    {text.traduct && (
+                      <span
+                        className="texts-page-legend"
+                        style={{ color: option.syntax }}
+                      >
                         , {text.traduct}
                       </span>
                     )}

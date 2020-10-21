@@ -1,16 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Picture } from "react-responsive-picture";
+import { ThemeContext } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 
 import "../styles/styles.css";
-
 
 // Components import
 import MainImageLoader from "../components/MainImageLoader";
 import MultipleImagesLoader from "../components/MultipleImagesLoader";
 
 export default function ImageScreen() {
+  // Theme definition
+  const [theme] = useContext(ThemeContext);
+  const { themeSelected, themeOne, themeTwo } = theme;
+  let option;
+  let icon;
+  switch (themeSelected) {
+    case true:
+      icon = "icon";
+      option = themeOne;
+      break;
+    case false:
+      icon = "icon2";
+      option = themeTwo;
+      break;
+    default:
+      console.log("default");
+  }
   const [images, setImages] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
@@ -47,10 +64,10 @@ export default function ImageScreen() {
   }, [backSort, period]);
 
   return (
-    <div className="images-page">
+    <div className="images-page" style={{ background: option.bg }}>
       <div className="menu-custom">
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setBackSort(false);
           }}
@@ -58,7 +75,7 @@ export default function ImageScreen() {
           Fin
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setBackSort(true);
           }}
@@ -66,7 +83,7 @@ export default function ImageScreen() {
           Début
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setPeriod("1");
           }}
@@ -74,7 +91,7 @@ export default function ImageScreen() {
           Jeunesse
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setPeriod("2");
           }}
@@ -82,7 +99,7 @@ export default function ImageScreen() {
           Maturité
         </div>
         <div
-          className="icon"
+          className={icon}
           onClick={() => {
             setPeriod("3");
           }}
@@ -90,14 +107,20 @@ export default function ImageScreen() {
           Sagesse
         </div>
         <div
-          className="icon last"
+          className={icon}
+          style={{ height: "4rem" }}
           onClick={() => {
             setPeriod("0");
           }}
         >
           Toutes les oeuvres
         </div>
-        <div className="label">Menu</div>
+        <div
+          className="label"
+          style={{ background: option.syntax, color: option.bg }}
+        >
+          Menu
+        </div>
       </div>
 
       <div className="images-page-main-container">
@@ -121,10 +144,15 @@ export default function ImageScreen() {
                 ]}
               />
             </figure>
-            <figcaption className="legend-main">
-              <span>{images[0].title}, </span>
-              {images[0].town !== "" && <span>{images[0].town}, </span>}
-              <span>{images[0].year}.</span>
+            <figcaption
+              className="legend-main"
+              style={{ background: option.bg }}
+            >
+              <span style={{ color: option.syntax }}>{images[0].title}, </span>
+              {images[0].town && (
+                <span style={{ color: option.syntax }}>{images[0].town}, </span>
+              )}
+              <span style={{ color: option.syntax }}>{images[0].year}.</span>
             </figcaption>
           </Link>
         )}
@@ -134,7 +162,6 @@ export default function ImageScreen() {
         {isLoading ? (
           <MultipleImagesLoader />
         ) : (
-                
           images.slice(1).map((image, index) => {
             return (
               <div key={index} className="other-container">
@@ -148,10 +175,15 @@ export default function ImageScreen() {
                   </Link>
                 </figure>
 
-                <figcaption className="legend-other">
-                  <div className="other-title">{image.title}</div>
+                <figcaption
+                  className="legend-other"
+                  style={{ background: option.bg }}
+                >
+                  <div className="other-title" style={{ color: option.syntax }}>
+                    {image.title}
+                  </div>
 
-                  <p>{image.year}</p>
+                  <p style={{ color: option.syntax }}>{image.year}</p>
                 </figcaption>
               </div>
             );

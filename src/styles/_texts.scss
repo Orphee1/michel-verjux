@@ -20,8 +20,11 @@
     &:hover .icon {
       margin: 1rem auto;
     }
+    &:hover .icon2 {
+      margin: 1rem auto;
+    }
     .label {
-      background-color: var(--blue);
+      //       background-color: var(--blue);
       border-radius: 0 4rem 4rem 0;
       color: white;
       position: absolute;
@@ -56,30 +59,28 @@
         color: white;
       }
     }
+    .icon2 {
+      border-radius: 0;
+      cursor: pointer;
+      background-color: var(--blue);
+      color: white;
+      font-family: "Roboto", sans-serif;
+      font-size: 1.6rem;
+      height: 2rem;
+      width: 100%;
+      border-radius: 0 4rem 4rem 0;
+      transition: background-color 0.5s ease-out,
+        border-radius 0.5s 0.25s ease-out, margin 0.5s 0.25s ease-out;
+      &:hover {
+        background-color: white;
+        color: var(--blue);
+      }
+    }
     .last {
       height: 4rem;
     }
   }
-  .menu-text {
-    grid-column: 2/3;
-    grid-row: 2/3;
-    background: var(--blue);
-    border-radius: 0 4rem 4rem 0;
-    height: 7rem; //????
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    .sort-button {
-      width: 80%;
-      border-radius: 4rem;
-      color: var(--blue);
-      background-color: white;
-      font-family: "Roboto", sans-serif;
-      font-weight: medium;
-    }
-  }
+
   .bloc-text-container {
     grid-column: 4/12;
     grid-row: 2/3;
