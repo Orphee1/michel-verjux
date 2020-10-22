@@ -117,7 +117,7 @@ export default function Header({ setModalLogin, setUser, setPost }) {
                 color: option.syntax,
               }}
             >
-              Images
+              Choix d'images
             </span>
           </Link>
         </li>
@@ -130,7 +130,7 @@ export default function Header({ setModalLogin, setUser, setPost }) {
                 color: option.syntax,
               }}
             >
-              Textes
+              Choix de textes
             </span>
           </Link>
         </li>
