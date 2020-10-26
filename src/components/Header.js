@@ -42,7 +42,6 @@ export default function Header({ setModalLogin, setUser, setPost }) {
         <li className="">
           <Link to="/home">
             <h2
-              //       className="hover-h2"
               className={hoverHOption}
               style={{
                 color: option.syntax,
@@ -56,7 +55,6 @@ export default function Header({ setModalLogin, setUser, setPost }) {
           <>
             <li className="second-li">
               <span
-                // className="hover"
                 className={hoverOption}
                 style={{ cursor: "pointer", color: option.syntax }}
                 onClick={() => {
@@ -84,7 +82,6 @@ export default function Header({ setModalLogin, setUser, setPost }) {
         ) : (
           <li className="second-li">
             <span
-              //       className="hover"
               className={hoverOption}
               style={{ cursor: "pointer", color: option.syntax }}
               onClick={() => {
@@ -111,7 +108,6 @@ export default function Header({ setModalLogin, setUser, setPost }) {
         <li>
           <Link to="/image">
             <span
-              //     className="hover"
               className={hoverOption}
               style={{
                 color: option.syntax,
@@ -124,7 +120,6 @@ export default function Header({ setModalLogin, setUser, setPost }) {
         <li>
           <Link to="/text">
             <span
-              //     className="hover"
               className={hoverOption}
               style={{
                 color: option.syntax,
@@ -135,17 +130,16 @@ export default function Header({ setModalLogin, setUser, setPost }) {
           </Link>
         </li>
         <li>
-          {/* <Link to="/bio"> */}
-          <span
-            //   className="hover"
-            className={hoverOption}
-            style={{
-              color: option.syntax,
-            }}
-          >
-            Bio/Biblio
-          </span>
-          {/* </Link> */}
+          <Link to="/bio">
+            <span
+              className={hoverOption}
+              style={{
+                color: option.syntax,
+              }}
+            >
+              Bio/Biblio
+            </span>
+          </Link>
         </li>
       </ul>
     </div>
