@@ -890,10 +890,6 @@
             flex-direction: column;
     padding: 0.5rem 1rem 1rem 1rem;
     font-family: "Roboto", sans-serif;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    background: white;
   }
   .bio-page .bloc-image-portrait {
     -ms-grid-column: 3;

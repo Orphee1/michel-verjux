@@ -179,6 +179,7 @@ export default function TextScreen() {
             );
           })
         )}
+        <div id="target"></div>
       </div>
     </div>
   );

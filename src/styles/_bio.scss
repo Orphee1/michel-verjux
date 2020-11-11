@@ -72,9 +72,7 @@
 @media (max-width: 1200px /* */) {
   .bio-page {
     display: grid;
-    //     grid-template-columns: 5% repeat(3, 1fr) 5%;
     grid-template-columns: 5% repeat(3, 30vw) 5%;
-    //     grid-template-rows: 32vh auto auto;
     grid-template-rows: auto auto auto;
   }
 }
@@ -106,9 +104,6 @@
       flex-direction: column;
       padding: 0.5rem 1rem 1rem 1rem;
       font-family: "Roboto", sans-serif;
-      position: sticky;
-      top: 0;
-      background: white;
     }
 
     .bloc-image-portrait {
