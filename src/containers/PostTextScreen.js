@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import Cookie from "js-cookie";
 import "../styles/styles.css";
+import PostTextInfo from "../components/PostTextinfo";
 
 export default function PostTextScreen({ setPost }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -81,7 +82,8 @@ export default function PostTextScreen({ setPost }) {
             <div></div>
           </div>
         )}
-        {isPublished && <h6>Votre article a bien été publié</h6>}
+        {/* {isPublished && <h6>Votre article a bien été publié</h6>} */}
+        {isPublished && <PostTextInfo />}
       </div>
       <div className="post-modal-content box-shadow-both-sides">
         <span

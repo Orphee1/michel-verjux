@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import Cookie from "js-cookie";
+import PostTextInfo from "../components/PostTextinfo";
 
 import "../styles/styles.css";
 export default function PostBiblioScreen({ setPost }) {
@@ -12,6 +13,7 @@ export default function PostBiblioScreen({ setPost }) {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
+  console.log(isPublished);
 
   const token = Cookie.get("token");
 
@@ -25,6 +27,7 @@ export default function PostBiblioScreen({ setPost }) {
     event.preventDefault();
     if (biblio.title && biblio.editor && biblio.year) {
       setIsLoading(true);
+      setIsPublished(false);
       try {
         const formData = new FormData();
         formData.append("title", biblio.title);
@@ -71,7 +74,8 @@ export default function PostBiblioScreen({ setPost }) {
             <div></div>
           </div>
         )}
-        {isPublished && <h6>Votre article a bien été publié</h6>}
+
+        {isPublished && <PostTextInfo />}
       </div>
       <div className="post-modal-content box-shadow-both-sides">
         <span

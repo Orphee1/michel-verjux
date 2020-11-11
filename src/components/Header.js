@@ -14,16 +14,19 @@ export default function Header({ setModalLogin, setUser, setPost }) {
   let option;
   let hoverOption;
   let hoverHOption;
+
   switch (themeSelected) {
     case true:
       option = themeOne;
       hoverOption = "hover";
       hoverHOption = "hover-h2";
+
       break;
     case false:
       option = themeTwo;
       hoverOption = "hover2";
       hoverHOption = "hover-h22";
+
       break;
     default:
       console.log("default");
@@ -93,12 +96,11 @@ export default function Header({ setModalLogin, setUser, setPost }) {
           </li>
         )}
         <li>
-          <div>
+          <div className="icon-container" style={{ marginTop: "0.5rem" }}>
             <FaAdjust
               style={{ cursor: "pointer" }}
-              //       color="#023254"
               color={option.syntax}
-              size="2em"
+              size="1.5em"
               onClick={() => toggleTheme(!themeSelected)}
             />
           </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import Cookie from "js-cookie";
 import "../styles/styles.css";
+import PostImageInfo from "../components/PostImageInfo";
 
 export default function PostImageScreen({ setPost }) {
   const [image, setImage] = useState({
@@ -95,7 +96,8 @@ export default function PostImageScreen({ setPost }) {
             <div></div>
           </div>
         )}
-        {isPublished && <h6>Votre image a bien été publiée</h6>}
+        {/* {isPublished && <h6>Votre image a bien été publiée</h6>} */}
+        {isPublished && <PostImageInfo />}
       </div>
 
       <div className="post-image-modal-content box-shadow-both-sides">

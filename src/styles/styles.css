@@ -745,38 +745,20 @@
 
 .bio-page {
   min-height: 90vh;
+  height: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 5% (1fr)[3] 5%;
-      grid-template-columns: 5% repeat(3, 1fr) 5%;
-  -ms-grid-rows: 32vh auto auto;
-      grid-template-rows: 32vh auto auto;
+  -ms-grid-columns: 5% (30vw)[3] 5%;
+      grid-template-columns: 5% repeat(3, 30vw) 5%;
+  -ms-grid-rows: auto auto auto;
+      grid-template-rows: auto auto auto;
   grid-column-gap: 0.2rem;
   grid-row-gap: 1rem;
 }
 
-.bio-page .margin-left {
-  width: 100%;
-  height: 100%;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1/2;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
-  grid-row: 1/4;
-  background: var(--blue);
-}
-
-.bio-page .margin-right {
-  width: 100%;
-  height: 100%;
-  -ms-grid-column: 5;
-  -ms-grid-column-span: 1;
-  grid-column: 5/6;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
-  grid-row: 1/4;
-  background: var(--blue);
+.bio-page h5 {
+  margin-bottom: 1rem;
+  font-family: "Roboto", sans-serif;
 }
 
 .bio-page .bloc-image-reference {
@@ -788,6 +770,7 @@
   grid-row: 1/4;
   width: 100%;
   height: 100%;
+  padding: 1rem;
 }
 
 .bio-page .bloc-image-reference img {
@@ -800,8 +783,8 @@
   -ms-grid-column-span: 1;
   grid-column: 3/4;
   -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1/2;
+  -ms-grid-row-span: 3;
+  grid-row: 1/4;
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -811,66 +794,42 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0.5rem 1rem 1rem 1rem;
+  padding: 1rem;
   font-family: "Roboto", sans-serif;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background: white;
 }
 
-.bio-page .bloc-biblio {
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 1;
-  grid-column: 3/4;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
-  grid-row: 2/4;
+.bio-page .bloc-bio div {
+  margin-bottom: 1rem;
+}
+
+.bio-page .bloc-bio img {
   width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0.5rem 1rem 1rem 1rem;
-  font-family: "Roboto", sans-serif;
+  height: auto;
 }
 
-.bio-page .bloc-biblio .biblio .delete-cross {
+.bio-page .bloc-bio .biblio .delete-cross {
   cursor: pointer;
 }
 
-.bio-page .bloc-image-portrait {
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 1;
-  grid-column: 4/5;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1/2;
-  width: 100%;
-  height: 100%;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+.bio-page .bloc-bio p {
+  margin-bottom: 1rem;
+  color: var(--blue);
 }
 
-.bio-page .bloc-image-portrait img {
-  width: 100%;
-  height: auto;
+.bio-page .bloc-bio .bio {
+  text-align: justify;
 }
 
 .bio-page .bloc-image-famille {
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
   grid-column: 4/5;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
-  grid-row: 2/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1/4;
   width: 100%;
   height: 100%;
+  padding: 1rem;
 }
 
 .bio-page .bloc-image-famille img {
@@ -882,10 +841,10 @@
   .bio-page {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 5% (1fr)[3] 5%;
-        grid-template-columns: 5% repeat(3, 1fr) 5%;
-    -ms-grid-rows: 32vh auto auto;
-        grid-template-rows: 32vh auto auto;
+    -ms-grid-columns: 5% (30vw)[3] 5%;
+        grid-template-columns: 5% repeat(3, 30vw) 5%;
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
   }
 }
 
@@ -893,8 +852,8 @@
   .bio-page {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
-    -ms-grid-rows: 40vh auto auto;
-        grid-template-rows: 40vh auto auto;
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
   }
   .bio-page .remove600 {
     display: none;
@@ -918,8 +877,8 @@
     -ms-grid-column-span: 1;
     grid-column: 2/3;
     -ms-grid-row: 1;
-    -ms-grid-row-span: 1;
-    grid-row: 1/2;
+    -ms-grid-row-span: 3;
+    grid-row: 1/4;
     width: 100%;
     height: 100%;
     display: -webkit-box;
@@ -935,25 +894,6 @@
     position: sticky;
     top: 0;
     background: white;
-  }
-  .bio-page .bloc-biblio {
-    -ms-grid-column: 2;
-    -ms-grid-column-span: 1;
-    grid-column: 2/3;
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 2;
-    grid-row: 2/4;
-    width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 0.5rem 1rem 1rem 1rem;
-    font-family: "Roboto", sans-serif;
   }
   .bio-page .bloc-image-portrait {
     -ms-grid-column: 3;
@@ -976,9 +916,9 @@
     -ms-grid-column: 3;
     -ms-grid-column-span: 1;
     grid-column: 3/4;
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 2;
-    grid-row: 2/4;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    grid-row: 1/4;
     width: 100%;
     height: 100%;
   }
@@ -1278,6 +1218,8 @@
   column-count: 4;
   -webkit-column-width: 15rem;
   column-width: 15rem;
+  text-indent: 0.5rem;
+  word-spacing: 0.3rem;
 }
 
 .selected-text-page .selected-text .texts-page-legend {
@@ -1902,6 +1844,9 @@
   .nav .logo-nav li select {
     margin-left: 1rem;
   }
+  .nav .logo-nav li .icon-container {
+    margin-left: 2rem;
+  }
   .nav .logo-nav .second-li {
     height: 5rem;
     background: var(--blue);
@@ -1920,7 +1865,6 @@
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     grid-row: 2/3;
-    background: var(--blue);
     height: 5rem;
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -2320,10 +2264,6 @@ span {
   --blue: #023254;
   --deepGrey: #8797a4;
   --lightGrey: #f4f6f7;
-  --scarlettDark: #910411;
-  --scarlettVeryDark: #7c020b;
-  --scarlettLight: #9c0d21;
-  --violetRed: #f23a8c;
   --orange: #f56b2b;
   --linearOrange: rgba(133, 48, 29, 0.365);
   --linearYellow: rgba(223, 214, 143, 0.899);

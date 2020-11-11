@@ -8,6 +8,7 @@ import HomeScreen from "./containers/HomeScreen.js";
 import ImageScreen from "./containers/ImageScreen";
 import TextScreen from "./containers/TextScreen";
 import BioScreen from "./containers/BioScreen";
+import ErrorScreen from "./containers/ErrorScreen";
 import SelectedIScreen from "./containers/SelectedImageScreen";
 import SelectedTScreen from "./containers/SelectedTextScreen";
 import LoginScreen from "./containers/LoginScreen";
@@ -99,8 +100,11 @@ function App() {
             <HomeScreen />
             <Footer />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <LandingScreen />
+          </Route>
+          <Route path="*">
+            <ErrorScreen />
           </Route>
         </Switch>
       </ThemeContextProvider>

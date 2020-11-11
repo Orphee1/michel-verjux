@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  // useCallback,
+  useContext,
+} from "react";
 import { Picture } from "react-responsive-picture";
 import { ThemeContext } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
@@ -11,6 +16,7 @@ import MainImageLoader from "../components/MainImageLoader";
 import MultipleImagesLoader from "../components/MultipleImagesLoader";
 
 export default function ImageScreen() {
+  console.log("render component");
   // Theme definition
   const [theme] = useContext(ThemeContext);
   const { themeSelected, themeOne, themeTwo } = theme;
@@ -32,12 +38,12 @@ export default function ImageScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  console.log(images);
+  //   console.log(images);
 
-  console.log(backSort);
-  console.log(period);
-
+  //   const fetchImages = useCallback(async () => {
   const fetchImages = async () => {
+    console.log("fetch images");
+
     try {
       const response = await Axios.get(
         process.env.REACT_APP_WEBADDRESS +
@@ -47,19 +53,20 @@ export default function ImageScreen() {
           period
       );
       if (response.data.length !== 0) {
-        console.log(response.data);
         setImages(response.data);
         setIsLoading(false);
-      } else {
       }
     } catch (error) {
       console.log(error);
       alert(error.message);
     }
+    //   }, [backSort, period]);
   };
 
   useEffect(() => {
+    console.log("run useEffect");
     fetchImages();
+    //   }, [backSort, period, fetchImages]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [backSort, period]);
 
