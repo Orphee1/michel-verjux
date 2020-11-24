@@ -8,6 +8,7 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 // Components import
+import SEO from "../components/SEO";
 import SelectedImageLoader from "../components/SelectedImageLoader";
 import LegendLoader from "../components/LegendLoader";
 
@@ -85,6 +86,14 @@ export default function SelectedImage() {
 
   return (
     <div className="selected-image-page" style={{ background: option.bg }}>
+      <SEO
+        title="Image Page"
+        description={
+          isLoading
+            ? "Shows single Michel Verjux'art work"
+            : `Michel Verjux, ${image.title}`
+        }
+      />
       <div className="info-image" style={{ background: option.syntax }}>
         {!isLoading && <h6 style={{ color: option.bg }}>{image.year}</h6>}
       </div>

@@ -6,6 +6,7 @@ import Axios from "axios";
 import "../styles/styles.css";
 
 // Components import
+import SEO from "../components/SEO";
 import MainTextLoader from "../components/MainTextLoader";
 
 export default function TextScreen() {
@@ -62,6 +63,7 @@ export default function TextScreen() {
 
   return (
     <div className="texts-page" style={{ background: option.bg }}>
+      <SEO title="Texts Page" description="Shows Michel Verjux's articles" />
       <div className="menu-custom-text">
         <div
           className={icon}

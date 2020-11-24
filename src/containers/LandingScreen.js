@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 
 import "../styles/styles.css";
@@ -6,6 +7,7 @@ import "../styles/styles.css";
 export default function LandingScreen() {
   return (
     <div className="landing-page">
+      <SEO title="Landing Page" description="This is the landing page" />
       <Link to="/home">
         <div className="landing-page-container">
           <div className="logo-container">

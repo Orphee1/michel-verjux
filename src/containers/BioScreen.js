@@ -7,6 +7,7 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 
 // Components import
+import SEO from "../components/SEO";
 import BiblioLoader from "../components/BiblioLoader";
 
 // Images import
@@ -80,6 +81,7 @@ export default function BioScreen() {
 
   return (
     <section className="bio-page" style={{ background: option.bg }}>
+      <SEO title="Bio Page" description="About Michel Verjux" />
       <div className="bloc-image-reference">
         <h5 style={{ color: option.syntax }}>Références édifiantes</h5>
 

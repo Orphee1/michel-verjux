@@ -12,6 +12,7 @@ import Axios from "axios";
 import "../styles/styles.css";
 
 // Components import
+import SEO from "../components/SEO";
 import MainImageLoader from "../components/MainImageLoader";
 import MultipleImagesLoader from "../components/MultipleImagesLoader";
 
@@ -72,6 +73,7 @@ export default function ImageScreen() {
 
   return (
     <div className="images-page" style={{ background: option.bg }}>
+      <SEO title="Images Page" description="Shows Michel Verjux's art work" />
       <div className="menu-custom">
         <div
           className={icon}

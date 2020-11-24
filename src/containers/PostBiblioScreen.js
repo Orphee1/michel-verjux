@@ -3,6 +3,9 @@ import Axios from "axios";
 import Cookie from "js-cookie";
 import PostTextInfo from "../components/PostTextinfo";
 
+// Component import
+import SEO from "../components/SEO";
+
 import "../styles/styles.css";
 export default function PostBiblioScreen({ setPost }) {
   const [biblio, setBiblio] = useState({
@@ -66,6 +69,10 @@ export default function PostBiblioScreen({ setPost }) {
 
   return (
     <div className="post-modal">
+      <SEO
+        title="Post Biblio Page"
+        description="This is a page to post other kind of text"
+      />
       <div className="loader-container">
         {isLoading && (
           <div className="lds-facebook">

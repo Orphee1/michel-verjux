@@ -6,6 +6,9 @@ import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 
+// Component import
+import SEO from "../components/SEO";
+
 export default function SelectedText() {
   // Theme definition
   const [theme] = useContext(ThemeContext);
@@ -78,6 +81,14 @@ export default function SelectedText() {
 
   return (
     <div className="selected-text-page" style={{ background: option.bg }}>
+      <SEO
+        title="Text Page"
+        description={
+          isLoading
+            ? "Displays Michel Verjux's article"
+            : `Michel Verjux, ${text.title}`
+        }
+      />
       <div className="info-text" style={{ background: option.syntax }}>
         {!isLoading && <h6 style={{ color: option.bg }}>{text.year}</h6>}
       </div>

@@ -4,6 +4,9 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 import PostImageInfo from "../components/PostImageInfo";
 
+// Component import
+import SEO from "../components/SEO";
+
 export default function PostImageScreen({ setPost }) {
   const [image, setImage] = useState({
     picture: null,
@@ -88,6 +91,7 @@ export default function PostImageScreen({ setPost }) {
 
   return (
     <div className="post-modal">
+      <SEO title="Post Image Page" description="This is a page to post image" />
       <div className="loader-container">
         {isLoading && (
           <div className="lds-facebook">

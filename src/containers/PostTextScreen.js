@@ -4,6 +4,9 @@ import Cookie from "js-cookie";
 import "../styles/styles.css";
 import PostTextInfo from "../components/PostTextinfo";
 
+// Component import
+import SEO from "../components/SEO";
+
 export default function PostTextScreen({ setPost }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
@@ -74,6 +77,10 @@ export default function PostTextScreen({ setPost }) {
 
   return (
     <section className="post-modal-text">
+      <SEO
+        title="Post Text Page"
+        description="This is a page to post article"
+      />
       <div className="loader-container">
         {isLoading && (
           <div className="lds-facebook">

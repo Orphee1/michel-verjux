@@ -6,6 +6,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import "../styles/styles.css";
 
 // Components import
+import SEO from "../components/SEO";
 import MyCarousel from "../components/Carousel";
 import CarouselLoader from "../components/CarouselLoader";
 
@@ -61,6 +62,7 @@ export default function HomeScreen() {
 
   return (
     <div className="home-page" style={{ background: option.bg }}>
+      <SEO title="Home Page" description="This is the Home Page" />
       <figure className="home-image-container">
         <Picture
           alt="Michel Verjux"

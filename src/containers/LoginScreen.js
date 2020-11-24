@@ -4,6 +4,9 @@ import Cookie from "js-cookie";
 
 import "../styles/styles.css";
 
+// Component import
+import SEO from "../components/SEO";
+
 export default function Login({ setModalLogin, setUser }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -36,6 +39,7 @@ export default function Login({ setModalLogin, setUser }) {
 
   return (
     <div className="login-modal">
+      <SEO title="Login" description="This is the login screen" />
       <div className="loader-container">
         {isLoading && (
           <div className="lds-facebook">
