@@ -4,7 +4,7 @@ import Cookie from "js-cookie";
 import "./main.css"
 
 // Pages import
-import BioScreen from "./containers/bioScreen"
+// import BioScreen from "./containers/bioScreen"
 import { BiblioScreen, 
         // BioScreen,
          ErrorScreen, HomeScreen, LandingScreen, ImageScreen, 
@@ -39,9 +39,9 @@ const toggleModalLogin = () => {
         />
       )}
         <Switch>
-          <Route path="/bio/">
+          {/* <Route path="/bio/">
             <BioScreen />
-          </Route>
+          </Route> */}
           <Route path="/biblio/"  >
                   <BiblioScreen />
           </Route>
