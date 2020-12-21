@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 
 const HomeImages = ({pictures}) => {
-        console.log(pictures);
+        // console.log(pictures);
         return (
                 <Wrapper>
                                <div className="title">

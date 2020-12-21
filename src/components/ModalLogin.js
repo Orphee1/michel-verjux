@@ -23,7 +23,7 @@ const  ModalLogin = ({ toggleModalLogin, setUser }) => {
           password: password,
         }
       );
-      console.log(response.data);
+//       console.log(response.data);
       if (response.data.token) {
         Cookie.set("token", response.data.token);
         setUser(response.data);
