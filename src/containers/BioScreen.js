@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { Picture } from "react-responsive-picture";
-import Axios from "axios";
-import Cookie from "js-cookie";
+import React from "react";
 
-import "../styles/styles.css";
+
+import "../main.css";
+import styled from "styled-components"; 
 
 // Components import
-import SEO from "../components/SEO";
-import BiblioLoader from "../components/BiblioLoader";
+import {SEO} from "../components";
+
 
 // Images import
 import portrait from "../images/MichelVerjux2.jpg";
@@ -40,246 +38,22 @@ import ref23 from "../images/ref/ref23.jpg";
 import ref24 from "../images/ref/ref24.jpg";
 import ref25 from "../images/ref/ref25.jpg";
 
-export default function BioScreen() {
-  // Theme definition
-  const [theme] = useContext(ThemeContext);
-  const { themeSelected, themeOne, themeTwo } = theme;
-  let option;
-  switch (themeSelected) {
-    case true:
-      option = themeOne;
-      break;
-    case false:
-      option = themeTwo;
-      break;
-    default:
-      console.log("default");
-  }
+const BioScreen = () => {  
 
-  const [biblios, setBiblios] = useState();
-  const [isLoading, setIsLoading] = useState(true);
 
-  const token = Cookie.get("token");
-
-  const fetchBiblios = async () => {
-    try {
-      const response = await Axios.get(
-        process.env.REACT_APP_WEBADDRESS + "/biblio"
-      );
-      console.log(response.data);
-      setBiblios(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchBiblios();
-  }, []);
+ 
 
   return (
-    <section className="bio-page" style={{ background: option.bg }}>
-      <SEO title="Bio Page" description="About Michel Verjux" />
-      <div className="bloc-image-reference">
-        <h5 style={{ color: option.syntax }}>Références édifiantes</h5>
+<Wrapper>
 
-        <img src={ref1} alt="Fontenay" />
-        <img src={ref2} alt="Pierro della Francesca" />
-        <img src={ref3} alt="Caravage" />
-        <img src={ref4} alt="De la Tour" />
-        <img src={ref5} alt="Manet" />
-        <img src={ref6} alt="Rodin" />
-        <img src={ref7} alt="Cézanne" />
-        <img src={ref8} alt="Peirce" />
-        <img src={ref9} alt="Duchamp" />
-        <img src={ref10} alt="Wittgenstein" />
-        <img src={ref11} alt="Mondrian" />
-        <img src={ref12} alt="Van Doesburg" />
-        <img src={ref13} alt="Bachelard" />
-        <img src={ref14} alt="Albert Camus René Char" />
-        <img src={ref15} alt="Ponge" />
-        <img src={ref16} alt="Mark di Suvero" />
-        <img src={ref17} alt="Hugo Jehle" />
-        <img src={ref18} alt="Barnett Newman" />
-        <img src={ref19} alt="Jackson Pollock" />
-        <img src={ref20} alt="Niele Toroni" />
-        <img src={ref21} alt="Niele Toroni" />
-        <img src={ref22} alt="François Morellet" />
-        <img src={ref23} alt="François Morellet" />
-        <img src={ref24} alt="Carl Andre" />
-        <img src={ref25} alt="Daniel Buren" />
-      </div>
-      <div className="bloc-bio">
-        <div>
-          <Picture
-            alt="Friends Michel Verjux"
-            className=""
-            sources={[
-              {
-                // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-                srcSet: ` ${portraits} 2x`,
-                media: "(max-width: 1200px)",
-                //     type: "image/jpeg"
-              },
-              {
-                // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-                srcSet: ` ${portrait} 2x`,
-                media: "(min-width: 1201px)",
-                //     type: "image/jpeg"
-              },
-            ]}
-          />
-        </div>
-        <div>
-          <h5 style={{ color: option.syntax }}>Bio</h5>
-          <p className="bio" style={{ color: option.syntax }}>
-            Né en 1956 à Chalon-sur-Saône, en Bourgogne. Après une pratique du
-            dessin et de la poésie (1968-1983), du théâtre (1976-1979) et de la
-            performance (1979-1983), il réalise ses premiers "éclairages" en
-            1983, création qu'il poursuit encore aujourd'hui. Diplômé de l'École
-            des Beaux-Arts de Dijon en 1982, il enseigne, à partir de 1996, les
-            arts plastiques à l'université Paris 1 Panthéon-Sorbonne.
-          </p>
-        </div>
-        <div>
-          <h5 style={{ color: option.syntax }}>Contact</h5>
-          <p style={{ color: option.syntax }}>
-            michel.verjux@gmail.com / 06 84 64 77 59.
-          </p>
-        </div>
-        <div>
-          <h5 style={{ color: option.syntax }}>Bibliographie</h5>
-          {isLoading ? (
-            <BiblioLoader />
-          ) : (
-            biblios.map((biblio, index) => {
-              return (
-                <p
-                  className="biblio"
-                  key={index}
-                  style={{ color: option.syntax }}
-                >
-                  - <span style={{ color: option.syntax }}>{biblio.title}</span>
-                  ,{" "}
-                  <span style={{ color: option.syntax }}>{biblio.editor}</span>,{" "}
-                  <span style={{ color: option.syntax }}>{biblio.collect}</span>
-                  , <span style={{ color: option.syntax }}>{biblio.year}</span>.{" "}
-                  {token && (
-                    <button
-                      className="delete-cross"
-                      onClick={() => {
-                        const deleteBiblio = async () => {
-                          try {
-                            const formData = new FormData();
-                            formData.append("id", biblio._id);
-                            const response = await Axios.post(
-                              process.env.REACT_APP_WEBADDRESS +
-                                "/biblio/delete",
-                              formData,
-                              {
-                                headers: {
-                                  Authorization: "Bearer " + token,
-                                  "Content-Type": "multipart/form-data",
-                                },
-                              }
-                            );
-                            if (response.data) {
-                              console.log(response.data);
-                            }
-                          } catch (error) {
-                            console.log(error);
-                            alert(error.message);
-                          }
-                        };
-                        deleteBiblio();
-                      }}
-                    >
-                      supprimer
-                    </button>
-                  )}
-                </p>
-              );
-            })
-          )}
-        </div>
-      </div>
-      <div className="bloc-image-famille">
-        <h5 style={{ color: option.syntax }}>Rencontres décisives</h5>
-        <Picture
-          alt="Friends Michel Verjux"
-          className=""
-          sources={[
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(max-width: 1200px)",
-              //     type: "image/jpeg"
-            },
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(min-width: 1201px)",
-              //     type: "image/jpeg"
-            },
-          ]}
-        />
-        <Picture
-          alt="Friends Michel Verjux"
-          className=""
-          sources={[
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(max-width: 1200px)",
-              //     type: "image/jpeg"
-            },
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(min-width: 1201px)",
-              //     type: "image/jpeg"
-            },
-          ]}
-        />
-        <Picture
-          alt="Friends Michel Verjux"
-          className=""
-          sources={[
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(max-width: 1200px)",
-              //     type: "image/jpeg"
-            },
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(min-width: 1201px)",
-              //     type: "image/jpeg"
-            },
-          ]}
-        />
-        <Picture
-          alt="Friends Michel Verjux"
-          className=""
-          sources={[
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(max-width: 1200px)",
-              //     type: "image/jpeg"
-            },
-            {
-              // srcSet: "path-to-mobile-image.jpg, path-to-mobile-image@2x.jpg 2x",
-              srcSet: ` ${famille1} 2x`,
-              media: "(min-width: 1201px)",
-              //     type: "image/jpeg"
-            },
-          ]}
-        />
-      </div>
-    </section>
+</Wrapper>
   );
 }
+
+export default BioScreen
+
+const Wrapper = styled.main`
+min-height: 100vh; 
+/* background: var(--clr-primary-1);  */
+
+`

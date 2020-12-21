@@ -1,104 +1,61 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookie from "js-cookie";
+import "./main.css"
 
 // Pages import
-import LandingScreen from "./containers/LandingScreen";
-import HomeScreen from "./containers/HomeScreen.js";
-import ImageScreen from "./containers/ImageScreen";
-import TextScreen from "./containers/TextScreen";
-import BioScreen from "./containers/BioScreen";
-import ErrorScreen from "./containers/ErrorScreen";
-import SelectedIScreen from "./containers/SelectedImageScreen";
-import SelectedTScreen from "./containers/SelectedTextScreen";
-import LoginScreen from "./containers/LoginScreen";
-import PostTextScreen from "./containers/PostTextScreen";
-import PostImageScreen from "./containers/PostImageScreen";
-import PostBiblioScreen from "./containers/PostBiblioScreen";
+import { BiblioScreen, BioScreen, ErrorScreen, HomeScreen, LandingScreen, ImageScreen, 
+        SelectedIScreen, SelectedTScreen,
+        TextScreen} from "./containers";
 
 // Components import
-import Header from "./components/Header";
-import Footer from "./components/Footer.js";
-
-// Context import
-import { ThemeContextProvider } from "./context/ThemeContext";
-
-import "./App.css";
+import {Footer, Header, ModalLogin, SideBar} from "./components";
 
 function App() {
+       
   const token = Cookie.get("token");
   const [user, setUser] = useState({ token: token });
   const [modalLogin, setModalLogin] = useState(false);
-  const [post, setPost] = useState("");
 
+const toggleModalLogin = () => {
+        setModalLogin(!modalLogin)
+}
+  
   return (
     <Router>
+                 <Header
+        toggleModalLogin={toggleModalLogin}
+              setUser={setUser}
+            />
+<SideBar />
       {modalLogin && (
-        <LoginScreen
-          setModalLogin={setModalLogin}
+        <ModalLogin
+          toggleModalLogin={toggleModalLogin}
           setUser={setUser}
           user={user}
         />
       )}
-      <ThemeContextProvider>
         <Switch>
-          {post === "text" && <PostTextScreen setPost={setPost} />}
-          {post === "image" && <PostImageScreen setPost={setPost} />}
-          {post === "biblio" && <PostBiblioScreen setPost={setPost} />}
-
-          <Route path="/bio">
-            <Header
-              setModalLogin={setModalLogin}
-              setUser={setUser}
-              setPost={setPost}
-            />
+          <Route path="/bio/">
             <BioScreen />
-            <Footer />
           </Route>
-          <Route path="/text">
-            <Header
-              setModalLogin={setModalLogin}
-              setUser={setUser}
-              setPost={setPost}
-            />
+          <Route path="/biblio/"  >
+                  <BiblioScreen />
+          </Route>
+          <Route path="/text/">
             <TextScreen />
-            <Footer />
           </Route>
           <Route path="/selected-text/:id">
-            <Header
-              setModalLogin={setModalLogin}
-              setUser={setUser}
-              setPost={setPost}
-            />
             <SelectedTScreen />
-            <Footer />
           </Route>
           <Route path="/selected-image/:id">
-            <Header
-              setModalLogin={setModalLogin}
-              setUser={setUser}
-              setPost={setPost}
-            />
             <SelectedIScreen />
-            <Footer />
           </Route>
           <Route path="/image">
-            <Header
-              setModalLogin={setModalLogin}
-              setUser={setUser}
-              setPost={setPost}
-            />
             <ImageScreen />
-            <Footer />
           </Route>
           <Route path="/home">
-            <Header
-              setModalLogin={setModalLogin}
-              setUser={setUser}
-              setPost={setPost}
-            />
             <HomeScreen />
-            <Footer />
           </Route>
           <Route exact path="/">
             <LandingScreen />
@@ -107,7 +64,7 @@ function App() {
             <ErrorScreen />
           </Route>
         </Switch>
-      </ThemeContextProvider>
+      <Footer />
     </Router>
   );
 }

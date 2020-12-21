@@ -1,33 +1,45 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-
-import "../styles/styles.css";
+import React from "react";
+import "../main.css";
+import styled from "styled-components"
+import {socialLinks} from "../constants/socialLinks"
 
 const Footer = () => {
-  // Theme definition
-  const [theme] = useContext(ThemeContext);
-  const { themeSelected, themeOne, themeTwo } = theme;
-  let option;
-  switch (themeSelected) {
-    case true:
-      option = themeOne;
-      break;
-    case false:
-      option = themeTwo;
-      break;
-    default:
-      console.log("default");
-  }
+ 
   return (
-    <div
-      className="footer-container"
-      style={{
-        background: option.bg,
-      }}
-    >
-      <h4 style={{ color: option.syntax }}>Michel Verjux</h4>
-    </div>
+    <Wrapper>
+<div className="section-center s-b">
+        <h3>Michel Verjux</h3>
+        <ul>
+                {socialLinks.map(item => {
+                        const {id, url, icon} = item;
+                        return <li key={id} >
+<a href={url} className="social-link" >
+        {icon}
+</a>
+                        </li>
+                }) }
+        </ul>
+</div>
+<div className="section-center d-flex">
+        <h4>&copy; {new Date().getFullYear()} <span>HL</span> built with React.</h4>
+</div>
+    </Wrapper>
+         
   );
 };
 
 export default Footer;
+
+const Wrapper = styled.footer`
+height: 8rem; 
+display: grid; 
+place-items: center; 
+background: var(--clr-primary-1); 
+color: var(--clr-white); 
+div {
+  margin: 1rem auto;
+}
+span {
+  color: var(--clr-red-dark); 
+}
+`

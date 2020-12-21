@@ -1,29 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { ThemeContext } from "../context/ThemeContext";
+
 import Axios from "axios";
 import Cookie from "js-cookie";
 
-import "../styles/styles.css";
+import "../main.css";
+import styled from "styled-components"
 
-// Component import
-import SEO from "../components/SEO";
+import {SEO} from "../components";
 
 export default function SelectedText() {
-  // Theme definition
-  const [theme] = useContext(ThemeContext);
-  const { themeSelected, themeOne, themeTwo } = theme;
-  let option;
-  switch (themeSelected) {
-    case true:
-      option = themeOne;
-      break;
-    case false:
-      option = themeTwo;
-      break;
-    default:
-      console.log("default");
-  }
+
   const [text, setText] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
@@ -36,7 +23,7 @@ export default function SelectedText() {
         process.env.REACT_APP_WEBADDRESS + "/text?id=" + id
       );
       if (response.data) {
-        console.log(response.data);
+        // console.log(response.data);
         setText(response.data);
         setIsLoading(false);
       } else {
@@ -80,91 +67,16 @@ export default function SelectedText() {
   };
 
   return (
-    <div className="selected-text-page" style={{ background: option.bg }}>
-      <SEO
-        title="Text Page"
-        description={
-          isLoading
-            ? "Displays Michel Verjux's article"
-            : `Michel Verjux, ${text.title}`
-        }
-      />
-      <div className="info-text" style={{ background: option.syntax }}>
-        {!isLoading && <h6 style={{ color: option.bg }}>{text.year}</h6>}
-      </div>
-      <div className="selected-text">
-        {isLoading ? (
-          <div> ... chargement en cours ...</div>
-        ) : (
-          <>
-            {text.author && (
-              <h6 style={{ color: option.syntax }}>Auteur: {text.author}</h6>
-            )}
-            <h4 className="texts-page-title" style={{ color: option.syntax }}>
-              <span className="guill" style={{ color: option.syntax }}>
-                "
-              </span>
-              {text.title}
-            </h4>
-            <div className="text-container">
-              <p style={{ color: option.syntax }}>{text.article}</p>
-            </div>
-            <p className="texts-page-legend">
-              {text.place && (
-                <span
-                  className="texts-page-legend"
-                  style={{ color: option.syntax }}
-                >
-                  {text.place},{" "}
-                </span>
-              )}
-              {text.editor && (
-                <span
-                  className="texts-page-legend"
-                  style={{ color: option.syntax }}
-                >
-                  {text.editor},{" "}
-                </span>
-              )}
-              <span
-                className="texts-page-legend"
-                style={{ color: option.syntax }}
-              >
-                {text.year}
-              </span>
-              {text.traduct && (
-                <span
-                  className="texts-page-legend"
-                  style={{ color: option.syntax }}
-                >
-                  , {text.traduct}
-                </span>
-              )}
-              .
-            </p>
-          </>
-        )}
-      </div>
-      {token && (
-        <button
-          className="delete-button"
-          onClick={deleteText}
-          style={{ color: option.bg, background: option.syntax }}
-        >
-          Supprimer
-        </button>
-      )}
-
-      <div className="button-container">
-        <Link to="/text">
-          <button
-            className="button"
-            style={{ color: option.bg, background: option.syntax }}
-          >
-            Retour
-          </button>
-        </Link>
-      </div>
-    </div>
+<Wrapper>
+        
+</Wrapper>
   );
 }
+
+
+const Wrapper = styled.main`
+min-height: 100vh; 
+background: var(--clr-primary-1); 
+margin-top: -5rem; 
+
+`

@@ -1,149 +1,119 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Cookie from "js-cookie";
-import { ThemeContext } from "../context/ThemeContext";
+import {Link} from "react-router-dom"
+import {links} from "../constants/links"
+import { GoThreeBars } from "react-icons/go"
+import {useGlobalContext} from "../context/GlobalContext"
 
-import "../styles/styles.css";
-// Icon import
-import { FaAdjust } from "react-icons/fa";
+import "../main.css";
+import styled from "styled-components"
 
-export default function Header({ setModalLogin, setUser, setPost }) {
-  // Theme definition
-  const [theme, toggleTheme] = useContext(ThemeContext);
-  const { themeSelected, themeOne, themeTwo } = theme;
-  let option;
-  let hoverOption;
-  let hoverHOption;
-
-  switch (themeSelected) {
-    case true:
-      option = themeOne;
-      hoverOption = "hover";
-      hoverHOption = "hover-h2";
-
-      break;
-    case false:
-      option = themeTwo;
-      hoverOption = "hover2";
-      hoverHOption = "hover-h22";
-
-      break;
-    default:
-      console.log("default");
-  }
-
+const Header = ({ toggleModalLogin, setUser }) => {
   const token = Cookie.get("token");
-
+const {isSideBarOpen, toggleSide} = useGlobalContext(); 
   return (
-    <div
-      className="nav"
-      style={{
-        background: option.bg,
-      }}
+    <Wrapper
     >
-      <ul className="logo-nav">
-        <li className="">
-          <Link to="/home">
-            <h2
-              className={hoverHOption}
-              style={{
-                color: option.syntax,
-              }}
-            >
-              Michel Verjux
-            </h2>
-          </Link>
-        </li>
-        {token ? (
-          <>
-            <li className="second-li">
-              <span
-                className={hoverOption}
-                style={{ cursor: "pointer", color: option.syntax }}
-                onClick={() => {
-                  setUser({});
-                  Cookie.remove("token");
-                }}
-              >
-                Se déconnecter
-              </span>
-            </li>
-            <li>
-              <select
-                className="post-selecter"
-                onChange={(event) => {
-                  setPost(event.target.value);
-                }}
-              >
-                <option>Poster un article</option>
-                <option value="image">Image</option>
-                <option value="text">Texte</option>
-                <option value="biblio">Biblio</option>
-              </select>
-            </li>
-          </>
-        ) : (
-          <li className="second-li">
-            <span
-              className={hoverOption}
-              style={{ cursor: "pointer", color: option.syntax }}
-              onClick={() => {
-                setModalLogin(true);
-              }}
-            >
-              Se connecter
-            </span>
-          </li>
-        )}
-        <li>
-          <div className="icon-container" style={{ marginTop: "0.5rem" }}>
-            <FaAdjust
-              style={{ cursor: "pointer" }}
-              color={option.syntax}
-              size="1.5em"
-              onClick={() => toggleTheme(!themeSelected)}
-            />
-          </div>
-        </li>
-      </ul>
-      <ul className="mini-nav">
-        <li>
-          <Link to="/image">
-            <span
-              className={hoverOption}
-              style={{
-                color: option.syntax,
-              }}
-            >
-              Choix d'images
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/text">
-            <span
-              className={hoverOption}
-              style={{
-                color: option.syntax,
-              }}
-            >
-              Choix de textes
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/bio">
-            <span
-              className={hoverOption}
-              style={{
-                color: option.syntax,
-              }}
-            >
-              Bio/Biblio
-            </span>
-          </Link>
-        </li>
-      </ul>
+    <div className="nav-center">
+{token ? (
+<button className="btn connect-btn" onClick={() => {
+        setUser({})
+         Cookie.remove("token");
+}} >
+        se déconnecter
+       </button>
+): (
+
+<button className="btn connect-btn" onClick={toggleModalLogin} >
+        se connecter
+       </button>
+)}
+
+
+       {!isSideBarOpen && (
+<button className="toggle-btn"
+onClick={toggleSide}
+>
+<GoThreeBars />
+</button>
+       )}
+       <ul className="nav-links"
+       >
+               {links.map(link => {
+                       const {id, text, url} = link;
+                       return <li key={id} >
+<Link to={url}  > {text} </Link>
+                       </li>
+               })}
+       </ul>
     </div>
+    </Wrapper>
+    
   );
 }
+
+export default Header
+
+const Wrapper = styled.nav`
+position: relative; 
+z-index: 1;
+/* background: transparent;  */
+background: var(--clr-primary-1); 
+height: 5rem; 
+ display: flex;
+  align-items: center;
+  .nav-center {
+           width: 90vw;
+    margin: 0 auto;
+    max-width: 1170px;
+    display: flex;
+    justify-content: space-between; 
+  }
+  .connect-btn {
+           /* font-size: 1rem; */
+      border: transparent;
+  }
+  .toggle-btn {
+          /* width: 3.5rem; */
+      height: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border-radius: 1.5rem;
+      border: transparent;
+       color: var(--clr-white);
+      background: var(--clr-primary-1);
+      outline: none; 
+        cursor: pointer;
+      transition: var(--transition);
+      &:hover {
+        background: var(--clr-red-dark);
+      }
+  }
+  .nav-links {
+  display: none; 
+}
+   @media screen and (min-width: 800px) {
+           .toggle-btn { 
+                    display: none;
+           }
+           .nav-links {
+   display: flex;
+      justify-content: flex-end;
+}
+.nav-links li {
+  margin-left: 2rem; 
+}
+.nav-links a {
+    text-transform: capitalize;
+      color: var(--clr-white);
+      /* color: red; */
+      font-weight: bold;
+      letter-spacing: var(--spacing);
+      transition: var(--transition);
+      padding: 0.5rem 0;
+}
+
+    }
+`

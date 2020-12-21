@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ErrorScreen() {
+const  ErrorScreen = () => {
   return (
     <section className="d-flex fl-col center">
       <h1>Error Page</h1>
@@ -12,3 +12,5 @@ export default function ErrorScreen() {
     </section>
   );
 }
+
+export default ErrorScreen
