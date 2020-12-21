@@ -8,7 +8,7 @@ import { BiblioScreen,
         BioScreen,
          ErrorScreen, HomeScreen, LandingScreen, ImageScreen, 
         SelectedIScreen, SelectedTScreen,
-        TextScreen} from "./containers/index.js";
+        TextScreen} from "./containers/";
 
 // Components import
 import {Footer, Header, ModalLogin, SideBar} from "./components";

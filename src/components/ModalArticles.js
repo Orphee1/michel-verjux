@@ -73,7 +73,7 @@ console.log(error);
 
         return (
                 <Wrapper>
-                        <div className="container fl-col">
+                        <div className="container">
                                    <button className="close-modal-btn"
         onClick={toggleModal}
         >
@@ -123,19 +123,19 @@ console.log(error);
                 </div>
               
                 <div className="editor-container">
-                        <textarea name="article" rows="10" 
+                        <textarea 
+                        name="article" 
                         placeholder="Saisir l'article en markdown"
                         value={text.article}
                 onChange={handleChange}
                         ></textarea>
-                             <article>
+                             <article className="result" >
               <ReactMarkdown>
                       {text.article}
               </ReactMarkdown>
             </article>
                 </div>
            <button className="btn submit-btn">Envoyer</button>
-              
         </form>
                         </div>
                 </Wrapper>
@@ -163,6 +163,8 @@ background: var(--clr-white);
   max-width: var(--max-width);
   text-align: center;
   position: relative;
+  display: grid;
+  place-items: center;
  }
 .alert-container {
         height: 2rem; 
@@ -179,27 +181,24 @@ background: var(--clr-white);
 }
 .editor-container {
   width: 100%;
-  height: 100%; 
+  height: 45vh; 
   margin: 0.5rem; 
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0.5rem;
         textarea {
-                grid-column: 1/2; 
 border-color: transparent;
   border-radius: var(--radius);
   font-size: 1.2rem;
-  line-height: 2;
-      height: auto;
-  overflow-y: scroll; 
+  line-height: 2;     
   box-shadow: var(--dark-shadow);
-    padding: 1rem 2rem;
+    padding: 1rem 2rem;            
 }
 article {
-        grid-column: 2/3; 
+     
   padding: 1rem 2rem;
     height: auto;
-  overflow-y: scroll; 
+  overflow: scroll; 
   background: var(--clr-grey-9)
 
 }
