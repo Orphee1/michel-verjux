@@ -4,7 +4,10 @@ import Cookie from "js-cookie";
 import "./main.css"
 
 // Pages import
-import { BiblioScreen, BioScreen, ErrorScreen, HomeScreen, LandingScreen, ImageScreen, 
+import BioScreen from "./containers/bioScreen"
+import { BiblioScreen, 
+        // BioScreen,
+         ErrorScreen, HomeScreen, LandingScreen, ImageScreen, 
         SelectedIScreen, SelectedTScreen,
         TextScreen} from "./containers";
 
