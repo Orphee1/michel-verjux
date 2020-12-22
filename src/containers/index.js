@@ -1,12 +1,12 @@
-import BioScreen from "./bioScreen"
-import BiblioScreen from "./biblioScreen"
-import ErrorScreen from "./errorScreen"
-import HomeScreen from "./homeScreen"
-import ImageScreen from "./imageScreen"
-import LandingScreen from "./landingScreen"
-import SelectedIScreen from "./selectedImageScreen"
-import SelectedTScreen from "./selectedTextScreen"
-import TextScreen from "./textScreen"
+import BioScreen from "./BioScreen"
+import BiblioScreen from "./BiblioScreen"
+import ErrorScreen from "./ErrorScreen"
+import HomeScreen from "./HomeScreen"
+import ImageScreen from "./ImageScreen"
+import LandingScreen from "./LandingScreen"
+import SelectedIScreen from "./SelectedImageScreen"
+import SelectedTScreen from "./SelectedTextScreen"
+import TextScreen from "./TextScreen"
 export {
         BioScreen, BiblioScreen, ErrorScreen, HomeScreen, ImageScreen, LandingScreen, 
         SelectedIScreen, SelectedTScreen,
