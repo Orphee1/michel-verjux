@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-
+import ReactMarkdown from "react-markdown" 
 import Axios from "axios";
 import Cookie from "js-cookie";
 
@@ -10,12 +10,13 @@ import styled from "styled-components"
 import {SEO} from "../components";
 
 export default function SelectedText() {
-
+        
+        const token = Cookie.get("token");
   const [text, setText] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const { id } = useParams();
-  const token = Cookie.get("token");
+!isLoading && console.log(text);
 
   const fetchText = async () => {
     try {
@@ -68,7 +69,15 @@ export default function SelectedText() {
 
   return (
 <Wrapper>
-        
+        {isLoading ? (
+                <p>loading ...</p>
+        ): (
+<article>
+<ReactMarkdown>
+        {text.article}
+</ReactMarkdown>
+</article>
+        )}
 </Wrapper>
   );
 }
@@ -76,7 +85,18 @@ export default function SelectedText() {
 
 const Wrapper = styled.main`
 min-height: 100vh; 
-background: var(--clr-primary-1); 
-margin-top: -5rem; 
+background: var(--clr-white); 
+display: grid; 
+place-items: center; 
+padding: 5rem 0; 
+article{
+        width: 90%; 
+        max-width: var(--fixed-width); 
+        color: var(--clr-primary-1); 
+        p{
+        color: var(--clr-primary-1); 
+
+        }
+}
 
 `

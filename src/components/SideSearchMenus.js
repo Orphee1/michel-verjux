@@ -1,9 +1,10 @@
 import React from 'react'
 import "../main.css"
 import { FaTimesCircle } from "react-icons/fa"
+import {useGlobalContext} from "../context/GlobalContext"
 
-
-const SideSearchMenus = ({setBackSort, setPeriod, sideSearch, toggleSideSearch}) => {
+const SideSearchMenus = ({setBackSort, setPeriod}) => {
+        const {sideSearch, toggleSideSearch} = useGlobalContext(); 
         return (
                 <aside className={`${sideSearch ? `sidesearch show-sidesearch` 
                 : `sidesearch ` }   `} >

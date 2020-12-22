@@ -7,7 +7,7 @@ import styled from "styled-components"
 import {Alert} from "./index"
 import { FaTimes } from 'react-icons/fa';
 
-const ModalArticles = ({toggleModal}) => {
+const ModalArticles = ({toggleModalArticles}) => {
         const token = Cookie.get("token")
         const [isLoading, setIsLoading] = useState(false)
         const [alert, setAlert] = useState({
@@ -53,7 +53,7 @@ try {
         );
              setText({title: "", year: "", editor: "", author: "", traduct: "", place: "", article: ""});
              if (response.data) {
-console.log(response.data);
+// console.log(response.data);
 setAlert({show: true, type: "success", msg: "Votre article a bien été publié"})
 setIsLoading(false);
 
@@ -75,7 +75,7 @@ console.log(error);
                 <Wrapper>
                         <div className="container">
                                    <button className="close-modal-btn"
-        onClick={toggleModal}
+        onClick={toggleModalArticles}
         >
           <FaTimes />
         </button>

@@ -1,9 +1,11 @@
 import React from 'react'
-import {Link} from "react-router-dom"; 
+import {Link} from "react-router-dom";
+import ReactMarkdown from "react-markdown" 
 import "../main.css"
 import styled from "styled-components"
 
-const HomeArticles = () => {
+const HomeArticles = ({articles}) => {
+        console.log(articles);
         return (
                 <Wrapper>
                                         <div className="title">
@@ -11,6 +13,14 @@ const HomeArticles = () => {
           <span>/</span>
           Choix de textes
         </h2>
+        <div className="layout">
+{articles.map((item) => {
+        const {_id, article } = item
+        return <article key={_id} >
+                <ReactMarkdown>{article.substring(0, 600)}</ReactMarkdown><span>...</span>
+        </article>
+})}
+        </div>
         </div>
 
             <Link to="/text/" className="btn" >Plus de textes</Link>
@@ -31,4 +41,22 @@ align-items: center;
   margin-bottom: 2rem;
   color: var(--clr-white); 
 }
+.layout{
+    display: grid;
+    width: 90vw;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    gap: 1rem;
+    /* safari workaround */
+    grid-gap: 1rem;
+    grid-template-rows: auto auto;
+    article {
+            margin-top: 2rem; 
+            p{color : var(--clr-white); 
+        }
+    }
+    
+}
+ @media (min-width: 768px) { }
+  @media (min-width: 1200px) {}
 `

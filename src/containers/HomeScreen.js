@@ -10,8 +10,10 @@ const HomeScreen = () => {
   const [images, setImages] = useState([]);
   const [texts, setTexts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-//   console.log(images);
+//   !isLoading && console.log(images);
+//   !isLoading && console.log(texts);
   const pictures  = images.slice(0, 4)
+  const articles = texts.slice(0, 1); 
 
 
   const fetchData = async () => {
@@ -50,7 +52,9 @@ const HomeScreen = () => {
       <HomeImages 
       pictures={pictures}
       />
-      <HomeArticles />
+      <HomeArticles 
+      articles={articles}
+      />
       </>
    )}
    

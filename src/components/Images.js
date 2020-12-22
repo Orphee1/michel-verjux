@@ -164,7 +164,7 @@ article {
 }
  @media (min-width: 1200px) {
          display: grid; 
-          grid-template-columns: 1fr 1170px 1fr;
+          grid-template-columns: 20vw 80vw ;
           grid-template-rows: auto auto auto; 
            grid-gap: 1rem;
               .first-container {
@@ -176,7 +176,8 @@ article {
         display: inline-block; 
         grid-column: 1/2; 
                       grid-row: 2/3;
-                      align-self: flex-start; 
+                      align-self: flex-start;
+                      justify-self: flex-end;  
 }
     .post-btn {
         display: block; 
