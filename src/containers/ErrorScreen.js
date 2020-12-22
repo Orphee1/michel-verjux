@@ -1,16 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "../main.css"; 
+import styled from "styled-components"
+
 const  ErrorScreen = () => {
   return (
-    <section className="d-flex fl-col center">
-      <h1>Error Page</h1>
+    <Wrapper>
+      <h2>Oop's, la page demandée n'existe pas</h2>
 
-      <Link to="/home">
+      <Link to="/home" className="btn" >
         <h5>Back to Home Page</h5>
       </Link>
-    </section>
+    </Wrapper>
   );
 }
 
 export default ErrorScreen
+
+const Wrapper = styled.main`
+min-height: 100vh; 
+background: var(--clr-white); 
+padding : 5rem 0; 
+display: grid; 
+place-items: center; 
+
+`

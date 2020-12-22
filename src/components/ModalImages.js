@@ -7,7 +7,7 @@ import {Alert} from "./index"
 import { FaTimes } from 'react-icons/fa';
 
 
-const ModalImages = ({toggleModal}) => {
+const ModalImages = ({toggleModalPictures}) => {
           const token = Cookie.get("token")
         const [isLoading, setIsLoading] = useState(false)
         const [alert, setAlert] = useState({
@@ -82,7 +82,7 @@ setIsLoading(false)
                 <Wrapper>
                           <div className="container fl-col">
                                                                      <button className="close-modal-btn"
-        onClick={toggleModal}
+        onClick={toggleModalPictures}
         >
           <FaTimes />
         </button>

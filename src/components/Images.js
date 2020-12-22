@@ -1,20 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Cookie from "js-cookie"
 import {Link} from "react-router-dom"
 import "../main.css"
 import styled from "styled-components"
+import {useGlobalContext} from "../context/GlobalContext"; 
 import {ModalImages, SearchMenu, SideSearchMenu} from "../components"
 
 const Images = ({pictures, setBackSort, setPeriod}) => {
          const token = Cookie.get("token");
-      const [modal, setModal] = useState(false); 
-        const [sideSearch, setSideSearch] = useState(false)
-        const toggleSideSearch = () => {
-                setSideSearch(!sideSearch)
-        }
-           const toggleModal = () => {
-                setModal(!modal)
-        }
+         const {modalPictures, toggleModalPictures, toggleSideSearch} = useGlobalContext(); 
+
+    
         return (
                 <Wrapper>
         <div className="first-container section-center s-b">
@@ -31,8 +27,6 @@ const Images = ({pictures, setBackSort, setPeriod}) => {
         <SideSearchMenu  
         setBackSort={setBackSort}
         setPeriod={setPeriod}
-        sideSearch={sideSearch}
-        toggleSideSearch={toggleSideSearch}
         />
         <div className="search-menu">
 <SearchMenu 
@@ -61,12 +55,12 @@ style={{overflow: "hidden"}}
         </div>
         {token && (
         <button className="btn post-btn"
-        onClick={toggleModal}
+        onClick={toggleModalPictures}
         >Poster une image</button>
         )}
-        {modal && (
+        {modalPictures && (
                 <ModalImages 
-                toggleModal={toggleModal}
+                toggleModalPictures={toggleModalPictures}
                 />
         )}
                 </Wrapper>

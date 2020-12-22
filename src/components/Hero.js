@@ -33,6 +33,7 @@ h1 {
   color: var(--clr-white); 
   align-self: end ; 
   justify-self: start; 
+  /* font-weight: bold;  */
   
 }
 }
