@@ -5,7 +5,7 @@ import "./main.css"
 
 // Pages import
 import { 
-        // BiblioScreen, 
+        //  BiblioScreen,
         BioScreen,
          ErrorScreen, HomeScreen, LandingScreen, ImageScreen, 
         SelectedIScreen, SelectedTScreen,
@@ -43,7 +43,7 @@ const toggleModalLogin = () => {
             <BioScreen />
           </Route>
           {/* <Route path="/biblio/"  >
-                  <BiblioScreen />
+                 <BiblioScreen />
           </Route> */}
           <Route path="/text/">
             <TextScreen />

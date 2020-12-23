@@ -15,6 +15,19 @@ const {isSideBarOpen, toggleSide} = useGlobalContext();
     <Wrapper
     >
     <div className="nav-center">
+<h3>Michel Verjux</h3>
+
+
+       {!isSideBarOpen && (
+<button className="toggle-btn"
+onClick={toggleSide}
+>
+<GoThreeBars />
+</button>
+       )}
+       <ul className="nav-links"
+       >
+               <li>
 {token ? (
 <button className="btn connect-btn" onClick={() => {
         setUser({})
@@ -28,17 +41,7 @@ const {isSideBarOpen, toggleSide} = useGlobalContext();
         se connecter
        </button>
 )}
-
-
-       {!isSideBarOpen && (
-<button className="toggle-btn"
-onClick={toggleSide}
->
-<GoThreeBars />
-</button>
-       )}
-       <ul className="nav-links"
-       >
+               </li>
                {links.map(link => {
                        const {id, text, url} = link;
                        return <li key={id} >
@@ -68,9 +71,13 @@ height: 5rem;
     max-width: 1170px;
     display: flex;
     justify-content: space-between; 
+    h3 {
+            color: var(--clr-white);
+    }
   }
   .connect-btn {
            /* font-size: 1rem; */
+           display: none;
       border: transparent;
   }
   .toggle-btn {
@@ -94,7 +101,7 @@ height: 5rem;
   .nav-links {
   display: none; 
 }
-   @media screen and (min-width: 800px) {
+   @media screen and (min-width: 768px) {
            .toggle-btn { 
                     display: none;
            }
@@ -116,4 +123,11 @@ height: 5rem;
 }
 
     }
+     @media screen and (min-width: 1200px) { 
+  .connect-btn {
+      
+      display: inline-block;
+  }
+
+     }
 `

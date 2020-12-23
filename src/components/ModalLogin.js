@@ -86,7 +86,7 @@ position: fixed;
 background: var(--clr-white);
   border-radius: var(--radius);
   width: 90vw;
-  height: 40vh;
+  height: 60vh;
   max-width: var(--fixed-width);
   text-align: center;
   display: grid;

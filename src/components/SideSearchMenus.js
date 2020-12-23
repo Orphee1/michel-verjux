@@ -1,6 +1,6 @@
 import React from 'react'
 import "../main.css"
-import { FaTimesCircle } from "react-icons/fa"
+import { FaChevronLeft } from "react-icons/fa"
 import {useGlobalContext} from "../context/GlobalContext"
 
 const SideSearchMenus = ({setBackSort, setPeriod}) => {
@@ -14,7 +14,7 @@ const SideSearchMenus = ({setBackSort, setPeriod}) => {
                         <button className="close-search-btn "
                         onClick={toggleSideSearch}
                         >
-                               <FaTimesCircle /> 
+                               <FaChevronLeft /> 
                         </button>)}
                                     </div>
                                     <button className="sidesearch-btn"

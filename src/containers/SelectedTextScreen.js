@@ -72,11 +72,26 @@ export default function SelectedText() {
         {isLoading ? (
                 <p>loading ...</p>
         ): (
-<article>
+                <div className="container">
+<article  >
 <ReactMarkdown>
         {text.article}
 </ReactMarkdown>
 </article>
+<div className="side-container">
+        <div className="legend-container">
+       <h3>{text.title}</h3> 
+        <h4>{text.author}, {text.year}.</h4>
+        {text.editor &&  <h4>{text.editor}</h4> }
+        {text.place &&  <h4>{text.place}</h4> }
+        {text.traduct &&  <h4>{text.traduct}</h4> }
+        </div>
+        {token && (
+                <button className="btn" onClick={deleteText}          
+                >Supprimer</button>
+                )}
+</div>
+                </div>
         )}
 </Wrapper>
   );
@@ -89,14 +104,48 @@ background: var(--clr-white);
 display: grid; 
 place-items: center; 
 padding: 5rem 0; 
-article{
+.container {
         width: 90%; 
-        max-width: var(--fixed-width); 
+        max-width: var(--max-width); 
+}
+.side-container {
+        margin-top: 2rem; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+}
+.legend-container {
+        padding: 1rem; 
+          background: var(--clr-primary-1); 
+          /* margin-bottom: 1rem;  */
+       h3, h4{
+               color: var(--clr-white); 
+       }
+}
+article{
+        width: 100%;
         color: var(--clr-primary-1); 
         p{
         color: var(--clr-primary-1); 
 
         }
+}
+@media (min-width: 992px) { 
+.container { 
+display: flex; 
+align-items: center;
+}
+.legend-container{
+ margin-bottom: 1rem; 
+}
+.side-container {
+        margin-top: 0;
+        margin-left: 2rem; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        
+}
 }
 
 `

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-
 import { Link, useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
 import Cookie from "js-cookie";
@@ -14,11 +12,11 @@ import { LegendLoader, SelectedImageLoader, SEO}   from "../components";
 
 export default function SelectedImage() {
   
+        const token = Cookie.get("token");
   const [image, setImage] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const { id } = useParams();
-  const token = Cookie.get("token");
   !isLoading && console.log(image);
   
 
@@ -79,14 +77,21 @@ export default function SelectedImage() {
                           <section className="layout">
 <article className="" >
 <img src={image.picture} alt={image.title} className="img"/>
-</article>
+<div className="side-container">
 <div className="legend-container">
-        <h4>{image.title}, {image.town}, {image.year}.</h4>
+        <h3>{image.title}</h3> 
+        <h4>{image.town}, {image.year}.</h4>
         {image.medium &&  <h4>{image.medium}</h4> }
         {image.place &&  <h4>{image.place}</h4> }
         {image.context &&  <h4>{image.context}</h4> }
-        {image.credit && <h4>{image.credit}</h4>}
+        {image.credit && <h4>&copy;Photo: {image.credit}.</h4>}
+</div>{token && 
+<button className="btn"
+onClick={deleteImage}
+>Supprimer</button>
+}
 </div>
+</article>
                           </section>
                   )}
                   <Link to="/image" >
@@ -101,30 +106,46 @@ min-height: 100vh;
 background: var(--clr-white); 
 display: grid; 
 place-items: center; 
+padding: 1rem; 
 .layout {
         
 }
  .img {
      transition: var(--transition);
+     margin-bottom: 1rem;
+  }
+  .side-container{
+     margin-left: 1rem; 
+   transition: var(--transition);
+    display: flex; 
+   align-items: center; 
+   justify-content: space-between;
+
+  }
+  .legend-container {
+         
+     margin-bottom: 1rem;
+  
+
   }
 article {
         position: relative; 
-         background: var(--clr-black);
-              &:hover .img {
-      opacity: 0.1;
-    }
+          margin: 1rem auto;
 }
-
 
 @media (min-width: 768px) {}
 @media (min-width: 992px) {
-   .layout {
- display: flex; 
- align-items: flex-end;        
+ .side-container{
+  flex-direction: column; 
+  align-items: flex-start; 
+
+  }
+article {
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
 }
-.legend-container {
-        margin-left: 4rem; 
-}
+
 }
 
  @media (min-width: 1200px) {

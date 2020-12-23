@@ -125,7 +125,7 @@ align-items: center;
 
  @media (min-width: 1200px) {
           display: grid; 
-          grid-template-columns: 20vw 80vw;
+          grid-template-columns: 10vw 90vw;
           grid-template-rows: auto auto auto; 
            grid-gap: 1rem;
 .search-btn {
@@ -148,10 +148,10 @@ grid-row: 1/2;
 }
 .post-btn {
         display: block; 
-        width: 30%; 
+        width: 20%; 
         grid-column: 2/3; 
         grid-row: 3/4;
-        justify-self: center; 
+        justify-self: start; 
 }
 
  }
