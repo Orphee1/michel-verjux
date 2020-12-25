@@ -6,7 +6,7 @@ import styled from "styled-components"
 import {Alert} from "./index"
 import { FaTimes } from 'react-icons/fa';
 
-const ModalBiblio = ({toggleModal}) => {
+const ModalBiblio = ({toggleModalBiblio}) => {
 
         const token = Cookie.get("token")
          const [isLoading, setIsLoading] = useState(false)
@@ -64,7 +64,7 @@ setAlert({show: true, type: "danger", msg:"Une erreur est survenue en postant"})
                 <Wrapper>
                           <div className="container fl-col">
                                    <button className="close-modal-btn"
-        onClick={toggleModal}
+        onClick={toggleModalBiblio}
         >
           <FaTimes />
         </button>

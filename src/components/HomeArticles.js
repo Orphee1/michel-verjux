@@ -1,47 +1,54 @@
-import React from 'react'
-import {Link} from "react-router-dom";
-import ReactMarkdown from "react-markdown" 
-import "../main.css"
-import styled from "styled-components"
+import React from "react";
+import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import "../main.css";
+import styled from "styled-components";
 
-const HomeArticles = ({articles}) => {
-        console.log(articles);
-        return (
-                <Wrapper>
-                                        <div className="title">
- <h2>
+const HomeArticles = ({ articles }) => {
+  console.log(articles);
+  return (
+    <Wrapper>
+      <div className="title">
+        <h2>
           <span>/</span>
           Choix de textes
         </h2>
         <div className="layout">
-{articles.map((item) => {
-        const {_id, article } = item
-        return <article key={_id} >
-                <ReactMarkdown>{article.substring(0, 600)}</ReactMarkdown><span>...</span>
-        </article>
-})}
+          {articles.map((item) => {
+            const { _id, article } = item;
+            return (
+              <article key={_id}>
+                <div className="text">
+                  <ReactMarkdown>{article.substring(0, 600)}</ReactMarkdown>
+                  <span>...</span>
+                </div>
+              </article>
+            );
+          })}
         </div>
-        </div>
+      </div>
 
-            <Link to="/text/" className="btn" >Plus de textes</Link>
-                </Wrapper>
-        )
-}
+      <Link to="/text/" className="btn">
+        Plus de textes
+      </Link>
+    </Wrapper>
+  );
+};
 
-export default HomeArticles
+export default HomeArticles;
 
 const Wrapper = styled.section`
-background: var(--clr-primary-1); 
-padding : 5rem 0; 
-display: flex; 
-flex-direction: column; 
-align-items: center; 
-.title {
-         text-align: center;
-  margin-bottom: 2rem;
-  color: var(--clr-white); 
-}
-.layout{
+  background: var(--clr-primary-1);
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--clr-white);
+  }
+  .layout {
     display: grid;
     width: 90vw;
     max-width: var(--max-width);
@@ -51,12 +58,26 @@ align-items: center;
     grid-gap: 1rem;
     grid-template-rows: auto auto;
     article {
-            margin-top: 2rem; 
-            p{color : var(--clr-white); 
+      margin-top: 2rem;
+      .text {
+        text-align: center;
+        position: relative;
+        span {
+          position: absolute;
+          bottom: 0;
+          font-weight: bold;
+          font-size: 1.5rem;
+          right: 5px;
         }
+      }
+      p {
+        color: var(--clr-white);
+        text-align: left;
+      }
     }
-    
-}
- @media (min-width: 768px) { }
-  @media (min-width: 1200px) {}
-`
+  }
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1200px) {
+  }
+`;

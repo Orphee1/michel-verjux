@@ -1,7 +1,5 @@
-
-
 export const links = [
- {
+  {
     id: 1,
     text: "home",
     url: "/home",
@@ -21,11 +19,9 @@ export const links = [
     text: "bio",
     url: "/bio/",
   },
-//   {
-//     id: 5,
-//     text: "biblio",
-//     url: "/biblio/",
-//   }
-
-]
-
+  //   {
+  //     id: 5,
+  //     text: "biblio",
+  //     url: "/biblio/",
+  //   }
+];

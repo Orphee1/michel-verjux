@@ -3,15 +3,12 @@ import Cookie from "js-cookie"
 
 import "../main.css"
 import styled from "styled-components"
-import {ModalBiblio} from "./index"
+
 
 const Biblio = ({biblios}) => {
         // console.log(biblios);
         const token = Cookie.get("token")
-         const [modal, setModal] = useState(false); 
-          const toggleModal = () => {
-                setModal(!modal)
-        }
+    
 
         return (
                 <Wrapper>
@@ -21,14 +18,8 @@ const Biblio = ({biblios}) => {
           Bibliographie
         </h3>
         </div>                       
-        {token && (
-         <button className="btn post-btn"  
-         onClick={toggleModal}
-         >Poster une référence</button>
-        )}
-        {modal && (
-                <ModalBiblio toggleModal={toggleModal}  />
-        )}
+    
+       
                 </Wrapper>
         )
 }
