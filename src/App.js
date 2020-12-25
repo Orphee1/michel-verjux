@@ -5,7 +5,7 @@ import "./main.css";
 
 // Pages import
 import {
-  BiblioScreen,
+  //   BiblioScreen,
   BioScreen,
   ErrorScreen,
   HomeScreen,
