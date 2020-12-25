@@ -5,7 +5,7 @@ import "./main.css";
 
 // Pages import
 import {
-  //   BiblioScreen,
+  BiblioScreen,
   BioScreen,
   ErrorScreen,
   HomeScreen,
@@ -43,9 +43,9 @@ function App() {
         <Route path="/bio/">
           <BioScreen />
         </Route>
-        {/* <Route path="/biblio/"  >
-                 <BiblioScreen />
-          </Route> */}
+        <Route path="/biblio/">
+          <BiblioScreen />
+        </Route>
         <Route path="/text/">
           <TextScreen />
         </Route>
