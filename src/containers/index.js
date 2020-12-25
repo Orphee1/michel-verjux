@@ -1,4 +1,4 @@
-import BioBlioScreen from "./BibliograScreen";
+import BiblioScreen from "./BibliograScreen";
 import BioScreen from "./BioScreen";
 import ErrorScreen from "./ErrorScreen";
 import HomeScreen from "./HomeScreen";
@@ -8,7 +8,7 @@ import SelectedIScreen from "./SelectedImageScreen";
 import SelectedTScreen from "./SelectedTextScreen";
 import TextScreen from "./TextScreen";
 export {
-  BioBlioScreen,
+  BiblioScreen,
   BioScreen,
   ErrorScreen,
   HomeScreen,
