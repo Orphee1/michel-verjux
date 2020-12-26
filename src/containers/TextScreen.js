@@ -59,10 +59,10 @@ const TextScreen = () => {
           rechercher
         </button>
         <div className="title">
-          <h3>
+          <h2>
             <span>/</span>
             Choix de textes
-          </h3>
+          </h2>
         </div>
       </div>
       <SideSearchMenu setBackSort={setBackSort} setPeriod={setPeriod} />

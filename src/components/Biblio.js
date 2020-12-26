@@ -1,41 +1,139 @@
-import React, {useState} from 'react'
-import Cookie from "js-cookie"
+import React, { useState } from "react";
+import Cookie from "js-cookie";
 
-import "../main.css"
-import styled from "styled-components"
+import "../main.css";
+import styled from "styled-components";
 
+const Biblio = ({ biblios }) => {
+  // console.log(biblios);
+  const token = Cookie.get("token");
+  // to dynamically create categories
+  //   const categories = [...new Set(biblios.map((item) => item.category))]; // but we hardcode them instead
 
-const Biblio = ({biblios}) => {
-        // console.log(biblios);
-        const token = Cookie.get("token")
-    
+  const books = biblios.filter((item) => item.category === "Livres");
+  const catalogues = biblios.filter(
+    (item) => item.category === "Catalogues monographiques"
+  );
+  const talks = biblios.filter((item) => item.category === "Entretiens");
+  const articles = biblios.filter((item) => item.category === "Articles");
 
-        return (
-                <Wrapper>
-                         <div className="title">
- <h3>
-          <span>/</span>
-          Bibliographie
-        </h3>
-        </div>                       
-    
-       
-                </Wrapper>
-        )
-}
+  return (
+    <Wrapper>
+      <ul className="category-container">
+        <h3>Catalogues monographiques:</h3>
+        {catalogues.map((item) => {
+          //   console.log(item);
+          const { _id, author, collect, editor, title, year } = item;
+          return (
+            <li key={_id} className="reference-container">
+              <span style={{ marginRight: "0.5rem" }}>*</span>
+              <h4>
+                <i>{title}</i>,
+              </h4>
+              <h4>{editor},</h4>
+              <h4>{year}.</h4>
+              {token && <button className="btn">Supr</button>}
+            </li>
+          );
+        })}
+      </ul>
+      <ul className="category-container">
+        <h3>Livres:</h3>
+        {books.map((item) => {
+          //   console.log(item);
+          const { _id, author, collect, editor, title, year } = item;
+          return (
+            <li key={_id} className="reference-container">
+              <span style={{ marginRight: "0.5rem" }}>*</span>
+              <h4>
+                <i>{title}</i>,
+              </h4>
+              <h4>{author},</h4>
+              <h4>{editor},</h4>
+              {collect && <h4>{collect},</h4>}
+              <h4>{year}.</h4>
+              {token && <button className="btn">Supr</button>}
+            </li>
+          );
+        })}
+      </ul>
 
-export default Biblio
+      <ul className="category-container">
+        <h3>Entretiens:</h3>
+        {talks.map((item) => {
+          //   console.log(item);
+          const { author, collect, editor, title, year, _id } = item;
+          return (
+            <li key={_id} className="reference-container">
+              <span style={{ marginRight: "0.5rem" }}>*</span>
+              <h4>{title},</h4>
+              {collect && <h4>{collect},</h4>}
+              <h4>{editor},</h4>
+              <h4>{year}.</h4>
+              {token && <button className="btn">Supr</button>}
+            </li>
+          );
+        })}
+      </ul>
+
+      <ul className="category-container">
+        <h3>Articles:</h3>
+        {articles.map((item) => {
+          console.log(item);
+          const { author, collect, editor, title, year, _id } = item;
+          return (
+            <li key={_id} className="reference-container">
+              <span style={{ marginRight: "0.5rem" }}>*</span>
+              <h4>{author},</h4>
+              <h4>{title},</h4>
+              {collect && <h4>{collect},</h4>}
+              <h4>{editor},</h4>
+              <h4>{year}.</h4>
+              {token && <button className="btn">Supr</button>}
+            </li>
+          );
+        })}
+      </ul>
+    </Wrapper>
+  );
+};
+
+export default Biblio;
 
 const Wrapper = styled.section`
-background: var(--clr-white); 
-padding : 5rem 0; 
-display: flex; 
-flex-direction: column; 
-align-items: center; 
-@media (min-width: 768px) { }
+  background: var(--clr-white);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 2rem 0;
+  .category-container {
+    width: 100%;
+    margin: 1rem, auto;
 
-@media (min-width: 992px) {}
+    h3 {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  }
+  .reference-container {
+    width: 100%;
+    margin: 0.5rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: square;
+    /* text-align: left; */
+    h4 {
+      margin-right: 0.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+  }
 
- @media (min-width: 1200px) {}
+  @media (min-width: 992px) {
+  }
 
-` 
+  @media (min-width: 1200px) {
+  }
+`;

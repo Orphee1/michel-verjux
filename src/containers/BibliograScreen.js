@@ -12,7 +12,7 @@ const BiblioScreen = () => {
   const { modalBiblio, toggleModalBiblio } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
   const [biblios, setBiblios] = useState();
-  !isLoading && console.log(biblios);
+  //   !isLoading && console.log(biblios);
 
   const fetchBiblios = async () => {
     try {
@@ -33,13 +33,21 @@ const BiblioScreen = () => {
   }, []);
   return (
     <Wrapper>
-      {isLoading ? <BiblioLoader /> : <Biblio biblios={biblios} />}
-      {token && (
-        <button className="btn post-btn" onClick={toggleModalBiblio}>
-          Poster une référence
-        </button>
-      )}
-      {modalBiblio && <ModalBiblio toggleModalBiblio={toggleModalBiblio} />}
+      <div className="section-center">
+        <div className="title">
+          <h2>
+            <span>/</span>
+            Bibliographie
+          </h2>
+        </div>
+        {isLoading ? <BiblioLoader /> : <Biblio biblios={biblios} />}
+        {token && (
+          <button className="btn post-btn" onClick={toggleModalBiblio}>
+            Poster une référence
+          </button>
+        )}
+        {modalBiblio && <ModalBiblio toggleModalBiblio={toggleModalBiblio} />}
+      </div>
     </Wrapper>
   );
 };
