@@ -37,6 +37,7 @@ const ImageScreen = () => {
           period
       );
       if (response.data.length !== 0) {
+        console.log(response.data);
         setImages(response.data);
         setIsLoading(false);
       }

@@ -9,7 +9,7 @@ const Articles = ({ articles }) => {
     <Wrapper>
       <div className="layout">
         {articles.map((item) => {
-          console.log(item);
+          //   console.log(item);
           const {
             _id,
             article,

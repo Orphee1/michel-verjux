@@ -26,16 +26,17 @@ const TextScreen = () => {
   //   !isLoading && console.log(texts);
 
   const fetchTexts = async () => {
+    console.log("coucou");
     try {
       const response = await Axios.get(
         process.env.REACT_APP_WEBADDRESS +
-          "/texts?-backSort=" +
+          "/texts?backSort=" +
           backSort +
           "&period=" +
           period
       );
       if (response.data) {
-        //       console.log(response.data);
+        console.log(response.data);
         setTexts(response.data);
         setIsLoading(false);
       } else {

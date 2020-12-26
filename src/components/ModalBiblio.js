@@ -102,65 +102,91 @@ const ModalBiblio = ({ toggleModalBiblio }) => {
             onSubmit={handleSubmit}
           >
             <div className="form-biblio-group fl-col">
-              <select
-                name="category"
-                id="category"
-                className="form-control"
-                onChange={handleChange}
-              >
-                {options}
-              </select>
-              <input
-                style={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
-                type="text"
-                name="title"
-                className="form-control"
-                placeholder="Titre"
-                value={biblio.title}
-                onChange={handleChange}
-              />
-              <div className="input-container d-flex">
-                <input
-                  style={{ marginRight: "0.5rem" }}
-                  type="text"
-                  name="editor"
+              <div className="input-container">
+                <select
+                  name="category"
+                  id="category"
                   className="form-control"
-                  placeholder="Éditeur"
-                  value={biblio.editor}
                   onChange={handleChange}
-                />
-                <input
-                  style={{ marginLeft: "0.5rem" }}
-                  type="text"
-                  name="collect"
-                  className="form-control"
-                  placeholder="Collection"
-                  value={biblio.collect}
-                  onChange={handleChange}
-                />
+                >
+                  {options}
+                </select>
+                <span className="required">*</span>
               </div>
-              <div className="input-container d-flex">
+              <div className="input-container">
                 <input
-                  style={{ marginRight: "0.5rem" }}
                   type="text"
-                  name="author"
+                  name="title"
                   className="form-control"
-                  placeholder="Auteur"
-                  value={biblio.author}
+                  placeholder="Titre"
+                  value={biblio.title}
                   onChange={handleChange}
                 />
-                <input
+                <span className="required">*</span>
+              </div>
+              <div className="double-container d-flex">
+                <div
+                  className="input-container"
+                  style={{ marginRight: "0.5rem" }}
+                >
+                  <input
+                    type="text"
+                    name="editor"
+                    className="form-control"
+                    placeholder="Éditeur"
+                    value={biblio.editor}
+                    onChange={handleChange}
+                  />
+                  <span className="required">*</span>
+                </div>
+                <div
+                  className="input-container"
                   style={{ marginLeft: "0.5rem" }}
-                  type="number"
-                  name="year"
-                  className="form-control"
-                  placeholder="Année"
-                  value={biblio.year}
-                  onChange={handleChange}
-                />
+                >
+                  <input
+                    type="text"
+                    name="collect"
+                    className="form-control"
+                    placeholder="Collection"
+                    value={biblio.collect}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              <div className="double-container d-flex">
+                <div
+                  className="input-container"
+                  style={{ marginRight: "0.5rem" }}
+                >
+                  <input
+                    type="text"
+                    name="author"
+                    className="form-control"
+                    placeholder="Auteur"
+                    value={biblio.author}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div
+                  className="input-container"
+                  style={{ marginLeft: "0.5rem" }}
+                >
+                  <input
+                    type="number"
+                    name="year"
+                    className="form-control"
+                    placeholder="Année"
+                    value={biblio.year}
+                    onChange={handleChange}
+                  />
+                  <span className="required">*</span>
+                </div>
               </div>
             </div>
-            <button className="btn submit-btn">Envoyer</button>
+            <span>* Ces champs sont requis.</span>
+            <button className="btn submit-btn" style={{ marginTop: "0.5rem" }}>
+              Envoyer
+            </button>
           </form>
         </div>
       </div>
@@ -182,7 +208,10 @@ const Wrapper = styled.main`
   transition: var(--transition);
   z-index: 10;
   select {
-    outline: none;
+    font-family: var(--ff-primary);
+    color: var(--clr-primary-2);
+    text-transform: uppercase;
+    letter-spacing: var(--spacing);
   }
   .container {
     background: var(--clr-white);
@@ -205,7 +234,16 @@ const Wrapper = styled.main`
   .alert-container {
     height: 2rem;
   }
+  .double-container {
+    width: 100%;
+  }
   .input-container {
     width: 100%;
+    position: relative;
+  }
+  .required {
+    position: absolute;
+    bottom: 0;
+    left: -10px;
   }
 `;

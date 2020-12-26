@@ -11,7 +11,7 @@ const BiblioScreen = () => {
   const token = Cookie.get("token");
   const { modalBiblio, toggleModalBiblio } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
-  const [biblios, setBiblios] = useState();
+  const [biblios, setBiblios] = useState([]);
   //   !isLoading && console.log(biblios);
 
   const fetchBiblios = async () => {
@@ -31,6 +31,32 @@ const BiblioScreen = () => {
   useEffect(() => {
     fetchBiblios();
   }, []);
+
+  const deleteBiblio = async (id) => {
+    try {
+      const formData = new FormData();
+      formData.append("id", id);
+      const response = await Axios.post(
+        process.env.REACT_APP_WEBADDRESS + "/biblio/delete",
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (response.data) {
+        console.log(response.data);
+        const newBiblios = biblios.filter((item) => item.id !== id);
+        setBiblios(newBiblios);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Erreur: cette référence n'a pas été supprimée");
+    }
+  };
+
   return (
     <Wrapper>
       <div className="section-center">
@@ -40,7 +66,11 @@ const BiblioScreen = () => {
             Bibliographie
           </h2>
         </div>
-        {isLoading ? <BiblioLoader /> : <Biblio biblios={biblios} />}
+        {isLoading ? (
+          <BiblioLoader />
+        ) : (
+          <Biblio biblios={biblios} deleteBiblio={deleteBiblio} />
+        )}
         {token && (
           <button className="btn post-btn" onClick={toggleModalBiblio}>
             Poster une référence

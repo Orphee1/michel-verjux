@@ -106,70 +106,80 @@ const ModalArticles = ({ toggleModalArticles }) => {
         <form action="" className="form-articles" onSubmit={handleSubmit}>
           <div className="editor-container">
             <TextEditor setText={setText} text={text} />
-            {/* <textarea
-              name="article"
-              placeholder="Saisir l'article en markdown"
-              value={text.article}
-              onChange={handleChange}
-            ></textarea> */}
             <article>
               <ReactMarkdown>{text.article}</ReactMarkdown>
             </article>
           </div>
-          <div className="input-container d-flex">
-            <input
-              type="text"
-              name="title"
-              className="form-control"
-              placeholder="nom"
-              value={text.title}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="author"
-              className="form-control"
-              placeholder="auteur"
-              value={text.author}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="editor"
-              className="form-control"
-              placeholder="éditeur"
-              value={text.editor}
-              onChange={handleChange}
-            />
+          <div className="multiple-container d-flex">
+            <div className="input-container">
+              <input
+                type="text"
+                name="title"
+                className="form-control"
+                placeholder="nom"
+                value={text.title}
+                onChange={handleChange}
+              />
+              <span className="required">*</span>
+            </div>
+            <div className="input-container">
+              <input
+                type="text"
+                name="author"
+                className="form-control"
+                placeholder="auteur"
+                value={text.author}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-container">
+              <input
+                type="text"
+                name="editor"
+                className="form-control"
+                placeholder="éditeur"
+                value={text.editor}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className="input-container d-flex">
-            <input
-              type="text"
-              name="traduct"
-              className="form-control"
-              placeholder="traducteur"
-              value={text.traduct}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="place"
-              className="form-control"
-              placeholder="ville"
-              value={text.place}
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              name="year"
-              className="form-control"
-              placeholder="e.g. 2005"
-              value={text.year}
-              onChange={handleChange}
-            />
+          <div className="multiple-container d-flex">
+            <div className="input-container">
+              <input
+                type="text"
+                name="traduct"
+                className="form-control"
+                placeholder="traducteur"
+                value={text.traduct}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-container">
+              <input
+                type="text"
+                name="place"
+                className="form-control"
+                placeholder="ville"
+                value={text.place}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-container">
+              <input
+                type="number"
+                name="year"
+                className="form-control"
+                placeholder="e.g. 2005"
+                value={text.year}
+                onChange={handleChange}
+              />
+              <span className="required">*</span>
+            </div>
           </div>
-
-          <button className="btn submit-btn">Envoyer</button>
+          <span>* Ces champs sont requis.</span>
+          <button className="btn submit-btn" style={{ marginTop: "0.5rem" }}>
+            Envoyer
+          </button>
         </form>
       </div>
     </Wrapper>
@@ -204,13 +214,20 @@ const Wrapper = styled.main`
     height: 2rem;
   }
   .form-articles {
-    height: 75vh;
+    height: 80vh;
+  }
+  .multiple-container {
+    width: 50%;
   }
   .input-container {
-    width: 50%;
-    input {
-      margin: 0.5rem;
-    }
+    margin: 0 0.5rem;
+    width: 100%;
+    position: relative;
+  }
+  .required {
+    position: absolute;
+    bottom: 0;
+    left: -10px;
   }
   .editor-container {
     width: 100%;
