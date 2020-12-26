@@ -19,7 +19,7 @@ const HomeArticles = ({ articles }) => {
             return (
               <article key={_id}>
                 <div className="text">
-                  <ReactMarkdown>{article.substring(0, 600)}</ReactMarkdown>
+                  <ReactMarkdown>{article.substring(0, 670)}</ReactMarkdown>
                   <span>...</span>
                 </div>
               </article>
