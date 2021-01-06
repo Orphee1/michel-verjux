@@ -1,13 +1,41 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../main.css";
 import styled from "styled-components";
+import { useDataContext } from "../context/DataContext";
 
-const Images = ({ pictures }) => {
+const Images = () => {
+  const { images, imagesError, imagesLoading } = useDataContext();
+  const history = useHistory();
+  React.useEffect(() => {
+    if (imagesError) {
+      setTimeout(() => {
+        history.push("/home");
+      }, 3000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imagesError]);
+
+  if (imagesLoading) {
+    return (
+      <Wrapper>
+        <h2>Chargement...</h2>
+      </Wrapper>
+    );
+  }
+
+  if (imagesError) {
+    return (
+      <Wrapper>
+        <h2>Une erreur est survenue</h2>
+      </Wrapper>
+    );
+  }
+
   return (
     <Wrapper>
       <div className="layout">
-        {pictures.map((item) => {
+        {images.map((item) => {
           const { _id, picture, title, town, year } = item;
           return (
             <article key={_id}>

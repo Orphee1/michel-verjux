@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React, { useState } from "react";
 import Cookie from "js-cookie";
 import "../main.css";
 import styled from "styled-components";
@@ -19,39 +18,9 @@ const TextScreen = () => {
     toggleModalArticles,
     toggleSideSearch,
   } = useGlobalContext();
-  const [texts, setTexts] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  //   !isLoading && console.log(texts);
-
-  const fetchTexts = async () => {
-    console.log("coucou");
-    try {
-      const response = await Axios.get(
-        process.env.REACT_APP_WEBADDRESS +
-          "/texts?backSort=" +
-          backSort +
-          "&period=" +
-          period
-      );
-      if (response.data) {
-        console.log(response.data);
-        setTexts(response.data);
-        setIsLoading(false);
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchTexts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [backSort, period]);
 
   return (
     <Wrapper>
@@ -70,13 +39,11 @@ const TextScreen = () => {
       <div className="search-menu">
         <SearchMenu setPeriod={setPeriod} setBackSort={setBackSort} />
       </div>
-      {isLoading ? (
-        <p>loading ...</p>
-      ) : (
-        <div className="article-container red">
-          <Articles articles={texts} className="article" />
-        </div>
-      )}
+
+      <div className="article-container red">
+        <Articles className="article" />
+      </div>
+
       {token && (
         <button className="btn post-btn" onClick={toggleModalArticles}>
           Poster un texte

@@ -3,9 +3,25 @@ import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import "../main.css";
 import styled from "styled-components";
+import { useDataContext } from "../context/DataContext";
 
-const HomeArticles = ({ articles }) => {
-  console.log(articles);
+const HomeArticles = () => {
+  const { articles, articlesLoading, articlesError } = useDataContext();
+  if (articlesLoading) {
+    return (
+      <Wrapper>
+        <h2>chargement...</h2>
+      </Wrapper>
+    );
+  }
+  if (articlesError) {
+    return (
+      <Wrapper>
+        <h2>Une erreur est survenue</h2>
+      </Wrapper>
+    );
+  }
+
   return (
     <Wrapper>
       <div className="title">
@@ -43,6 +59,9 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  h2 {
+    color: var(--clr-white);
+  }
   .title {
     text-align: center;
     margin-bottom: 2rem;

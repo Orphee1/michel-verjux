@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React, { useState } from "react";
 import Cookie from "js-cookie";
 import "../main.css";
 import styled from "styled-components";
 import { useGlobalContext } from "../context/GlobalContext";
+
 import {
   Images,
   MainImageLoader,
@@ -21,36 +21,9 @@ const ImageScreen = () => {
     toggleSideSearch,
     toggleModalPictures,
   } = useGlobalContext();
-  const [images, setImages] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);
-  //     !isLoading && console.log(images);
-
-  const fetchImages = async () => {
-    try {
-      const response = await Axios.get(
-        process.env.REACT_APP_WEBADDRESS +
-          "/images?backSort=" +
-          backSort +
-          "&period=" +
-          period
-      );
-      if (response.data.length !== 0) {
-        console.log(response.data);
-        setImages(response.data);
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchImages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [backSort, period]);
 
   return (
     <Wrapper>
@@ -69,17 +42,11 @@ const ImageScreen = () => {
       <div className="search-menu">
         <SearchMenu setPeriod={setPeriod} setBackSort={setBackSort} />
       </div>
-      {isLoading ? (
-        <p>loading ...</p>
-      ) : (
-        <div className="images-container">
-          <Images
-            pictures={images}
-            setBackSort={setBackSort}
-            setPeriod={setPeriod}
-          />
-        </div>
-      )}
+
+      <div className="images-container">
+        <Images setBackSort={setBackSort} setPeriod={setPeriod} />
+      </div>
+
       {token && (
         <button className="btn post-btn" onClick={toggleModalPictures}>
           Poster une image

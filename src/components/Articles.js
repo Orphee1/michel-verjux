@@ -1,10 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { useDataContext } from "../context/DataContext";
 import "../main.css";
 import styled from "styled-components";
 
-const Articles = ({ articles }) => {
+const Articles = () => {
+  const history = useHistory();
+  const { articles, articlesError, articlesLoading } = useDataContext();
+
+  React.useEffect(() => {
+    if (articlesError) {
+      setTimeout(() => {
+        history.push("/home");
+      }, 3000);
+    }
+  }, [articlesError]);
+
+  if (articlesLoading) {
+    return (
+      <Wrapper>
+        <h2>Chargement...</h2>
+      </Wrapper>
+    );
+  }
+  if (articlesError) {
+    return (
+      <Wrapper>
+        <h2>Une erreur est survenue</h2>
+      </Wrapper>
+    );
+  }
   return (
     <Wrapper>
       <div className="layout">

@@ -2,7 +2,7 @@ import React, { useState, useContext, createContext } from "react";
 
 const AppContext = createContext();
 
-const AppProvider = ({ children }) => {
+export const AppProvider = ({ children }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [modalArticles, setModalArticles] = useState(false);
   const [modalPictures, setModalPictures] = useState(false);
@@ -51,4 +51,3 @@ const AppProvider = ({ children }) => {
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };
-export { AppContext, AppProvider };
