@@ -1,44 +1,39 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import Axios from "axios";
 import Cookie from "js-cookie";
-
+import { useDataContext } from "../context/DataContext";
 import "../main.css";
 import styled from "styled-components";
 
 import { SEO } from "../components";
 
 export default function SelectedText() {
+  const {
+    fetchSingleArticle,
+    single_article,
+    single_articleLoading,
+    single_articleError,
+  } = useDataContext();
   const token = Cookie.get("token");
-  const [text, setText] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const { id } = useParams();
-  !isLoading && console.log(text);
-
-  const fetchText = async () => {
-    try {
-      const response = await Axios.get(
-        process.env.REACT_APP_WEBADDRESS + "/text?id=" + id
-      );
-      if (response.data) {
-        // console.log(response.data);
-        setText(response.data);
-        setIsLoading(false);
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
-  };
+  const url = process.env.REACT_APP_WEBADDRESS + "/text?id=";
 
   useEffect(() => {
-    fetchText();
+    fetchSingleArticle(`${url}${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (single_articleError) {
+      setTimeout(() => {
+        history.push("/text");
+      }, 3000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [single_articleError]);
 
   const deleteText = async (event) => {
     event.preventDefault();
@@ -47,7 +42,7 @@ export default function SelectedText() {
       formData.append("id", id);
 
       const response = await Axios.post(
-        process.env.REACT_APP_WEBADDRESS + "/text/delete",
+        process.env.REACT_APP_WEBADDRESS + "/single_article/delete",
         formData,
         {
           headers: {
@@ -58,7 +53,7 @@ export default function SelectedText() {
       );
       if (response.data) {
         console.log(response.data);
-        history.push("/text");
+        history.push("/single_article");
       }
     } catch (error) {
       console.log(error);
@@ -66,36 +61,49 @@ export default function SelectedText() {
     }
   };
 
+  if (single_articleLoading) {
+    return (
+      <Wrapper>
+        <h2>Chargement...</h2>
+      </Wrapper>
+    );
+  }
+  if (single_articleError) {
+    return (
+      <Wrapper>
+        <h2>Une erreur est survenue</h2>
+      </Wrapper>
+    );
+  }
+
   return (
     <Wrapper>
-      {isLoading ? (
-        <p>loading ...</p>
-      ) : (
-        <div className="container section-center">
-          {/* <Link to="/text">
+      <div className="container section-center">
+        {/* <Link to="/single_article">
             <button className="btn">Articles</button>
           </Link> */}
-          <article>
-            <ReactMarkdown>{text.article}</ReactMarkdown>
-          </article>
-          <div className="info">
-            <h4>
-              <i>{text.title},</i>
-            </h4>
-            <h4>{text.author},</h4>
-            <h4>{text.year}.</h4>
-            {text.editor && <h4>{text.editor}.</h4>}
-            {text.place && <h4>{text.place}.</h4>}
-            {text.traduct && <h4>Traduction: {text.traduct}.</h4>}
-          </div>
-
-          {token && (
-            <button className="btn" onClick={deleteText}>
-              Supprimer
-            </button>
+        <article>
+          <ReactMarkdown>{single_article.article}</ReactMarkdown>
+        </article>
+        <div className="info">
+          <h4>
+            <i>{single_article.title},</i>
+          </h4>
+          <h4>{single_article.author},</h4>
+          <h4>{single_article.year}.</h4>
+          {single_article.editor && <h4>{single_article.editor}.</h4>}
+          {single_article.place && <h4>{single_article.place}.</h4>}
+          {single_article.traduct && (
+            <h4>Traduction: {single_article.traduct}.</h4>
           )}
         </div>
-      )}
+
+        {token && (
+          <button className="btn" onClick={deleteText}>
+            Supprimer
+          </button>
+        )}
+      </div>
     </Wrapper>
   );
 }
@@ -118,10 +126,10 @@ const Wrapper = styled.main`
     width: 100%;
     /* margin-top: 1.5rem; */
     color: var(--clr-primary-1);
-    text-align: center;
+    single_article-align: center;
     p {
       color: var(--clr-primary-1);
-      text-align: left;
+      single_article-align: left;
     }
   }
   .info {

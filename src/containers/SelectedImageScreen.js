@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
 import Cookie from "js-cookie";
+import { useDataContext } from "../context/DataContext";
 
 import "../main.css";
 import styled from "styled-components";
@@ -9,35 +10,32 @@ import styled from "styled-components";
 // Components import
 import { LegendLoader, SelectedImageLoader, SEO } from "../components";
 
+const url = process.env.REACT_APP_WEBADDRESS + "/image?id=";
+
 export default function SelectedImage() {
+  const {
+    fetchSingleImage,
+    image,
+    imageError,
+    imageLoading,
+  } = useDataContext();
+
   const token = Cookie.get("token");
-  const [image, setImage] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const { id } = useParams();
-  !isLoading && console.log(image);
-
-  const fetchImage = async () => {
-    try {
-      const response = await Axios.get(
-        process.env.REACT_APP_WEBADDRESS + "/image?id=" + id
-      );
-      if (response.data) {
-        setImage(response.data);
-        setIsLoading(false);
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
-    }
-  };
 
   useEffect(() => {
-    fetchImage();
+    fetchSingleImage(`${url}${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (imageError) {
+      setTimeout(() => {
+        history.push("/image");
+      }, 3000);
+    }
+  }, [imageError]);
 
   const deleteImage = async (event) => {
     event.preventDefault();
@@ -66,34 +64,47 @@ export default function SelectedImage() {
     }
   };
 
+  if (imageLoading) {
+    return (
+      <Wrapper>
+        <h2>Chargement...</h2>
+      </Wrapper>
+    );
+  }
+
+  if (imageError) {
+    return (
+      <Wrapper>
+        <h2>Une erreur est survenue</h2>
+      </Wrapper>
+    );
+  }
+
   return (
     <Wrapper>
-      {isLoading ? (
-        <p>loading...</p>
-      ) : (
-        <section className="layout">
-          <article className="">
-            <img src={image.picture} alt={image.title} className="img" />
-            <div className="side-container">
-              <div className="legend-container">
-                <h3>{image.title}</h3>
-                <h4>
-                  {image.town}, {image.year}.
-                </h4>
-                {image.medium && <h4>{image.medium}</h4>}
-                {image.place && <h4>{image.place}</h4>}
-                {image.context && <h4>{image.context}</h4>}
-                {image.credit && <h4>&copy;Photo: {image.credit}.</h4>}
-              </div>
-              {token && (
-                <button className="btn" onClick={deleteImage}>
-                  Supprimer
-                </button>
-              )}
+      <section className="layout">
+        <article className="">
+          <img src={image.picture} alt={image.title} className="img" />
+          <div className="side-container">
+            <div className="legend-container">
+              <h3>{image.title}</h3>
+              <h4>
+                {image.town}, {image.year}.
+              </h4>
+              {image.medium && <h4>{image.medium}</h4>}
+              {image.place && <h4>{image.place}</h4>}
+              {image.context && <h4>{image.context}</h4>}
+              {image.credit && <h4>&copy;Photo: {image.credit}.</h4>}
             </div>
-          </article>
-        </section>
-      )}
+            {token && (
+              <button className="btn" onClick={deleteImage}>
+                Supprimer
+              </button>
+            )}
+          </div>
+        </article>
+      </section>
+
       <Link to="/image">
         <button className="btn back-btn">Retour</button>
       </Link>
