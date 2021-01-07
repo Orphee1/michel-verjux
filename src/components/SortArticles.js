@@ -29,7 +29,7 @@ const Wrapper = styled.section`
   /* width: 100%; */
   display: grid;
   grid-template-columns: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   column-gap: 2rem;
   hr {
     border-bottom: 1px solid var(--clr-primary-1);

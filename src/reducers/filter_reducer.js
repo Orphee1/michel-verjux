@@ -53,11 +53,9 @@ const filter_reducer = (state, action) => {
   }
 
   if (action.type === SORT_ARTICLES) {
-    console.log("fired");
     const { sort_articles, filtered_articles } = state;
     let tempArticles = [...filtered_articles];
     if (sort_articles === "date-desc") {
-      console.log("here we are");
       tempArticles.sort((a, b) => b.year - a.year);
     }
     if (sort_articles === "date-asc") {

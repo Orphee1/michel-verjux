@@ -37,8 +37,6 @@ const initialState = {
 export const FilterProvider = ({ children }) => {
   const { articles, images } = useDataContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state.sort_articles);
-  console.log(state.filtered_articles);
 
   useEffect(() => {
     dispatch({ type: LOAD_DATA, payload: { articles, images } });
