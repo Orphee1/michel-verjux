@@ -6,7 +6,7 @@ const ListView = ({ images }) => {
   return (
     <Wrapper>
       {images.map((image) => {
-        console.log(image);
+        // console.log(image);
         const { picture, town, year, context, _id, title } = image;
         return (
           <article key={_id}>

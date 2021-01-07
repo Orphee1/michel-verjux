@@ -69,6 +69,9 @@ const Wrapper = styled.section`
   form {
     display: flex;
     color: var(--clr-grey-5);
+    select {
+      color: var(--clr-grey-5);
+    }
   }
   @media (min-width: 768px) {
     column-gap: 2rem;
