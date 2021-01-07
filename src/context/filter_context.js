@@ -11,6 +11,8 @@ import {
   UPDATE_FILTERS_ARTICLES,
   UPDATE_FILTERS_IMAGES,
   UPDATE_SORT,
+  UPDATE_SORT_ARTICLES,
+  FILTER_ARTICLES,
 } from "../actions";
 import { useDataContext } from "./DataContext";
 
@@ -23,6 +25,7 @@ const initialState = {
   all_articles: [],
   grid_view: true,
   sort: "date-desc",
+  sort_articles: "date-desc",
   filters_articles: {
     period: "Toutes périodes",
   },
@@ -34,8 +37,8 @@ const initialState = {
 export const FilterProvider = ({ children }) => {
   const { articles, images } = useDataContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log("filter = " + state.filters_images.period);
-  //   console.log(state.filtered_images);
+  console.log(state.sort_articles);
+  console.log(state.filtered_articles);
 
   useEffect(() => {
     dispatch({ type: LOAD_DATA, payload: { articles, images } });
@@ -46,15 +49,29 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SORT_IMAGES });
   }, [images, state.sort, state.filters_images]);
 
+  useEffect(() => {
+    dispatch({ type: FILTER_ARTICLES });
+    dispatch({ type: SORT_ARTICLES });
+  }, [articles, state.sort_articles, state.filters_articles]);
+
   const updateSort = (event) => {
     const value = event.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
+  const updateSortArticles = (event) => {
+    const value = event.target.value;
+    dispatch({ type: UPDATE_SORT_ARTICLES, payload: value });
+  };
 
-  const updateFilterImages = (event) => {
+  const updateFilter = (event, ref = "image") => {
     const name = event.target.name;
     const value = event.target.textContent;
-    dispatch({ type: UPDATE_FILTERS_IMAGES, payload: { name, value } });
+
+    if (ref === "text") {
+      dispatch({ type: UPDATE_FILTERS_ARTICLES, payload: { name, value } });
+    } else {
+      dispatch({ type: UPDATE_FILTERS_IMAGES, payload: { name, value } });
+    }
   };
 
   const setGridView = () => {
@@ -68,8 +85,9 @@ export const FilterProvider = ({ children }) => {
         ...state,
         setGridView,
         setListView,
-        updateFilterImages,
+        updateFilter,
         updateSort,
+        updateSortArticles,
       }}
     >
       {children}

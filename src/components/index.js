@@ -28,6 +28,7 @@ import SelectedImageLoader from "./SelectedImageLoader";
 import SEO from "./SEO";
 import SideBar from "./SideBar";
 import Sort from "./Sort";
+import SortArticles from "./SortArticles";
 import TextEditor from "./TextEditor";
 import Title from "./Title";
 export {
@@ -61,6 +62,7 @@ export {
   SideBar,
   SideSearchMenu,
   Sort,
+  SortArticles,
   TextEditor,
   Title,
 };

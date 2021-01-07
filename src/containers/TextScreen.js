@@ -4,10 +4,13 @@ import "../main.css";
 import styled from "styled-components";
 import {
   Articles,
+  Filters,
   ModalArticles,
+  PageHero,
   SEO,
   SearchMenu,
   SideSearchMenu,
+  SortArticles,
 } from "../components";
 import { useGlobalContext } from "../context/GlobalContext";
 
@@ -23,104 +26,36 @@ const TextScreen = () => {
   const [backSort, setBackSort] = useState(false);
 
   return (
-    <Wrapper>
-      <div className="first-container section-center s-b">
-        <button className="btn search-btn" onClick={toggleSideSearch}>
-          rechercher
-        </button>
-        <div className="title">
-          <h2>
-            <span>/</span>
-            Choix de textes
-          </h2>
+    <main>
+      <PageHero title="choix de textes" />
+      <Wrapper className="page">
+        <div className="section-center articles">
+          <Filters text />
+          <div>
+            <SortArticles />
+            <Articles />
+          </div>
         </div>
-      </div>
-      <SideSearchMenu setBackSort={setBackSort} setPeriod={setPeriod} />
-      <div className="search-menu">
-        <SearchMenu setPeriod={setPeriod} setBackSort={setBackSort} />
-      </div>
-
-      <div className="article-container red">
-        <Articles className="article" />
-      </div>
-
-      {token && (
-        <button className="btn post-btn" onClick={toggleModalArticles}>
-          Poster un texte
-        </button>
-      )}
-      {modalArticles && (
-        <ModalArticles toggleModalArticles={toggleModalArticles} />
-      )}
-    </Wrapper>
+      </Wrapper>
+    </main>
   );
 };
 
 export default TextScreen;
 
-const Wrapper = styled.main`
-  min-height: 100vh;
-  background: var(--clr-white);
-  padding: 5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .first-container {
-    align-items: baseline;
+const Wrapper = styled.div`
+  .articles {
+    display: grid;
+    gap: 3rem 1.5rem;
+    margin: 4rem auto;
   }
-  .title {
-    text-align: center;
-    color: var(--clr-primary-1);
-  }
-  .search-menu {
-    display: none;
-  }
-  .post-btn {
-    display: none;
-  }
-  .article-container {
-    width: 90%;
+  .filters {
+    justify-self: flex-start;
+    background: red;
   }
   @media (min-width: 768px) {
-  }
-
-  @media (min-width: 992px) {
-  }
-
-  @media (min-width: 1200px) {
-    display: grid;
-    grid-template-columns: 10vw 80vw 10vw;
-    grid-template-rows: auto auto auto;
-    grid-gap: 1rem;
-    .search-btn {
-      display: none;
-    }
-    .first-container {
-      grid-row: 1/2;
-      grid-column: 2/3;
-      justify-self: flex-start;
-      margin-left: 0;
-    }
-    .search-menu {
-      display: inline-block;
-      grid-column: 1/2;
-      grid-row: 2/3;
-      align-self: flex-start;
-      justify-self: flex-end;
-    }
-    .article-container {
-      grid-column: 2/3;
-      grid-row: 2/3;
-    }
-    .post-btn {
-      display: block;
-      grid-row: 1/2;
-      grid-column: 2/3;
-      justify-self: flex-end;
-      /* width: 20%;
-      grid-column: 2/3;
-      grid-row: 3/4;
-      justify-self: center; */
+    .articles {
+      grid-template-columns: 200px 1fr;
     }
   }
 `;

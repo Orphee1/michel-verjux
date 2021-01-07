@@ -2,12 +2,14 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { useDataContext } from "../context/DataContext";
+import { useFilterContext } from "../context/filter_context";
 import "../main.css";
 import styled from "styled-components";
 
 const Articles = () => {
   const history = useHistory();
-  const { articles, articlesError, articlesLoading } = useDataContext();
+  const { articlesError, articlesLoading } = useDataContext();
+  const { filtered_articles: articles } = useFilterContext();
 
   React.useEffect(() => {
     if (articlesError) {
