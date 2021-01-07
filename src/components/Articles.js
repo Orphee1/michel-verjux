@@ -5,6 +5,7 @@ import { useDataContext } from "../context/DataContext";
 import { useFilterContext } from "../context/filter_context";
 import "../main.css";
 import styled from "styled-components";
+import { ArticlesLoader } from "./loaders";
 
 const Articles = () => {
   const history = useHistory();
@@ -22,7 +23,7 @@ const Articles = () => {
   if (articlesLoading) {
     return (
       <Wrapper>
-        <h2>Chargement...</h2>
+        <ArticlesLoader />
       </Wrapper>
     );
   }
@@ -62,7 +63,7 @@ const Articles = () => {
                 <h4>{year}.</h4>
               </div>
               <Link key={_id} to={`/selected-text/${_id}`}>
-                <button className="btn">Lire l'article</button>
+                <button className="btn">Lire</button>
               </Link>
             </article>
           );
@@ -99,6 +100,9 @@ const Wrapper = styled.section`
       p {
         color: var(--clr-primary-1);
         text-align: left;
+      }
+      button {
+        width: 100px;
       }
       span {
         position: absolute;

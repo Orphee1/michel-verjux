@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../main.css";
 import styled from "styled-components";
 import { useDataContext } from "../context/DataContext";
+import { HomeImagesLoader } from "./loaders";
 
 const HomeImages = () => {
   const { images, imagesLoading, imagesError } = useDataContext();
@@ -10,14 +11,22 @@ const HomeImages = () => {
   if (imagesLoading) {
     return (
       <Wrapper>
-        <h2>chargement...</h2>
+        <div className="title">
+          <h2>
+            <span>/</span>
+            Choix d'images
+          </h2>
+        </div>
+        <div className="tile-layout">
+          <HomeImagesLoader />
+        </div>
       </Wrapper>
     );
   }
   if (imagesError) {
     return (
       <Wrapper>
-        <h2>Une erreur est survenue</h2>
+        <h3>Une erreur est survenue</h3>
       </Wrapper>
     );
   }

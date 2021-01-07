@@ -12,6 +12,7 @@ import {
   SideSearchMenu,
   SortArticles,
 } from "../components";
+
 import { useGlobalContext } from "../context/GlobalContext";
 
 const TextScreen = () => {
@@ -27,7 +28,7 @@ const TextScreen = () => {
 
   return (
     <main>
-      <PageHero title="choix de textes" />
+      <PageHero title="Choix de textes" />
       <Wrapper className="page">
         <div className="section-center articles">
           <Filters text />

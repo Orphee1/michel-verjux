@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useDataContext } from "../context/DataContext";
 import { useFilterContext } from "../context/filter_context";
 import { GridView, ListView } from "./index";
+import { ImagesLoader } from "./loaders";
 const Images = () => {
   const { imagesError, imagesLoading } = useDataContext();
   const { grid_view, filtered_images: images } = useFilterContext();
@@ -22,9 +23,9 @@ const Images = () => {
 
   if (imagesLoading) {
     return (
-      <div className="section section-center">
-        <h2>Chargement...</h2>
-      </div>
+      <LoadingWrapper>
+        <ImagesLoader />
+      </LoadingWrapper>
     );
   }
 
@@ -44,4 +45,13 @@ const Images = () => {
 
 export default Images;
 
-const Wrapper = styled.section``;
+const LoadingWrapper = styled.section`
+  display: grid;
+  gap: 2rem 1.5rem;
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1170px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;

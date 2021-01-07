@@ -4,13 +4,22 @@ import ReactMarkdown from "react-markdown";
 import "../main.css";
 import styled from "styled-components";
 import { useDataContext } from "../context/DataContext";
+import { HomeArticlesLoader } from "./loaders";
 
 const HomeArticles = () => {
   const { articles, articlesLoading, articlesError } = useDataContext();
   if (articlesLoading) {
     return (
       <Wrapper>
-        <h2>chargement...</h2>
+        <div className="title">
+          <h2>
+            <span>/</span>
+            Choix de textes
+          </h2>
+        </div>
+        <div className="layout">
+          <HomeArticlesLoader />
+        </div>
       </Wrapper>
     );
   }

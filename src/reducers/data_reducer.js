@@ -11,6 +11,9 @@ import {
   GET_SINGLE_ARTICLE_BEGIN,
   GET_SINGLE_ARTICLE_SUCCESS,
   GET_SINGLE_ARTICLE_ERROR,
+  GET_BIBLIO_BEGIN,
+  GET_BIBLIO_SUCCESS,
+  GET_BIBLIO_ERROR,
 } from "../actions";
 
 const data_reducer = (state, action) => {
@@ -18,7 +21,11 @@ const data_reducer = (state, action) => {
     return { ...state, articlesLoading: true };
   }
   if (action.type === GET_ARTICLES_SUCCESS) {
-    return { ...state, articles: action.payload, articlesLoading: false };
+    return {
+      ...state,
+      articles: action.payload,
+      articlesLoading: false,
+    };
   }
   if (action.type === GET_ARTICLES_ERROR) {
     return { ...state, articlesLoading: false, articlesError: true };
@@ -28,7 +35,11 @@ const data_reducer = (state, action) => {
     return { ...state, imagesLoading: true };
   }
   if (action.type === GET_IMAGES_SUCCESS) {
-    return { ...state, images: action.payload, imagesLoading: false };
+    return {
+      ...state,
+      images: action.payload,
+      imagesLoading: false,
+    };
   }
   if (action.type === GET_IMAGES_ERROR) {
     return { ...state, imagesLoading: false, imagesError: true };
@@ -38,10 +49,18 @@ const data_reducer = (state, action) => {
     return { ...state, imageLoading: true };
   }
   if (action.type === GET_SINGLE_IMAGE_SUCCESS) {
-    return { ...state, image: action.payload, imageLoading: false };
+    return {
+      ...state,
+      image: action.payload,
+      imageLoading: false,
+    };
   }
   if (action.type === GET_SINGLE_IMAGE_ERROR) {
-    return { ...state, imageLoading: false, imageError: true };
+    return {
+      ...state,
+      imageLoading: false,
+      imageError: true,
+    };
   }
 
   if (action.type === GET_SINGLE_ARTICLE_BEGIN) {
@@ -62,6 +81,20 @@ const data_reducer = (state, action) => {
     };
   }
 
+  if (action.type === GET_BIBLIO_BEGIN) {
+    return { ...state, bibliosLoading: true };
+  }
+
+  if (action.type === GET_BIBLIO_SUCCESS) {
+    return {
+      ...state,
+      bibliosLoading: false,
+      biblios: action.payload,
+    };
+  }
+  if (action.type === GET_BIBLIO_ERROR) {
+    return { ...state, bibliosLoading: false, bibliosError: true };
+  }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 

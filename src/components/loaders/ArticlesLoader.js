@@ -1,16 +1,16 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-export default function MultipleTextsLoader() {
+export default function ArticlesLoader() {
   return (
     <ContentLoader
       speed={3}
       interval={0.15}
       gradientRatio={2}
       width="100%"
-      viewBox="0 -2 100 105"
+      viewBox="0 0 100 105"
       backgroundColor="white"
-      foregroundColor="rgba(2, 50, 84, 0.5)"
+      backgroundColor="rgba(40, 44, 53, 0.5)"
     >
       <rect x="3" y="1" rx="0" ry="0" width="95" height="4" />
       <rect x="3" y="6" rx="0" ry="0" width="65" height="4" />

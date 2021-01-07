@@ -15,6 +15,9 @@ import {
   GET_SINGLE_ARTICLE_BEGIN,
   GET_SINGLE_ARTICLE_SUCCESS,
   GET_SINGLE_ARTICLE_ERROR,
+  GET_BIBLIO_BEGIN,
+  GET_BIBLIO_SUCCESS,
+  GET_BIBLIO_ERROR,
 } from "../actions";
 
 const initialState = {
@@ -30,16 +33,21 @@ const initialState = {
   image: {},
   imageLoading: false,
   imageError: false,
+  biblios: [],
+  bibliosLoading: false,
+  bibliosError: false,
 };
 
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state.biblio);
 
   const fetchData = async () => {
     dispatch({ type: GET_ARTICLES_BEGIN });
     dispatch({ type: GET_IMAGES_BEGIN });
+    dispatch({ type: GET_BIBLIO_BEGIN });
     try {
       const responseImages = await axios(
         process.env.REACT_APP_WEBADDRESS + "/images"
@@ -64,6 +72,19 @@ export const DataProvider = ({ children }) => {
       }
     } catch (error) {
       dispatch({ type: GET_ARTICLES_ERROR });
+      console.log(error.message);
+    }
+    try {
+      const responseBiblio = await axios(
+        process.env.REACT_APP_WEBADDRESS + "/biblio"
+      );
+      //       console.log(responseBiblio);
+      if (responseBiblio.data) {
+        const biblio = responseBiblio.data;
+        dispatch({ type: GET_BIBLIO_SUCCESS, payload: biblio });
+      }
+    } catch (error) {
+      dispatch({ type: GET_BIBLIO_ERROR });
       console.log(error.message);
     }
   };

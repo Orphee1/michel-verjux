@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import Axios from "axios";
 import Cookie from "js-cookie";
@@ -7,7 +7,11 @@ import { useDataContext } from "../context/DataContext";
 import "../main.css";
 import styled from "styled-components";
 
-import { SEO } from "../components";
+import { PageHero, SEO } from "../components";
+import {
+  ArticleLoaderBigScreen,
+  ArticleLoaderSmallScreen,
+} from "../components/loaders";
 
 export default function SelectedText() {
   const {
@@ -63,9 +67,15 @@ export default function SelectedText() {
 
   if (single_articleLoading) {
     return (
-      <Wrapper>
-        <h2>Chargement...</h2>
-      </Wrapper>
+      <LoaderWrapper>
+        {/* <PageHero title="texte" /> */}
+        <article className="small_screen">
+          <ArticleLoaderSmallScreen />
+        </article>
+        <article className="big_screen">
+          <ArticleLoaderBigScreen />
+        </article>
+      </LoaderWrapper>
     );
   }
   if (single_articleError) {
@@ -78,10 +88,8 @@ export default function SelectedText() {
 
   return (
     <Wrapper>
+      {/* <PageHero title="texte" /> */}
       <div className="container section-center">
-        {/* <Link to="/single_article">
-            <button className="btn">Articles</button>
-          </Link> */}
         <article>
           <ReactMarkdown>{single_article.article}</ReactMarkdown>
         </article>
@@ -146,6 +154,33 @@ const Wrapper = styled.main`
   @media (min-width: 992px) {
     .container {
       max-width: var(--max-width);
+    }
+  }
+`;
+
+const LoaderWrapper = styled.main`
+  min-height: 100vh;
+  background: var(--clr-white);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  .small_screen {
+    width: 80vw;
+    height: 80vh;
+    margin: 1rem auto;
+  }
+  .big_screen {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .small_screen {
+      display: none;
+    }
+    .big_screen {
+      display: block;
+      width: 60vw;
+      height: 60vh;
+      margin: 1rem auto;
     }
   }
 `;

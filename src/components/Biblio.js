@@ -1,14 +1,11 @@
 import React from "react";
 import Cookie from "js-cookie";
-
 import "../main.css";
 import styled from "styled-components";
 
 const Biblio = ({ biblios, deleteBiblio }) => {
   // console.log(biblios);
   const token = Cookie.get("token");
-  // to dynamically create categories
-  //   const categories = [...new Set(biblios.map((item) => item.category))]; // but we hardcode them instead
 
   const books = biblios
     .filter((item) => item.category === "Livres")
@@ -38,7 +35,7 @@ const Biblio = ({ biblios, deleteBiblio }) => {
               </h4>
               <h4>{editor},</h4>
               <h4>{year}.</h4>
-              {token && (
+              {/* {token && (
                 <button
                   className="btn"
                   onClick={() => {
@@ -47,7 +44,7 @@ const Biblio = ({ biblios, deleteBiblio }) => {
                 >
                   Supr
                 </button>
-              )}
+              )} */}
             </li>
           );
         })}
@@ -67,7 +64,7 @@ const Biblio = ({ biblios, deleteBiblio }) => {
               <h4>{editor},</h4>
               {collect && <h4>{collect},</h4>}
               <h4>{year}.</h4>
-              {token && (
+              {/* {token && (
                 <button
                   className="btn"
                   onClick={() => {
@@ -76,7 +73,7 @@ const Biblio = ({ biblios, deleteBiblio }) => {
                 >
                   Supr
                 </button>
-              )}
+              )} */}
             </li>
           );
         })}
@@ -94,7 +91,7 @@ const Biblio = ({ biblios, deleteBiblio }) => {
               {collect && <h4>{collect},</h4>}
               <h4>{editor},</h4>
               <h4>{year}.</h4>
-              {token && (
+              {/* {token && (
                 <button
                   className="btn"
                   onClick={() => {
@@ -103,7 +100,7 @@ const Biblio = ({ biblios, deleteBiblio }) => {
                 >
                   Supr
                 </button>
-              )}
+              )} */}
             </li>
           );
         })}

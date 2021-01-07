@@ -3,12 +3,13 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import Axios from "axios";
 import Cookie from "js-cookie";
 import { useDataContext } from "../context/DataContext";
-
 import "../main.css";
 import styled from "styled-components";
-
-// Components import
-import { LegendLoader, SelectedImageLoader, SEO } from "../components";
+import { PageHero, SEO } from "../components";
+import {
+  ImageLoaderBigScreen,
+  ImageLoaderSmallScreen,
+} from "../components/loaders";
 
 const url = process.env.REACT_APP_WEBADDRESS + "/image?id=";
 
@@ -66,9 +67,15 @@ export default function SelectedImage() {
 
   if (imageLoading) {
     return (
-      <Wrapper>
-        <h2>Chargement...</h2>
-      </Wrapper>
+      <LoaderWrapper>
+        <PageHero title="Image" />
+        <article className="small_screen">
+          <ImageLoaderSmallScreen />
+        </article>
+        <article className="big_screen">
+          <ImageLoaderBigScreen />
+        </article>
+      </LoaderWrapper>
     );
   }
 
@@ -82,6 +89,7 @@ export default function SelectedImage() {
 
   return (
     <Wrapper>
+      <PageHero title="Image" />
       <section className="layout">
         <article className="">
           <img src={image.picture} alt={image.title} className="img" />
@@ -156,6 +164,33 @@ const Wrapper = styled.main`
   @media (min-width: 1200px) {
     .back-btn {
       display: none;
+    }
+  }
+`;
+
+const LoaderWrapper = styled.main`
+  min-height: 100vh;
+  background: var(--clr-white);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  .small_screen {
+    width: 80vw;
+    height: 80vh;
+    margin: 1rem auto;
+  }
+  .big_screen {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .small_screen {
+      display: none;
+    }
+    .big_screen {
+      display: block;
+      width: 60vw;
+      height: 60vh;
+      margin: 1rem auto;
     }
   }
 `;
