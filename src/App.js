@@ -11,6 +11,8 @@ import {
   HomeScreen,
   LandingScreen,
   ImageScreen,
+  PostScreen,
+  PrivateRoute,
   SelectedIScreen,
   SelectedTScreen,
   TextScreen,
@@ -20,8 +22,8 @@ import {
 import { Footer, Header, ModalLogin, SideBar } from "./components";
 
 function App() {
-  const token = Cookie.get("token");
-  const [user, setUser] = useState({ token: token });
+  //   const token = Cookie.get("token");
+  //   const [user, setUser] = useState({ token: token });
   const [modalLogin, setModalLogin] = useState(false);
 
   const toggleModalLogin = () => {
@@ -30,13 +32,16 @@ function App() {
 
   return (
     <Router>
-      <Header toggleModalLogin={toggleModalLogin} setUser={setUser} />
+      <Header
+        toggleModalLogin={toggleModalLogin}
+        //       setUser={setUser}
+      />
       <SideBar />
       {modalLogin && (
         <ModalLogin
           toggleModalLogin={toggleModalLogin}
-          setUser={setUser}
-          user={user}
+          //   setUser={setUser}
+          //   user={user}
         />
       )}
       <Switch>
@@ -64,6 +69,9 @@ function App() {
         <Route exact path="/">
           <LandingScreen />
         </Route>
+        <PrivateRoute exact path="/post">
+          <PostScreen />
+        </PrivateRoute>
         <Route path="*">
           <ErrorScreen />
         </Route>

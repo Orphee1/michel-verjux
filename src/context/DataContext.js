@@ -42,7 +42,6 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state.biblio);
 
   const fetchData = async () => {
     dispatch({ type: GET_ARTICLES_BEGIN });
