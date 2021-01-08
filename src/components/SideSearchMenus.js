@@ -1,10 +1,10 @@
 import React from "react";
 import "../main.css";
 import { FaChevronLeft } from "react-icons/fa";
-import { useGlobalContext } from "../context/GlobalContext";
+import { useToggleContext } from "../context/toggle_context";
 
 const SideSearchMenus = ({ setBackSort, setPeriod }) => {
-  const { sideSearch, toggleSideSearch } = useGlobalContext();
+  const { sideSearch, toggleSideSearch } = useToggleContext();
   return (
     <aside
       className={`${

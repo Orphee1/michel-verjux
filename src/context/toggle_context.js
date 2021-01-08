@@ -1,8 +1,8 @@
 import React, { useState, useContext, createContext } from "react";
 
-const AppContext = createContext();
+const ToggleContext = createContext();
 
-export const AppProvider = ({ children }) => {
+export const ToggleProvider = ({ children }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [modalArticles, setModalArticles] = useState(false);
   const [modalPictures, setModalPictures] = useState(false);
@@ -29,7 +29,7 @@ export const AppProvider = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider
+    <ToggleContext.Provider
       value={{
         isSideBarOpen,
         toggleSide,
@@ -44,10 +44,10 @@ export const AppProvider = ({ children }) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </ToggleContext.Provider>
   );
 };
 
-export const useGlobalContext = () => {
-  return useContext(AppContext);
+export const useToggleContext = () => {
+  return useContext(ToggleContext);
 };

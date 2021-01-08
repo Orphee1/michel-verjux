@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { UserProvider } from "./context/user_context";
-import { AppProvider } from "./context/GlobalContext";
 import { DataProvider } from "./context/DataContext";
 import { FilterProvider } from "./context/filter_context";
+import { ToggleProvider } from "./context/toggle_context";
+import { UserProvider } from "./context/user_context";
 
 ReactDOM.render(
   <Auth0Provider
@@ -15,13 +15,13 @@ ReactDOM.render(
     cacheLocation="localstorage"
   >
     <UserProvider>
-      <AppProvider>
+      <ToggleProvider>
         <DataProvider>
           <FilterProvider>
             <App />
           </FilterProvider>
         </DataProvider>
-      </AppProvider>
+      </ToggleProvider>
     </UserProvider>
   </Auth0Provider>,
 

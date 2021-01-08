@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Cookie from "js-cookie";
 import "../main.css";
 import styled from "styled-components";
-import { useGlobalContext } from "../context/GlobalContext";
 
 import {
   Filters,
@@ -19,11 +18,6 @@ import {
 
 const ImageScreen = () => {
   const token = Cookie.get("token");
-  const {
-    modalPictures,
-    toggleSideSearch,
-    toggleModalPictures,
-  } = useGlobalContext();
 
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);

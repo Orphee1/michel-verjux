@@ -4,10 +4,12 @@ import Cookie from "js-cookie";
 import ReactMarkdown from "react-markdown";
 import "../main.css";
 import styled from "styled-components";
+import { useToggleContext } from "../context/toggle_context";
 import { Alert, TextEditor } from "./index";
 import { FaTimes } from "react-icons/fa";
 
-const ModalArticles = ({ toggleModalArticles }) => {
+const ModalArticles = () => {
+  const { toggleModalArticles } = useToggleContext();
   const token = Cookie.get("token");
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState({

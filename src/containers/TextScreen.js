@@ -13,15 +13,8 @@ import {
   SortArticles,
 } from "../components";
 
-import { useGlobalContext } from "../context/GlobalContext";
-
 const TextScreen = () => {
   const token = Cookie.get("token");
-  const {
-    modalArticles,
-    toggleModalArticles,
-    toggleSideSearch,
-  } = useGlobalContext();
 
   const [period, setPeriod] = useState(0);
   const [backSort, setBackSort] = useState(false);

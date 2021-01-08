@@ -1,9 +1,9 @@
 import React from "react";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import { Link } from "react-router-dom";
 import { links } from "../constants/links";
 import { GoThreeBars } from "react-icons/go";
-import { useGlobalContext } from "../context/GlobalContext";
+import { useToggleContext } from "../context/toggle_context";
 import { useUserContext } from "../context/user_context";
 
 import "../main.css";
@@ -14,7 +14,7 @@ const Header = ({
   // setUser
 }) => {
   //   const token = Cookie.get("token");
-  const { isSideBarOpen, toggleSide } = useGlobalContext();
+  const { isSideBarOpen, toggleSide } = useToggleContext();
   const { myUser, loginWithRedirect, logout } = useUserContext();
 
   return (
