@@ -6,12 +6,16 @@ import { DataProvider } from "./context/DataContext";
 import { FilterProvider } from "./context/filter_context";
 import { ToggleProvider } from "./context/toggle_context";
 import { UserProvider } from "./context/user_context";
+// console.log(window);
+console.log(window.location.origin);
+console.log("test");
 
 ReactDOM.render(
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
-    redirectUri={window.location.origin}
+    //     redirectUri={window.location.origin}
+    redirectUri="https://michel-verjux.com/home,"
     cacheLocation="localstorage"
   >
     <UserProvider>

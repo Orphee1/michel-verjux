@@ -34,7 +34,8 @@ const Header = ({
               <button
                 className="btn connect-btn"
                 onClick={() => {
-                  logout({ returnTo: window.location.origin });
+                  //   logout({ returnTo: window.location.origin });
+                  logout({ returnTo: "https://michel-verjux.com/home," });
                 }}
                 // onClick={() => {
                 //   setUser({});
