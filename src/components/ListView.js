@@ -7,18 +7,22 @@ const ListView = ({ images }) => {
     <Wrapper>
       {images.map((image) => {
         // console.log(image);
-        const { picture, town, year, context, _id, title } = image;
+        const { picture, place, town, year, context, _id, title } = image;
         return (
-          <article key={_id}>
-            <img src={picture} alt={title} />
-            <div>
-              <h4>{title}</h4>
-
-              <Link to={`/selected-image/${_id}`} className="btn">
-                voir
-              </Link>
-            </div>
-          </article>
+          <Link to={`/selected-image/${_id}`} className="" key={_id}>
+            <article>
+              <img src={picture} alt={title} />
+              <div>
+                <h3>{title}</h3>
+                <h4>
+                  <span>{town}, </span>
+                  <span>{year}.</span>
+                </h4>
+                <h4>{context && <span>{context}.</span>}</h4>
+                <h4>{place && <span>{place}.</span>}</h4>
+              </div>
+            </article>
+          </Link>
         );
       })}
     </Wrapper>
@@ -30,6 +34,9 @@ export default ListView;
 const Wrapper = styled.section`
   display: grid;
   row-gap: 3rem;
+  article {
+    color: var(--clr-primary-1);
+  }
   img {
     width: 100%;
     display: block;

@@ -102,9 +102,17 @@ const ModalArticles = () => {
           <FaTimes />
         </button>
         <h3>Poster un texte</h3>
-        <div className="alert-container">
-          {alert.show && <Alert {...alert} setAlert={setAlert} />}
-        </div>
+        {isLoading ? (
+          <div className="loader lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <div className="alert-container">
+            {alert.show && <Alert {...alert} setAlert={setAlert} />}
+          </div>
+        )}
         <form action="" className="form-articles" onSubmit={handleSubmit}>
           <div className="editor-container">
             <TextEditor setText={setText} text={text} />
@@ -205,7 +213,7 @@ const Wrapper = styled.main`
     background: var(--clr-white);
     border-radius: var(--radius);
     width: 90vw;
-    height: 90vh;
+    height: 96vh;
     max-width: var(--max-width);
     text-align: center;
     position: relative;

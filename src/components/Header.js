@@ -81,7 +81,6 @@ export default Header;
 const Wrapper = styled.nav`
   position: relative;
   z-index: 1;
-  /* background: transparent;  */
   background: var(--clr-primary-1);
   height: 6rem;
   display: flex;

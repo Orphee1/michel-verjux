@@ -58,7 +58,7 @@ const Filters = ({ text }) => {
             <button
               type="button"
               name="period"
-              className={`${period === "Avant 1979" ? "active" : null}`}
+              className={`${period === "Avant 1980" ? "active" : null}`}
               onClick={(event) => {
                 if (text) {
                   updateFilter(event, "text");
@@ -79,6 +79,11 @@ const Filters = ({ text }) => {
 export default Filters;
 
 const Wrapper = styled.section`
+  form {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+  }
   button {
     display: block;
     margin: 0.25em 0;
@@ -89,6 +94,7 @@ const Wrapper = styled.section`
     border-bottom: 1px solid transparent;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-5);
+    font-size: 0.875rem;
     cursor: pointer;
     outline: none;
   }

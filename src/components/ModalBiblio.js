@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import "../main.css";
 import styled from "styled-components";
 import { useToggleContext } from "../context/toggle_context";
@@ -10,7 +10,7 @@ import { FaTimes } from "react-icons/fa";
 
 const ModalBiblio = () => {
   const { toggleModalBiblio } = useToggleContext();
-  const token = Cookie.get("token");
+  //   const token = Cookie.get("token");
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState({
     show: false,
@@ -47,13 +47,13 @@ const ModalBiblio = () => {
 
         const response = await Axios.post(
           process.env.REACT_APP_WEBADDRESS + "/biblio/publish",
-          formData,
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-              "Content-Type": "multipart/form-data",
-            },
-          }
+          formData
+          //   {
+          //     headers: {
+          //       Authorization: "Bearer " + token,
+          //       "Content-Type": "multipart/form-data",
+          //     },
+          //   }
         );
         setBiblio({
           category: "",
@@ -96,101 +96,99 @@ const ModalBiblio = () => {
           <FaTimes />
         </button>
         <h3>Poster une référence bibliographique</h3>
-        <div className="alert-container">
-          {alert.show && <Alert {...alert} setAlert={setAlert} />}
-          <form
-            action=""
-            className="form-biblio fl-col"
-            onSubmit={handleSubmit}
-          >
-            <div className="form-biblio-group fl-col">
-              <div className="input-container">
-                <select
-                  name="category"
-                  id="category"
-                  className="form-control"
-                  onChange={handleChange}
-                >
-                  {options}
-                </select>
-                <span className="required">*</span>
-              </div>
-              <div className="input-container">
+        {isLoading ? (
+          <div className="loader lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <div className="alert-container">
+            {alert.show && <Alert {...alert} setAlert={setAlert} />}
+          </div>
+        )}
+        <form action="" className="form-biblio fl-col" onSubmit={handleSubmit}>
+          <div className="form-biblio-group fl-col">
+            <div className="input-container">
+              <select
+                name="category"
+                id="category"
+                className="form-control"
+                onChange={handleChange}
+              >
+                {options}
+              </select>
+              <span className="required">*</span>
+            </div>
+            <div className="input-container">
+              <input
+                type="text"
+                name="title"
+                className="form-control"
+                placeholder="Titre"
+                value={biblio.title}
+                onChange={handleChange}
+              />
+              <span className="required">*</span>
+            </div>
+            <div className="double-container d-flex">
+              <div
+                className="input-container"
+                style={{ marginRight: "0.5rem" }}
+              >
                 <input
                   type="text"
-                  name="title"
+                  name="editor"
                   className="form-control"
-                  placeholder="Titre"
-                  value={biblio.title}
+                  placeholder="Éditeur"
+                  value={biblio.editor}
                   onChange={handleChange}
                 />
                 <span className="required">*</span>
               </div>
-              <div className="double-container d-flex">
-                <div
-                  className="input-container"
-                  style={{ marginRight: "0.5rem" }}
-                >
-                  <input
-                    type="text"
-                    name="editor"
-                    className="form-control"
-                    placeholder="Éditeur"
-                    value={biblio.editor}
-                    onChange={handleChange}
-                  />
-                  <span className="required">*</span>
-                </div>
-                <div
-                  className="input-container"
-                  style={{ marginLeft: "0.5rem" }}
-                >
-                  <input
-                    type="text"
-                    name="collect"
-                    className="form-control"
-                    placeholder="Collection"
-                    value={biblio.collect}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-              <div className="double-container d-flex">
-                <div
-                  className="input-container"
-                  style={{ marginRight: "0.5rem" }}
-                >
-                  <input
-                    type="text"
-                    name="author"
-                    className="form-control"
-                    placeholder="Auteur"
-                    value={biblio.author}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div
-                  className="input-container"
-                  style={{ marginLeft: "0.5rem" }}
-                >
-                  <input
-                    type="number"
-                    name="year"
-                    className="form-control"
-                    placeholder="Année"
-                    value={biblio.year}
-                    onChange={handleChange}
-                  />
-                  <span className="required">*</span>
-                </div>
+              <div className="input-container" style={{ marginLeft: "0.5rem" }}>
+                <input
+                  type="text"
+                  name="collect"
+                  className="form-control"
+                  placeholder="Collection"
+                  value={biblio.collect}
+                  onChange={handleChange}
+                />
               </div>
             </div>
-            <span>* Ces champs sont requis.</span>
-            <button className="btn submit-btn" style={{ marginTop: "0.5rem" }}>
-              Envoyer
-            </button>
-          </form>
-        </div>
+            <div className="double-container d-flex">
+              <div
+                className="input-container"
+                style={{ marginRight: "0.5rem" }}
+              >
+                <input
+                  type="text"
+                  name="author"
+                  className="form-control"
+                  placeholder="Auteur"
+                  value={biblio.author}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="input-container" style={{ marginLeft: "0.5rem" }}>
+                <input
+                  type="number"
+                  name="year"
+                  className="form-control"
+                  placeholder="Année"
+                  value={biblio.year}
+                  onChange={handleChange}
+                />
+                <span className="required">*</span>
+              </div>
+            </div>
+          </div>
+          <span>* Ces champs sont requis.</span>
+          <button className="btn submit-btn" style={{ marginTop: "0.5rem" }}>
+            Envoyer
+          </button>
+        </form>
       </div>
     </Wrapper>
   );

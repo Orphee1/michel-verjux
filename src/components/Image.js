@@ -32,12 +32,13 @@ const Wrapper = styled.article`
     position: relative;
     background: var(--clr-black);
     cursor: pointer;
-    /* &:hover .img {
-      opacity: 0.2;
-    } */
+    &:hover img {
+      opacity: 0.1;
+    }
 
     .info {
       position: absolute;
+      top: 55%;
       left: 45%;
       transform: translate(-50%, -50%);
       width: 100%;
@@ -45,6 +46,17 @@ const Wrapper = styled.article`
       transition: var(--l-transition);
       color: var(--clr-white);
       text-align: center;
+      display: flex;
+      justify-content: center;
+      p {
+        margin-bottom: 1.5rem;
+        width: 90%;
+        color: var(--clr-white);
+        font-size: 0.8rem;
+      }
+    }
+    &:hover .info {
+      opacity: 1;
     }
   }
 `;

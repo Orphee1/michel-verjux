@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import "../main.css";
 import styled from "styled-components";
 import { useToggleContext } from "../context/toggle_context";
@@ -9,7 +9,7 @@ import { FaTimes } from "react-icons/fa";
 
 const ModalImages = () => {
   const { toggleModalPictures } = useToggleContext();
-  const token = Cookie.get("token");
+  //   const token = Cookie.get("token");
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState({
     show: false,
@@ -53,13 +53,13 @@ const ModalImages = () => {
 
           const response = await Axios.post(
             process.env.REACT_APP_WEBADDRESS + "/image/publish",
-            formData,
-            {
-              headers: {
-                Authorization: "Bearer " + token,
-                "Content-Type": "multipart/form-data",
-              },
-            }
+            formData
+            //     {
+            //       headers: {
+            //         Authorization: "Bearer " + token,
+            //         "Content-Type": "multipart/form-data",
+            //       },
+            //     }
           );
           setImage({
             picture: null,
@@ -74,6 +74,7 @@ const ModalImages = () => {
           });
           if (response.data) {
             console.log(response.data);
+            setIsLoading(false);
             setAlert({
               show: true,
               type: "success",
@@ -112,10 +113,18 @@ const ModalImages = () => {
           <FaTimes />
         </button>
         <h3>Poster une image</h3>
-        <div className="alert-container">
-          {alert.show && <Alert {...alert} setAlert={setAlert} />}
-        </div>
-        <form action="" className="form-images fl-col" onSubmit={handleSubmit}>
+        {isLoading ? (
+          <div className="loader lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <div className="alert-container">
+            {alert.show && <Alert {...alert} setAlert={setAlert} />}
+          </div>
+        )}
+        <form className="form-images fl-col" onSubmit={handleSubmit}>
           <div className="form-images-group fl-col">
             <div className="double-container s-b">
               <div className="input-container">
@@ -208,10 +217,14 @@ const ModalImages = () => {
               </div>
             </div>
             <div className="input-container">
+              <label htmlFor="image_upload" className="btn">
+                Choisir une image
+              </label>
               <input
                 type="file"
+                id="image_upload"
                 name="picture"
-                className="form-control file"
+                className="file"
                 onChange={(event) => {
                   setImage({ ...image, picture: event.target.files[0] });
                 }}
@@ -245,7 +258,7 @@ const Wrapper = styled.main`
     background: var(--clr-white);
     border-radius: var(--radius);
     width: 90vw;
-    height: 80vh;
+    height: 85vh;
     max-width: var(--fixed-width);
     position: relative;
     text-align: center;
@@ -264,7 +277,8 @@ const Wrapper = styled.main`
     width: 100%;
   }
   .file {
-    width: 60%;
+    /* width: 60%; */
+    opacity: 0;
   }
   .input-container {
     width: 100%;

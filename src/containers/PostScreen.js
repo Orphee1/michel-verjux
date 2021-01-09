@@ -13,7 +13,7 @@ const PostScreen = () => {
     toggleModalBiblio,
     toggleModalPictures,
   } = useToggleContext();
-  console.log(modalArticles);
+
   return (
     <main>
       <PageHero title="Poster" />
