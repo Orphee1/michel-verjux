@@ -35,7 +35,7 @@ const Header = ({
                 className="btn connect-btn"
                 onClick={() => {
                   //   logout({ returnTo: window.location.origin });
-                  logout({ returnTo: "https://michel-verjux.com/home," });
+                  logout({ returnTo: "https://michel-verjux.com/home" });
                 }}
                 // onClick={() => {
                 //   setUser({});
