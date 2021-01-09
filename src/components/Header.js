@@ -35,7 +35,10 @@ const Header = ({
                 className="btn connect-btn"
                 onClick={() => {
                   //   logout({ returnTo: window.location.origin });
-                  logout({ returnTo: "https://michel-verjux.com/home" });
+                  //   logout({ returnTo: "https://michel-verjux.com/home" });
+                  logout({
+                    returnTo: process.env.REACT_APP_AUTH0_REDIRECT_URI,
+                  });
                 }}
                 // onClick={() => {
                 //   setUser({});
@@ -80,7 +83,7 @@ const Wrapper = styled.nav`
   z-index: 1;
   /* background: transparent;  */
   background: var(--clr-primary-1);
-  height: 5rem;
+  height: 6rem;
   display: flex;
   align-items: center;
   .nav-center {
