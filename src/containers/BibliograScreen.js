@@ -6,7 +6,7 @@ import "../main.css";
 import styled from "styled-components";
 // import { useGlobalContext } from "../context/GlobalContext";
 import { useDataContext } from "../context/DataContext";
-import { Biblio, PageHero } from "../components";
+import { Biblio, PageHero, SEO } from "../components";
 import {
   ArticleLoaderBigScreen,
   ArticleLoaderSmallScreen,
@@ -79,6 +79,10 @@ const BiblioScreen = () => {
 
   return (
     <main>
+      <SEO
+        title="Michel Verjux | Biblio"
+        description="Page dedicated to bibliography"
+      />
       <PageHero title="Bibliographie" />
       <Wrapper className="page">
         <div className="section-center">

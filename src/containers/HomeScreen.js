@@ -6,6 +6,7 @@ import { Hero, HomeArticles, HomeImages, SEO } from "../components";
 const HomeScreen = () => {
   return (
     <Wrapper>
+      <SEO title="Michel Verjux | Home" description="This is the home page" />
       <Hero />
       <HomeImages />
       <HomeArticles />

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useToggleContext } from "../context/toggle_context";
 import { PageHero } from "../components";
-import { ModalArticles, ModalBiblio, ModalImages } from "../components";
+import { ModalArticles, ModalBiblio, ModalImages, SEO } from "../components";
 
 const PostScreen = () => {
   const {
@@ -16,6 +16,7 @@ const PostScreen = () => {
 
   return (
     <main>
+      <SEO title="Michel Verjux | Post" />
       <PageHero title="Poster" />
       <Wrapper className="page">
         <div className="section section-center">

@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-import Cookie from "js-cookie";
+import React from "react";
 import "../main.css";
 import styled from "styled-components";
-import {
-  Articles,
-  Filters,
-  ModalArticles,
-  PageHero,
-  SEO,
-  SearchMenu,
-  SideSearchMenu,
-  SortArticles,
-} from "../components";
+import { Articles, Filters, PageHero, SEO, SortArticles } from "../components";
 
 const TextScreen = () => {
-  const token = Cookie.get("token");
-
-  const [period, setPeriod] = useState(0);
-  const [backSort, setBackSort] = useState(false);
-
   return (
     <main>
+      <SEO title="Michel Verjux | Texts" />
       <PageHero title="Choix de textes" />
       <Wrapper className="page">
         <div className="section-center articles">

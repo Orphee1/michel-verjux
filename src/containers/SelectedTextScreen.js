@@ -88,6 +88,7 @@ export default function SelectedText() {
 
   return (
     <Wrapper>
+      <SEO title="Michel Verjux | Text" />
       {/* <PageHero title="texte" /> */}
       <div className="container section-center">
         <article>

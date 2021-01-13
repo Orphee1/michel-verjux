@@ -21,6 +21,10 @@ const LandingScreen = () => {
 
   return (
     <Wrapper style={{ backgroundImage: `url(${src})` }}>
+      <SEO
+        title="Michel Verjux | Landing"
+        description="This is a landing page"
+      />
       <Link to="/home">
         <section className="landing-container">
           <div className="section-center landing-center">

@@ -6,6 +6,10 @@ import { PageHero, SEO } from "../components";
 const BioScreen = () => {
   return (
     <main>
+      <SEO
+        title="Michel Verjux | Bio"
+        description="Page dedicated to biography"
+      />
       <PageHero title="Biographie" />
       <Wrapper className="page"></Wrapper>
     </main>

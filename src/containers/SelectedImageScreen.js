@@ -89,6 +89,7 @@ export default function SelectedImage() {
 
   return (
     <Wrapper>
+      <SEO title="Michel Verjux | Image" />
       <PageHero title="Image" />
       <section className="layout">
         <article className="">

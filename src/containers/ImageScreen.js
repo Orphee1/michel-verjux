@@ -1,29 +1,13 @@
-import React, { useState } from "react";
-import Cookie from "js-cookie";
+import React from "react";
 import "../main.css";
 import styled from "styled-components";
 
-import {
-  Filters,
-  Images,
-  MainImageLoader,
-  ModalImages,
-  MultipleImagesLoader,
-  PageHero,
-  SEO,
-  SearchMenu,
-  SideSearchMenu,
-  Sort,
-} from "../components";
+import { Filters, Images, PageHero, SEO, Sort } from "../components";
 
 const ImageScreen = () => {
-  const token = Cookie.get("token");
-
-  const [period, setPeriod] = useState(0);
-  const [backSort, setBackSort] = useState(false);
-
   return (
     <main>
+      <SEO title="Michel Verjux | Images" />
       <PageHero title="Choix d'images" />
       <Wrapper className="page">
         <div className="section-center images">
