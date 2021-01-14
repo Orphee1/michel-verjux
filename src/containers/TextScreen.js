@@ -11,10 +11,9 @@ const TextScreen = () => {
       <Wrapper className="page">
         <div className="section-center articles">
           <Filters text />
-          <div>
-            <SortArticles />
-            <Articles />
-          </div>
+          {/* <SortArticles /> */}
+
+          <Articles />
         </div>
       </Wrapper>
     </main>
@@ -26,13 +25,11 @@ export default TextScreen;
 const Wrapper = styled.div`
   .articles {
     display: grid;
+    /* background-color: red; */
     gap: 3rem 1.5rem;
     margin: 4rem auto;
   }
-  .filters {
-    justify-self: flex-start;
-    background: red;
-  }
+
   @media (min-width: 768px) {
     .articles {
       grid-template-columns: 200px 1fr;

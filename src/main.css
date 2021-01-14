@@ -53,6 +53,7 @@ Police import
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
+  --max-width-medium: 900px;
   --fixed-width: 620px;
 }
 /*
@@ -537,13 +538,15 @@ form {
 /* -- Md styling -- */
 blockquote {
   font-family: var(--ff-ternary);
-  font-size: 1.5rem;
+  /* background-color: red; */
+  width: 70%;
+  font-size: 1rem;
   font-style: italic;
   border-left: 4px solid var(--clr-grey-5);
   padding-left: 2rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+  line-height: 1.5;
+  margin: 1.7rem O 1.7rem 0;
+  /* margin-top: 1.5rem; */
   text-align: left;
 }
 blockquote ::first-letter {

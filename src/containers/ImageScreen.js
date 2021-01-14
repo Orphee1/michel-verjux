@@ -30,10 +30,7 @@ const Wrapper = styled.div`
     gap: 3rem 1.5rem;
     margin: 4rem auto;
   }
-  .filters {
-    justify-self: flex-start;
-    background: red;
-  }
+
   @media (min-width: 768px) {
     .images {
       grid-template-columns: 200px 1fr;

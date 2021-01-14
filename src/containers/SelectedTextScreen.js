@@ -68,7 +68,6 @@ export default function SelectedText() {
   if (single_articleLoading) {
     return (
       <LoaderWrapper>
-        {/* <PageHero title="texte" /> */}
         <article className="small_screen">
           <ArticleLoaderSmallScreen />
         </article>
@@ -87,77 +86,93 @@ export default function SelectedText() {
   }
 
   return (
-    <Wrapper>
+    <main>
       <SEO title="Michel Verjux | Text" />
-      {/* <PageHero title="texte" /> */}
-      <div className="container section-center">
-        <article>
-          <ReactMarkdown>{single_article.article}</ReactMarkdown>
-        </article>
-        <div className="info">
-          <h4>
-            <i>{single_article.title},</i>
-          </h4>
-          <h4>{single_article.author},</h4>
-          <h4>{single_article.year}.</h4>
-          {single_article.editor && <h4>{single_article.editor}.</h4>}
-          {single_article.place && <h4>{single_article.place}.</h4>}
-          {single_article.traduct && (
-            <h4>Traduction: {single_article.traduct}.</h4>
-          )}
-        </div>
+      <PageHero title="Texte" />
+      <Wrapper className="page">
+        <section className="section-center articles">
+          <article>
+            <ReactMarkdown>{single_article.article}</ReactMarkdown>
+          </article>
+          <div className="info">
+            <h4>
+              <i>{single_article.title},</i>
+            </h4>
+            <h4>{single_article.author},</h4>
+            <h4>{single_article.year}.</h4>
+            {single_article.editor && <h4>{single_article.editor}.</h4>}
+            {single_article.place && <h4>{single_article.place}.</h4>}
+            {single_article.traduct && (
+              <h4>Traduction: {single_article.traduct}.</h4>
+            )}
+          </div>
+        </section>
+      </Wrapper>
 
-        {token && (
+      {/* {token && (
           <button className="btn" onClick={deleteText}>
             Supprimer
           </button>
-        )}
-      </div>
-    </Wrapper>
+        )} */}
+      {/* </div> */}
+    </main>
   );
 }
-
-const Wrapper = styled.main`
-  min-height: 100vh;
-  background: var(--clr-white);
-  display: grid;
-  place-items: center;
-  padding: 4rem 0;
-  .container {
-    width: 90%;
-    max-width: var(--max-width);
+const Wrapper = styled.div`
+  .articles {
     display: grid;
-    place-items: center;
-    margin: 0 auto;
+    /* background-color: red; */
+    max-width: var(--fixed-width);
+    margin: 4rem auto;
   }
-
-  article {
-    width: 100%;
-    /* margin-top: 1.5rem; */
-    color: var(--clr-primary-1);
-    single_article-align: center;
-    p {
-      color: var(--clr-primary-1);
-      single_article-align: left;
-    }
-  }
-  .info {
-    width: 100%;
-    margin: 1rem auto;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    h4 {
-      margin-right: 0.5rem;
-      flex-shrink: 0;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      max-width: var(--max-width);
-    }
+  @media (min-width: 768px) {
+    /* .articles {
+      grid-template-columns: 200px 1fr;
+    } */
   }
 `;
+
+// const Wrapper = styled.main`
+//   min-height: 100vh;
+//   background: var(--clr-white);
+//   display: grid;
+//   place-items: center;
+//   padding: 4rem 0;
+//   .container {
+//     width: 90%;
+//     max-width: var(--max-width);
+//     display: grid;
+//     place-items: center;
+//     margin: 0 auto;
+//   }
+
+//   article {
+//     width: 100%;
+//     /* margin-top: 1.5rem; */
+//     color: var(--clr-primary-1);
+//     single_article-align: center;
+//     p {
+//       color: var(--clr-primary-1);
+//       single_article-align: left;
+//     }
+//   }
+//   .info {
+//     width: 100%;
+//     margin: 1rem auto;
+//     display: flex;
+//     justify-content: flex-start;
+//     flex-wrap: wrap;
+//     h4 {
+//       margin-right: 0.5rem;
+//       flex-shrink: 0;
+//     }
+//   }
+//   @media (min-width: 992px) {
+//     .container {
+//       max-width: var(--max-width);
+//     }
+//   }
+// `;
 
 const LoaderWrapper = styled.main`
   min-height: 100vh;

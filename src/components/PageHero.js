@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
 
 const PageHero = ({ title }) => {
   return (
@@ -8,7 +9,9 @@ const PageHero = ({ title }) => {
       <div className="section-center left">
         <div className="d-flex">
           <h3 className="small-screen">
-            <Link to="/home">Retour</Link>
+            <Link to="/home">
+              <AiFillHome style={{ color: "#282c35" }} />
+            </Link>
           </h3>
           <h2>/ {title}</h2>
         </div>
@@ -20,9 +23,10 @@ const PageHero = ({ title }) => {
 const Wrapper = styled.section`
   background: var(--clr-white);
   width: 100%;
-  min-height: 15vh;
+  height: 6rem;
   display: flex;
   align-items: flex-end;
+  /* background-color: green; */
 
   color: var(--clr-primary-1);
   a {

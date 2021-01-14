@@ -52,7 +52,7 @@ const Articles = () => {
           return (
             <article key={_id}>
               <div className="text">
-                <ReactMarkdown>{article.substring(0, 650)}</ReactMarkdown>
+                <ReactMarkdown>{article.substring(0, 1000)}</ReactMarkdown>
                 <span className="">...</span>
               </div>
               <div className="info">
@@ -90,7 +90,7 @@ const Wrapper = styled.section`
     grid-auto-rows: auto;
     article {
       color: var(--clr-primary-1);
-      margin: 2rem auto;
+      margin: 0 auto 2rem auto;
       display: grid;
       place-items: center;
       .text {
@@ -102,6 +102,7 @@ const Wrapper = styled.section`
         text-align: left;
       }
       button {
+        margin: 1rem auto;
         width: 100px;
       }
       span {
