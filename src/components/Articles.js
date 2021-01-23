@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
 import { useDataContext } from "../context/DataContext";
 import { useFilterContext } from "../context/filter_context";
 import "../main.css";
@@ -36,7 +35,7 @@ const Articles = () => {
   }
   return (
     <Wrapper>
-      <div className="layout">
+      <div className="layout red">
         {articles.map((item) => {
           //   console.log(item);
           const {
@@ -51,10 +50,7 @@ const Articles = () => {
           } = item;
           return (
             <article key={_id}>
-              <div className="text">
-                <ReactMarkdown>{article.substring(0, 1000)}</ReactMarkdown>
-                <span className="">...</span>
-              </div>
+              <div className="text"></div>
               <div className="info">
                 <h4>
                   <i>{title},</i>

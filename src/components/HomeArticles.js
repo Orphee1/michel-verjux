@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
 import "../main.css";
 import styled from "styled-components";
 import { useDataContext } from "../context/DataContext";
@@ -38,15 +37,12 @@ const HomeArticles = () => {
           <span>/</span>
           Choix de textes
         </h2>
-        <div className="layout">
+        <div className="layout red ">
           {articles.map((item) => {
             const { _id, article } = item;
             return (
               <article key={_id}>
-                <div className="text">
-                  <ReactMarkdown>{article.substring(0, 970)}</ReactMarkdown>
-                  <span>...</span>
-                </div>
+                <div className="text"></div>
               </article>
             );
           })}

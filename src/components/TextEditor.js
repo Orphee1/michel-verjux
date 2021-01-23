@@ -1,45 +1,52 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { Editor } from "@tinymce/tinymce-react";
 import styled from "styled-components";
-import RichTextEditor from "react-rte";
+import parse from "html-react-parser";
 
-export default class App3 extends Component {
-  static propTypes = {
-    onChange: PropTypes.func,
-  };
-  state = {
-    value: RichTextEditor.createEmptyValue(),
-  };
-  onChange = (value) => {
-    this.setState({ value });
-    this.props.setText({
-      ...this.props.text,
-      article: value.toString("markdown"),
-    });
-    //     if (this.props.onChange) {
-    //       this.props.onChange(value.toString("markdown"));
-    //     }
+const TextEditor = () => {
+  const [editorState, setEditorState] = useState({
+    editorContent: '<h4 style="text-align: center;">Saisissez votre texte</h4>',
+  });
+  // console.log(editorState.editorContent);
+
+  const handleEditorChange = (editorContent) => {
+    save({ editorContent });
   };
 
-  render() {
-    return (
-      <Wrapper>
-        <RichTextEditor
-          value={this.state.value}
-          onChange={this.onChange}
-          className="editor"
-        />
-      </Wrapper>
-    );
-  }
-}
+  const save = (newPartialState) => {
+    setEditorState({ ...newPartialState });
+  };
+
+  return (
+    <Wrapper>
+      <Editor
+        apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+        onEditorChange={handleEditorChange}
+        value={editorState.editorContent}
+        plugins="wordcount image"
+        init={{
+          icons: "jam",
+          skin: "fabric",
+          content_css: "document",
+          resize: false,
+        }}
+      />
+      {/* <article className="text-edited ">
+        {parse(`${editorState.editorContent}`)}
+      </article> */}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
-  height: 45vh;
-  /* background: blue; */
-  width: 100%;
-  .editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  padding: 0 3rem;
+  textarea {
     height: 100%;
-    overflow: scroll;
   }
 `;
+
+export default TextEditor;

@@ -35,10 +35,10 @@ const Header = ({
                 className="btn connect-btn"
                 onClick={() => {
                   //   logout({ returnTo: window.location.origin });
-                  logout({ returnTo: "https://michel-verjux.com/home" });
-                  //   logout({
-                  //     returnTo: process.env.REACT_APP_AUTH0_REDIRECT_URI,
-                  //   });
+                  //   logout({ returnTo: "https://michel-verjux.com/home" });
+                  logout({
+                    returnTo: process.env.REACT_APP_AUTH0_REDIRECT_URI,
+                  });
                 }}
                 // onClick={() => {
                 //   setUser({});
@@ -48,11 +48,7 @@ const Header = ({
                 me déconnecter
               </button>
             ) : (
-              <button
-                className="btn connect-btn"
-                onClick={loginWithRedirect}
-                //       onClick={toggleModalLogin}
-              >
+              <button className="btn connect-btn" onClick={loginWithRedirect}>
                 me connecter
               </button>
             )}

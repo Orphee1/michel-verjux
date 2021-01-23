@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
 import Axios from "axios";
 import Cookie from "js-cookie";
 import { useDataContext } from "../context/DataContext";
@@ -91,9 +90,7 @@ export default function SelectedText() {
       <PageHero title="Texte" />
       <Wrapper className="page">
         <section className="section-center articles">
-          <article>
-            <ReactMarkdown>{single_article.article}</ReactMarkdown>
-          </article>
+          <article></article>
           <div className="info">
             <h4>
               <i>{single_article.title},</i>
