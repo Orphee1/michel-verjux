@@ -4,7 +4,7 @@ const ToggleContext = createContext();
 
 export const ToggleProvider = ({ children }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const [modalArticles, setModalArticles] = useState(false);
+  const [modalArticles, setModalArticles] = useState(true);
   const [modalPictures, setModalPictures] = useState(false);
   const [modalBiblio, setModalBiblio] = useState(false);
   const [sideSearch, setSideSearch] = useState(false);

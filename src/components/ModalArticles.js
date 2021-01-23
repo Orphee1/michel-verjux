@@ -27,13 +27,16 @@ const ModalArticles = () => {
     place: "",
     article: "",
   });
-  console.log(text);
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setText({ ...text, [name]: value });
   };
+
+  //   const handleArticle = (edit) => {
+  //     setText({ ...text, article: edit });
+  //   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -121,11 +124,11 @@ const ModalArticles = () => {
         )}
 
         <header className="">
-          <button className="close-modal-btn" onClick={toggleModalArticles}>
-            <FaTimes />
-          </button>
           <h3>Poster un texte</h3>
         </header>
+        <button className="close-modal-btn" onClick={toggleModalArticles}>
+          <FaTimes />
+        </button>
 
         <form className="slider" onSubmit={handleSubmit}>
           <section
@@ -135,13 +138,14 @@ const ModalArticles = () => {
                 : "editor__container"
             }
           >
-            <TextEditor />
+            <TextEditor
+            //     handleArticle={handleArticle}
+            />
           </section>
           <section
             className={
               isEditorOpen ? "form__validation hide-form" : "form__validation"
             }
-            //   className="form__validation red"
           >
             {isLoading ? (
               <div className="loader lds-facebook">
@@ -154,8 +158,8 @@ const ModalArticles = () => {
                 {alert.show && <Alert {...alert} setAlert={setAlert} />}
               </div>
             )}
-            <form action="" className="form-articles" onSubmit={handleSubmit}>
-              <div className="multiple-container d-flex">
+            <section className="form-articles">
+              <div className="inputs-container d-flex">
                 <div className="input-container">
                   <input
                     type="text"
@@ -164,8 +168,9 @@ const ModalArticles = () => {
                     placeholder="nom"
                     value={text.title}
                     onChange={handleChange}
+                    required
                   />
-                  <span className="required">*</span>
+                  <span></span>
                 </div>
                 <div className="input-container">
                   <input
@@ -177,6 +182,8 @@ const ModalArticles = () => {
                     onChange={handleChange}
                   />
                 </div>
+              </div>
+              <div className="inputs-container d-flex">
                 <div className="input-container">
                   <input
                     type="text"
@@ -187,8 +194,6 @@ const ModalArticles = () => {
                     onChange={handleChange}
                   />
                 </div>
-              </div>
-              <div className="multiple-container d-flex">
                 <div className="input-container">
                   <input
                     type="text"
@@ -199,6 +204,8 @@ const ModalArticles = () => {
                     onChange={handleChange}
                   />
                 </div>
+              </div>
+              <div className="inputs-container d-flex">
                 <div className="input-container">
                   <input
                     type="text"
@@ -217,18 +224,17 @@ const ModalArticles = () => {
                     placeholder="e.g. 2005"
                     value={text.year}
                     onChange={handleChange}
+                    required
                   />
-                  <span className="required">*</span>
+                  <span></span>
                 </div>
               </div>
+
               <span>* Ces champs sont requis.</span>
-              <button
-                className="btn submit-btn"
-                style={{ marginTop: "0.5rem" }}
-              >
+              <button className="btn submit-btn" style={{ marginTop: "1rem" }}>
                 Envoyer
               </button>
-            </form>
+            </section>
           </section>
         </form>
       </div>
@@ -260,7 +266,12 @@ const Wrapper = styled.main`
     padding: 0.5rem;
     header {
       height: 7vh;
-      position: relative;
+      /* position: absolute; */
+      top: 0;
+      left: 50%;
+      z-index: 9000;
+      /* transform: translate(-50%); */
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -316,9 +327,11 @@ const Wrapper = styled.main`
     top: 0;
     left: 0;
     transition: all 0.6s ease-out;
-
     opacity: 1;
     transform: translateX(0%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hide-form {
     opacity: 0;
@@ -328,21 +341,34 @@ const Wrapper = styled.main`
     height: 2rem;
   }
   .form-articles {
-    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+    max-width: var(--fixed-width);
   }
-  .multiple-container {
-    width: 50%;
-  }
-  .input-container {
-    margin: 0 0.5rem;
+
+  .inputs-container {
     width: 100%;
-    position: relative;
+    .input-container {
+      margin: 0 0.5rem;
+      width: 100%;
+      position: relative;
+      input {
+        &:required {
+          & + span::after {
+            content: "*";
+            position: absolute;
+            bottom: 0;
+            right: -0.5rem;
+          }
+        }
+      }
+    }
   }
-  .required {
-    position: absolute;
-    bottom: 0;
-    left: -10px;
-  }
+
   .editor-container {
     width: 100%;
     height: 45vh;
