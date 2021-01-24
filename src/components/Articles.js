@@ -5,6 +5,7 @@ import { useFilterContext } from "../context/filter_context";
 import "../main.css";
 import styled from "styled-components";
 import { ArticlesLoader } from "./loaders";
+import parse from "html-react-parser";
 
 const Articles = () => {
   const history = useHistory();
@@ -35,7 +36,7 @@ const Articles = () => {
   }
   return (
     <Wrapper>
-      <div className="layout red">
+      <div className="layout">
         {articles.map((item) => {
           //   console.log(item);
           const {
@@ -48,16 +49,21 @@ const Articles = () => {
             traduct,
             year,
           } = item;
+          console.log(article);
           return (
-            <article key={_id}>
-              <div className="text"></div>
-              <div className="info">
+            <article key={_id} className="">
+              <div className="text">
+                <div className="text">
+                  {parse(`${article.substring(0, 3000)}`)}
+                </div>
+              </div>
+              {/* <div className="info">
                 <h4>
                   <i>{title},</i>
                 </h4>
                 <h4>{author},</h4>
                 <h4>{year}.</h4>
-              </div>
+              </div> */}
               <Link key={_id} to={`/selected-text/${_id}`}>
                 <button className="btn">Lire</button>
               </Link>
@@ -78,6 +84,8 @@ const Wrapper = styled.section`
   .layout {
     display: grid;
     max-width: var(--max-width);
+    width: 100%;
+    height: auto;
     margin: 0 auto;
     gap: 1rem;
     /* safari workaround */
@@ -88,10 +96,10 @@ const Wrapper = styled.section`
       color: var(--clr-primary-1);
       margin: 0 auto 2rem auto;
       display: grid;
+      width: 100%;
       place-items: center;
       .text {
         text-align: center;
-        position: relative;
       }
       p {
         color: var(--clr-primary-1);
@@ -101,13 +109,7 @@ const Wrapper = styled.section`
         margin: 1rem auto;
         width: 100px;
       }
-      span {
-        position: absolute;
-        bottom: 10px;
-        font-weight: bold;
-        font-size: 1.5rem;
-        right: 5px;
-      }
+
       .info {
         width: 100%;
         margin: 0.5rem auto;

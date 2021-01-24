@@ -33,24 +33,23 @@ const HomeArticles = () => {
 
   return (
     <Wrapper>
-      <div className="title">
+      <header className="title">
         <h2>
           <span>/</span>
           Choix de textes
         </h2>
-        <div className="layout">
-          {articles.map((item) => {
-            console.log(item);
-            const { _id, article } = item;
-            //     console.log(editorContent);
-            return (
-              <article key={_id}>
-                {/* <div className="text">{parse(`${article}`)}</div> */}
-              </article>
-            );
-          })}
-        </div>
-      </div>
+      </header>
+      <section className="layout">
+        {articles.map((item) => {
+          const { _id, article } = item;
+          console.log(article);
+          return (
+            <article key={_id} className="">
+              {parse(`${article.substring(0, 3000)}`)}
+            </article>
+          );
+        })}
+      </section>
 
       <Link to="/text/" className="btn">
         Plus de textes
@@ -78,6 +77,7 @@ const Wrapper = styled.section`
   .layout {
     display: grid;
     width: 90vw;
+    height: 100vh;
     max-width: var(--max-width);
     margin: 0 auto;
     gap: 1rem;
@@ -86,9 +86,11 @@ const Wrapper = styled.section`
     grid-template-rows: auto auto;
     article {
       margin-top: 2rem;
+      height: 40vh;
       .text {
-        text-align: center;
+        /* text-align: center; */
         position: relative;
+        height: 100%;
         span {
           position: absolute;
           bottom: 0;

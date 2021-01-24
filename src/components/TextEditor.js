@@ -1,22 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import styled from "styled-components";
-import parse from "html-react-parser";
 
 const TextEditor = ({ editorState, handleEditorChange }) => {
-  //   const [editorState, setEditorState] = useState({
-  //     editorContent: '<h4 style="text-align: center;">Saisissez votre texte</h4>',
-  //   });
-  // console.log(editorState.editorContent);
-
-  //   const handleEditorChange = (editorContent) => {
-  //     save({ editorContent });
-  //   };
-
-  //   const save = (newPartialState) => {
-  //     setEditorState({ ...newPartialState });
-  //   };
-
   return (
     <Wrapper>
       <Editor
@@ -31,9 +17,6 @@ const TextEditor = ({ editorState, handleEditorChange }) => {
           resize: false,
         }}
       />
-      {/* <article className="text-edited ">
-        {parse(`${editorState.editorContent}`)}
-      </article> */}
     </Wrapper>
   );
 };

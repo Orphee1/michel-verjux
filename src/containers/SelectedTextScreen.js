@@ -5,12 +5,12 @@ import Cookie from "js-cookie";
 import { useDataContext } from "../context/DataContext";
 import "../main.css";
 import styled from "styled-components";
-
 import { PageHero, SEO } from "../components";
 import {
   ArticleLoaderBigScreen,
   ArticleLoaderSmallScreen,
 } from "../components/loaders";
+import parse from "html-react-parser";
 
 export default function SelectedText() {
   const {
@@ -23,7 +23,7 @@ export default function SelectedText() {
   const history = useHistory();
   const { id } = useParams();
   const url = process.env.REACT_APP_WEBADDRESS + "/text?id=";
-
+  console.log(single_article.article);
   useEffect(() => {
     fetchSingleArticle(`${url}${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,8 +90,8 @@ export default function SelectedText() {
       <PageHero title="Texte" />
       <Wrapper className="page">
         <section className="section-center articles">
-          <article></article>
-          <div className="info">
+          <article>{parse(`${single_article.article}`)}</article>
+          {/* <div className="info">
             <h4>
               <i>{single_article.title},</i>
             </h4>
@@ -102,7 +102,7 @@ export default function SelectedText() {
             {single_article.traduct && (
               <h4>Traduction: {single_article.traduct}.</h4>
             )}
-          </div>
+          </div> */}
         </section>
       </Wrapper>
 

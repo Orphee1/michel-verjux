@@ -21,15 +21,9 @@ const ModalArticles = () => {
 
   const [editorState, setEditorState] = useState({
     editorContent: '<h4 style="text-align: center;">Saisissez votre texte</h4>',
-    title: "",
-    year: "",
-    editor: "",
-    author: "",
-    traduct: "",
-    place: "",
   });
 
-  console.log(editorState);
+  console.log(editorState.editorContent);
 
   const handleEditorChange = (editorContent) => {
     save({ editorContent });
@@ -39,29 +33,33 @@ const ModalArticles = () => {
     setEditorState({ ...newPartialState });
   };
 
+  const [infos, setInfos] = useState({
+    title: "",
+    year: "",
+    editor: "",
+    author: "",
+    traduct: "",
+    place: "",
+  });
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    //     setText({ ...text, [name]: value });
-    setEditorState({ ...editorState, [name]: value });
+    setInfos({ ...infos, [name]: value });
   };
-
-  //   const handleArticle = (edit) => {
-  //     setText({ ...text, article: edit });
-  //   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    if (editorState.title && editorState.editorContent && editorState.year) {
+    if (infos.title && infos.year) {
       try {
         const formData = new FormData();
-        formData.append("title", editorState.title);
-        formData.append("year", editorState.year);
-        formData.append("author", editorState.author);
-        formData.append("traduct", editorState.traduct);
-        formData.append("editor", editorState.editor);
-        formData.append("place", editorState.place);
+        formData.append("title", infos.title);
+        formData.append("year", infos.year);
+        formData.append("author", infos.author);
+        formData.append("traduct", infos.traduct);
+        formData.append("editor", infos.editor);
+        formData.append("place", infos.place);
         formData.append("article", editorState.editorContent);
 
         const response = await Axios.post(
@@ -75,9 +73,7 @@ const ModalArticles = () => {
           }
         );
 
-        setEditorState({
-          editorContent:
-            '<h4 style="text-align: center;">Saisissez votre texte</h4>',
+        setInfos({
           title: "",
           year: "",
           editor: "",
@@ -85,6 +81,12 @@ const ModalArticles = () => {
           traduct: "",
           place: "",
         });
+
+        setEditorState({
+          editorContent:
+            '<h4 style="text-align: center;">Saisissez votre texte</h4>',
+        });
+
         if (response.data) {
           // console.log(response.data);
           setAlert({
@@ -155,8 +157,6 @@ const ModalArticles = () => {
             <TextEditor
               editorState={editorState}
               handleEditorChange={handleEditorChange}
-
-              //     handleArticle={handleArticle}
             />
           </section>
           <section
@@ -183,7 +183,7 @@ const ModalArticles = () => {
                     name="title"
                     className="form-control"
                     placeholder="nom"
-                    value={editorState.title}
+                    value={infos.title}
                     onChange={handleChange}
                     required
                   />
@@ -195,7 +195,7 @@ const ModalArticles = () => {
                     name="author"
                     className="form-control"
                     placeholder="auteur"
-                    value={editorState.author}
+                    value={infos.author}
                     onChange={handleChange}
                   />
                 </div>
@@ -207,7 +207,7 @@ const ModalArticles = () => {
                     name="editor"
                     className="form-control"
                     placeholder="éditeur"
-                    value={editorState.editor}
+                    value={infos.editor}
                     onChange={handleChange}
                   />
                 </div>
@@ -217,7 +217,7 @@ const ModalArticles = () => {
                     name="traduct"
                     className="form-control"
                     placeholder="traducteur"
-                    value={editorState.traduct}
+                    value={infos.traduct}
                     onChange={handleChange}
                   />
                 </div>
@@ -229,7 +229,7 @@ const ModalArticles = () => {
                     name="place"
                     className="form-control"
                     placeholder="ville"
-                    value={editorState.place}
+                    value={infos.place}
                     onChange={handleChange}
                   />
                 </div>
@@ -239,7 +239,7 @@ const ModalArticles = () => {
                     name="year"
                     className="form-control"
                     placeholder="e.g. 2005"
-                    value={editorState.year}
+                    value={infos.year}
                     onChange={handleChange}
                     required
                   />
