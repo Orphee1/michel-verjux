@@ -20,7 +20,6 @@ const TextEditor = ({ editorState, handleEditorChange }) => {
   return (
     <Wrapper>
       <Editor
-        // apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
         apiKey={process.env.REACT_APP_TINY_API_KEY}
         onEditorChange={handleEditorChange}
         value={editorState.editorContent}
