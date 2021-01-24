@@ -3,24 +3,25 @@ import { Editor } from "@tinymce/tinymce-react";
 import styled from "styled-components";
 import parse from "html-react-parser";
 
-const TextEditor = () => {
-  const [editorState, setEditorState] = useState({
-    editorContent: '<h4 style="text-align: center;">Saisissez votre texte</h4>',
-  });
+const TextEditor = ({ editorState, handleEditorChange }) => {
+  //   const [editorState, setEditorState] = useState({
+  //     editorContent: '<h4 style="text-align: center;">Saisissez votre texte</h4>',
+  //   });
   // console.log(editorState.editorContent);
 
-  const handleEditorChange = (editorContent) => {
-    save({ editorContent });
-  };
+  //   const handleEditorChange = (editorContent) => {
+  //     save({ editorContent });
+  //   };
 
-  const save = (newPartialState) => {
-    setEditorState({ ...newPartialState });
-  };
+  //   const save = (newPartialState) => {
+  //     setEditorState({ ...newPartialState });
+  //   };
 
   return (
     <Wrapper>
       <Editor
-        apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+        // apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+        apiKey={process.env.REACT_APP_TINY_API_KEY}
         onEditorChange={handleEditorChange}
         value={editorState.editorContent}
         plugins="wordcount image"

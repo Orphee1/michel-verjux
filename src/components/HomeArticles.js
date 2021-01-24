@@ -4,6 +4,7 @@ import "../main.css";
 import styled from "styled-components";
 import { useDataContext } from "../context/DataContext";
 import { HomeArticlesLoader } from "./loaders";
+import parse from "html-react-parser";
 
 const HomeArticles = () => {
   const { articles, articlesLoading, articlesError } = useDataContext();
@@ -37,12 +38,14 @@ const HomeArticles = () => {
           <span>/</span>
           Choix de textes
         </h2>
-        <div className="layout red ">
+        <div className="layout">
           {articles.map((item) => {
+            console.log(item);
             const { _id, article } = item;
+            //     console.log(editorContent);
             return (
               <article key={_id}>
-                <div className="text"></div>
+                {/* <div className="text">{parse(`${article}`)}</div> */}
               </article>
             );
           })}
