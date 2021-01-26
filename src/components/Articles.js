@@ -53,10 +53,9 @@ const Articles = () => {
           return (
             <article key={_id} className="">
               <div className="text">
-                <div className="text">
-                  {parse(`${article.substring(0, 3000)}`)}
-                </div>
+                {parse(`${article.substring(0, 3000)}`)}
               </div>
+
               {/* <div className="info">
                 <h4>
                   <i>{title},</i>
@@ -101,10 +100,7 @@ const Wrapper = styled.section`
       .text {
         text-align: center;
       }
-      p {
-        color: var(--clr-primary-1);
-        text-align: left;
-      }
+
       button {
         margin: 1rem auto;
         width: 100px;

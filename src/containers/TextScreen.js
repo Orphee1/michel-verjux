@@ -1,7 +1,13 @@
 import React from "react";
 import "../main.css";
 import styled from "styled-components";
-import { Articles, Filters, PageHero, SEO, SortArticles } from "../components";
+import {
+  Articles,
+  Filters,
+  PageHero,
+  SEO,
+  // SortArticles
+} from "../components";
 
 const TextScreen = () => {
   return (
@@ -25,9 +31,9 @@ export default TextScreen;
 const Wrapper = styled.div`
   .articles {
     display: grid;
-    /* background-color: red; */
     gap: 3rem 1.5rem;
     margin: 4rem auto;
+    height: auto;
   }
 
   @media (min-width: 768px) {

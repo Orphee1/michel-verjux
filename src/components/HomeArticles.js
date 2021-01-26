@@ -8,6 +8,7 @@ import parse from "html-react-parser";
 
 const HomeArticles = () => {
   const { articles, articlesLoading, articlesError } = useDataContext();
+  console.log(articles);
   if (articlesLoading) {
     return (
       <Wrapper>
@@ -40,9 +41,9 @@ const HomeArticles = () => {
         </h2>
       </header>
       <section className="layout">
-        {articles.map((item) => {
+        {articles.slice(0, 1).map((item) => {
           const { _id, article } = item;
-          console.log(article);
+          //   console.log(article);
           return (
             <article key={_id} className="">
               {parse(`${article.substring(0, 3000)}`)}
@@ -77,7 +78,8 @@ const Wrapper = styled.section`
   .layout {
     display: grid;
     width: 90vw;
-    height: 100vh;
+    /* min-height: 100vh; */
+    height: auto;
     max-width: var(--max-width);
     margin: 0 auto;
     gap: 1rem;
@@ -86,7 +88,7 @@ const Wrapper = styled.section`
     grid-template-rows: auto auto;
     article {
       margin-top: 2rem;
-      height: 40vh;
+      height: auto;
       .text {
         /* text-align: center; */
         position: relative;

@@ -118,8 +118,7 @@ export default function SelectedText() {
 const Wrapper = styled.div`
   .articles {
     display: grid;
-    /* background-color: red; */
-    max-width: var(--fixed-width);
+    max-width: var(--max-width);
     margin: 4rem auto;
   }
   @media (min-width: 768px) {
@@ -128,48 +127,6 @@ const Wrapper = styled.div`
     } */
   }
 `;
-
-// const Wrapper = styled.main`
-//   min-height: 100vh;
-//   background: var(--clr-white);
-//   display: grid;
-//   place-items: center;
-//   padding: 4rem 0;
-//   .container {
-//     width: 90%;
-//     max-width: var(--max-width);
-//     display: grid;
-//     place-items: center;
-//     margin: 0 auto;
-//   }
-
-//   article {
-//     width: 100%;
-//     /* margin-top: 1.5rem; */
-//     color: var(--clr-primary-1);
-//     single_article-align: center;
-//     p {
-//       color: var(--clr-primary-1);
-//       single_article-align: left;
-//     }
-//   }
-//   .info {
-//     width: 100%;
-//     margin: 1rem auto;
-//     display: flex;
-//     justify-content: flex-start;
-//     flex-wrap: wrap;
-//     h4 {
-//       margin-right: 0.5rem;
-//       flex-shrink: 0;
-//     }
-//   }
-//   @media (min-width: 992px) {
-//     .container {
-//       max-width: var(--max-width);
-//     }
-//   }
-// `;
 
 const LoaderWrapper = styled.main`
   min-height: 100vh;
