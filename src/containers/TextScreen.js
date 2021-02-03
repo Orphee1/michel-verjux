@@ -1,13 +1,7 @@
 import React from "react";
 import "../main.css";
 import styled from "styled-components";
-import {
-  Articles,
-  Filters,
-  PageHero,
-  SEO,
-  // SortArticles
-} from "../components";
+import { Articles, Filters, PageHero, SEO } from "../components";
 
 const TextScreen = () => {
   return (
@@ -17,7 +11,6 @@ const TextScreen = () => {
       <Wrapper className="page">
         <div className="section-center articles">
           <Filters text />
-          {/* <SortArticles /> */}
 
           <Articles />
         </div>
